@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+  font-family: 'Helvetica';
+  src: url('/fonts/Helvetica.ttf') format('truetype');
+}
+/* Add any global custom styles here */
+body {
+  @apply bg-background text-foreground; /* Use custom defined colors */
+  font-family: 'Helvetica', sans-serif;
+}
+
+*{
+  font-family: 'Helvetica', sans-serif;
+}
+/* Example: Customize scrollbar (if plugin installed) */
+/* Works on WebKit browsers */
+::-webkit-scrollbar {
+  width: 8px; /* Adjust width */
+  height: 8px; /* Adjust height */
+}
+::-webkit-scrollbar-track {
+  @apply bg-gray-800; /* Or bg-background */
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-600 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
+}
+.custom-border {
+  border-image-source: linear-gradient(115.99deg, #FFFFFF 2.37%, rgba(255, 255, 255, 0.22) 95.98%);
+  border-image-slice: 1;
+  border-radius: 16px;
+}
+/* For Firefox (less customization) */
+/* html {
+  scrollbar-color: theme('colors.gray.600') theme('colors.gray.800');
+  scrollbar-width: thin;
+} */
+.request-assistance-button {
+  border: 1px solid linear-gradient(94.4deg, #FAFF00 7.64%, #00ACB1 95.27%);
+}
+.request-assistance-button:hover {
+  background-color: #000;
+  color: #fff;
+}
