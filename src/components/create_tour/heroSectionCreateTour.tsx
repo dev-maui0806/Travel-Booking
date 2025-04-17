@@ -52,11 +52,20 @@ const HeroSectionCreateTour: React.FC = () => {
     };
 
     return (
-        <div className="bg-[#222629] text-white py-[100px]">
-            <div className="container mx-auto">
+        <section className="bg-[#222629] text-white py-[20px] md:py-[100px] h-auto">
+            <div className="container mx-auto px-4 sm:px-6">
                 {/* Navigation Tabs */}
-                <div className="relative mb-4 md:mb-8">
-                    <div className="flex items-align w-full justify-between overflow-x-auto">
+                <div className="relative mb-2">
+                    <div className="flex flex-col lg:flex-row gap-2 items-align w-full justify-between overflow-x-auto">
+                        <div className="lg:hidden flex items-center space-x-2 bg-[#1C1F22] rounded-full p-1 w-fit min-w-full md:min-w-0">
+                            <div className="flex items-center space-x-2">
+                                <span className="bg-[#222629] px-4 py-2 rounded-full">$ 0</span>
+                                <span className="bg-[#222629] px-4 py-2 rounded-full">0 day</span>
+                            </div>
+                            <button className="bg-gradient-to-r from-[#bef264] to-[#06b6d4] text-white px-6 py-2 rounded-full">
+                                Route details
+                            </button>
+                        </div>
                         <div className="flex items-center space-x-2 bg-[#1C1F22] rounded-full p-1 w-fit min-w-full md:min-w-0">
                             {slides.map((place) => (
                                 <button
@@ -74,7 +83,7 @@ const HeroSectionCreateTour: React.FC = () => {
                                 </button>
                             ))}
                         </div>
-                        <div className="flex items-center space-x-2 bg-[#1C1F22] rounded-full p-1 w-fit min-w-full md:min-w-0">
+                        <div className="hidden lg:flex items-center space-x-2 bg-[#1C1F22] rounded-full p-1 w-fit min-w-full md:min-w-0">
                             <div className="flex items-center space-x-2">
                                 <span className="bg-[#222629] px-4 py-2 rounded-full">$ 0</span>
                                 <span className="bg-[#222629] px-4 py-2 rounded-full">0 day</span>
@@ -85,23 +94,22 @@ const HeroSectionCreateTour: React.FC = () => {
                         </div>
                     </div>
                 </div>
-
                 {/* Main Content */}
-                <div className="flex flex-1 gap-2 lg:h-[750px] md:h-[700px] h-[500px]">
+                <div className="flex flex-1 flex-col md:flex-row gap-2 lg:h-[750px] md:h-[700px]">
                     {/* Left Section: Map */}
-                    <div className="w-full md:w-1/3 bg-[#1C1F22] rounded-[10px] flex flex-col justify-center items-center p-4">
+                    <div className="w-full w-full md:w-1/3 bg-[#1C1F22] rounded-[10px] flex flex-col justify-center items-center p-4">
                         <div className="relative">
                             <img
                                 src={slides[currentSlide].mapImage}// Replace with your map image path
                                 alt="Andaman Map"
-                                className="w-full h-full object-fit"
+                                className="w-full object-contain"
                             />
                             {/* Add more labels for other locations */}
                         </div>
                     </div>
 
                     {/* Right Section: Carousel */}
-                    <div className="bg-[#1C1F22] relative w-full md:w-2/3 flex flex-col gap-[24px] justify-start items-center rounded-[10px]">
+                    <div className="bg-[#1C1F22] w-full relative w-full md:w-2/3 flex flex-col gap-[24px] justify-start items-center rounded-[10px]">
                         <div className="relative w-full h-3/4">
                             <img
                                 src={slides[currentSlide].image}
@@ -109,7 +117,7 @@ const HeroSectionCreateTour: React.FC = () => {
                                 className="w-full h-full object-cover rounded-lg"
                             />
                         </div>
-                        <div className="w-full h-1/4 flex px-[32px] flex-col sm:flex-row justify-between rounded-b-lg">
+                        <div className="w-full h-1/4 flex px-[32px] py-[10px] md:py-[0px] flex-col sm:flex-row justify-between rounded-b-lg">
                             <p className="text-sm w-full md:w-3/5">{slides[currentSlide].description}</p>
                             <div className="flex items-start justify-end space-x-3 md:space-x-4 w-full md:w-2/5">
                                 <span className="text-sm font-light text-[#06b6d4]">
@@ -140,7 +148,7 @@ const HeroSectionCreateTour: React.FC = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
