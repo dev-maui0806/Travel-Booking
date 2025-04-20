@@ -7,35 +7,35 @@ const HeroSectionCreateTour: React.FC = () => {
             image: "/images/places/corbyns.png",
             title: "Diglipur",
             description: "The fascinating town of Diglipur is the largest town in North Andaman Islands and yet often goes unnoticed because of its distance from other popular tourist attractions (Havelock and Port Blair). But, perhaps it is this same distance that makes Diglipur such a different and adventurous place!",
-            mapImage: "images/maps/create_tour/google-map-diglipur.png"
+            mapImage: "/images/maps/create_tour/google-map-diglipur.png"
         },
         {
             id: 2,
             image: "/images/places/havelock.png",
             title: "HaveLock",
             description: "The fascinating town of Diglipur is the largest town in North Andaman Islands and yet often goes unnoticed because of its distance from other popular tourist attractions (Havelock and Port Blair). But, perhaps it is this same distance that makes Diglipur such a different and adventurous place!",
-            mapImage: "images/maps/create_tour/google-map-havelock.png"
+            mapImage: "/images/maps/create_tour/google-map-havelock.png"
         },
         {
             id: 3,
             image: "/images/places/long.png",
             title: "Long",
             description: "The fascinating town of Diglipur is the largest town in North Andaman Islands and yet often goes unnoticed because of its distance from other popular tourist attractions (Havelock and Port Blair). But, perhaps it is this same distance that makes Diglipur such a different and adventurous place!",
-            mapImage: "images/maps/create_tour/google-map-long.png"
+            mapImage: "/images/maps/create_tour/google-map-long.png"
         },
         {
             id: 4,
             image: "/images/places/neil.png",
             title: "Neil",
             description: "The fascinating town of Diglipur is the largest town in North Andaman Islands and yet often goes unnoticed because of its distance from other popular tourist attractions (Havelock and Port Blair). But, perhaps it is this same distance that makes Diglipur such a different and adventurous place!",
-            mapImage: "images/maps/create_tour/google-map-neil.png"
+            mapImage: "/images/maps/create_tour/google-map-neil.png"
         },
         {
             id: 5,
             image: "/images/places/port.png",
             title: "Port",
             description: "The fascinating town of Diglipur is the largest town in North Andaman Islands and yet often goes unnoticed because of its distance from other popular tourist attractions (Havelock and Port Blair). But, perhaps it is this same distance that makes Diglipur such a different and adventurous place!",
-            mapImage: "images/maps/create_tour/google-map-port_blair.png"
+            mapImage: "/images/maps/create_tour/google-map-port_blair.png"
         },
     ];
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -98,11 +98,11 @@ const HeroSectionCreateTour: React.FC = () => {
                 <div className="flex flex-1 flex-col md:flex-row gap-2 lg:h-[750px] md:h-[700px]">
                     {/* Left Section: Map */}
                     <div className="w-full w-full md:w-1/3 bg-[#1C1F22] rounded-[10px] flex flex-col justify-center items-center p-4">
-                        <div className="relative">
+                        <div className="relative w-full h-full">
                             <img
                                 src={slides[currentSlide].mapImage}// Replace with your map image path
                                 alt="Andaman Map"
-                                className="w-full object-contain"
+                                className="w-full h-full object-contain"
                             />
                             {/* Add more labels for other locations */}
                         </div>
@@ -119,7 +119,7 @@ const HeroSectionCreateTour: React.FC = () => {
                         </div>
                         <div className="w-full h-1/4 flex px-[32px] py-[10px] md:py-[0px] flex-col sm:flex-row justify-between rounded-b-lg">
                             <p className="text-sm w-full md:w-3/5">{slides[currentSlide].description}</p>
-                            <div className="flex items-start justify-end space-x-3 md:space-x-4 w-full md:w-2/5">
+                            <div className="flex items-center justify-end space-x-3 md:space-x-4 w-full md:w-2/5">
                                 <span className="text-sm font-light text-[#06b6d4]">
                                     {String(currentSlide + 1).padStart(2, '0')}/{String(slides.length).padStart(2, '0')}
                                 </span>
@@ -135,7 +135,7 @@ const HeroSectionCreateTour: React.FC = () => {
                                     </button>
                                     <button
                                         onClick={handleNext}
-                                        className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
+                                        className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-white/10 transition-colors"
                                         aria-label="Next"
                                     >
                                         <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -140,7 +140,7 @@ const ServicesSection = () => {
         </div>
 
         {/* Desktop Grid Layout with 4-column grid */}
-        <div className="hidden md:block">
+        <div className="flex flex-col gap-[20px] hidden md:block">
           <div className="grid grid-cols-4 gap-5">
             {/* First row - 2:1:1 ratio */}
             {/* First item - takes 2 columns */}
@@ -266,7 +266,7 @@ const ServicesSection = () => {
           </div>
           
           {/* Desktop navigation */}
-          <div className="absolute right-4 bottom-4 flex items-center gap-2">
+          <div className="display: flex w-full justify-end right-0 bottom-4 flex items-center gap-2">
             <span className="text-sm mr-2">{formatSetNumber(currentSet)}/{formatSetNumber(totalSets - 1)}</span>
             <button 
               onClick={handlePrev}

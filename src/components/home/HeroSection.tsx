@@ -319,7 +319,7 @@ const HeroSection: React.FC = () => {
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/create-tour" className="flex gap-1 border hover:border-white items-center justify-center bg-white hover:bg-teal-500 hover:text-white text-teal-500 rounded-full px-6 py-3 font-medium">
+              <Link href="/createTour/All" className="flex gap-1 border hover:border-white items-center justify-center bg-white hover:bg-teal-500 hover:text-white text-teal-500 rounded-full px-6 py-3 font-medium">
                 <span className="text-[14px] lg:text-base">Create a tour</span>
                 {!isMobile && (<div className="bg-teal-500 hover:bg-white ml-3 rounded-full w-7 h-7 flex justify-center items-center">
                   <svg className="hidden sm:block w-5 h-5 text-white hover:text-teal-500 -rotate-45" viewBox="0 0 20 20" fill="currentColor">

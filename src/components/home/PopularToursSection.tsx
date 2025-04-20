@@ -64,7 +64,7 @@ const PopularToursSection = () => {
             <button
               onClick={handlePrev}
               aria-label="Previous slide"
-              className="flex items-center justify-center w-12 h-12 rounded-full border border-white/30 bg-transparent hover:bg-white/10 transition-colors"
+              className="flex items-center justify-center w-10 h-10 rounded-full border border-white/30 cursor-pointer bg-transparent hover:border-white focus:bg-white focus:text-black transition-colors"
               disabled={currentSlide === 0}
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -75,7 +75,7 @@ const PopularToursSection = () => {
             <button
               onClick={handleNext}
               aria-label="Next slide"
-              className="flex items-center justify-center w-12 h-12 rounded-full border border-white/30 bg-transparent hover:bg-white/10 transition-colors"
+              className="flex items-center justify-center w-10 h-10 rounded-full border border-white/30 cursor-pointer bg-transparent hover:border-white focus:bg-white focus:text-black transition-colors"
               disabled={currentSlide === tours.length - getVisibleSlides()}
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

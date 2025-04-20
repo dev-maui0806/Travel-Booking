@@ -63,9 +63,9 @@ const UnforgettablePlacesSection: React.FC = () => {
 
   return (
     <section className="bg-[#1a1d1f] text-white pt-[50px] pb-[80px]">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
         {/* Title Section */}
-        <div className="px-4 md:px-8 pt-6 md:pt-16 pb-4 md:pb-8">
+        <div className="pt-6 md:pt-16 pb-4 md:pb-8">
           <h2 className="text-[32px] leading-[1.2] md:text-5xl font-extralight">
             Unforgettable places of{' '}
             <span className="block md:inline">the islands</span>
@@ -74,7 +74,7 @@ const UnforgettablePlacesSection: React.FC = () => {
 
         {/* Navigation Tabs */}
         <div className="relative mb-4 md:mb-8">
-          <div className="overflow-x-auto px-4 md:px-8">
+          <div className="overflow-x-auto">
             <div className="flex items-center space-x-2 bg-[#222629] rounded-full p-1 w-fit min-w-full md:min-w-0">
               {placesData.map((place) => (
                 <button
