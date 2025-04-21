@@ -12,7 +12,6 @@ import CreateJourneySection from "@/components/home/CreateJourneySection";
 import { Suspense } from "react";
 import "../../../app/globals.css";
 import CreateTourAllMaps from "@/components/create_tour/CreateTourAllMaps";
-import CreateTourIntro from "@/components/create_tour/All/CreateTourIntro";
 import HotelSearchForm from "@/components/create_tour/All/HotelSearchForm";
 
 
@@ -24,7 +23,6 @@ const CreateTourIndex: React.FC = () => {
         <HeroSection/>
         <HeroSectionCreateTour/>
         {/* <CreateTourAllMaps/> */}
-        {/* <CreateTourIntro/> */}
         {/* <HotelSearchForm/> */}
         <PopularToursSection/>
         {/* <TravelBlogSection/> */}
