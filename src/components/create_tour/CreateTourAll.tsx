@@ -326,7 +326,7 @@ const CreateTourAll: React.FC = () => {
 
     return (
         <div className="container mx-auto min-h-screen bg-[#222629] text-white p-4">
-            
+
             {/* Category Filters */}
             <div className="flex items-center justify-between mb-6">
                 {/* Desktop filters - hidden on mobile */}
@@ -354,8 +354,8 @@ const CreateTourAll: React.FC = () => {
                             </button>
                         ))}
                     </div>
-                    <div className="ml-auto py-2 px-5 bg-[#222629] rounded-full">
-                        <button className="text-[#06b6d4] flex items-center" onClick={showMapData}>
+                    <div className={`ml-auto py-2 px-5 ${!maps?"bg-[#222629]":"bg-white"} rounded-full`}>
+                        <button className={!maps?"text-[#06b6d4] flex items-center":"text-black flex items-center"} onClick={showMapData}>
                             <FaRegMap/>
                             <span className="ml-1">Map</span>
                         </button>
