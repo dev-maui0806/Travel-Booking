@@ -139,7 +139,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({title, subtitle}) => {
         className="relative w-full text-white bg-cover bg-center bg-no-repeat flex items-center overflow-hidden"
         style={{
           backgroundImage: "url('/images/ocean-bg.png')",
-          height: isMobile ? "500px" : isTablet ? "700px" : "800px"
+          height: isMobile ? "700px" : isTablet ? "700px" : "800px"
         }}
       >
         {/* Background overlay */}
@@ -313,10 +313,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({title, subtitle}) => {
           {/* Main Content */}
           <div className={`flex flex-col ${isMobile ? 'w-full' : 'w-1/2'} ${isTablet ? 'pl-6' : ''}`}>
             <h1 className={`font-bold leading-tight w-full mb-4 ${isMobile ? 'text-4xl' : isTablet ? 'text-5xl' : 'text-6xl'}`}>
-             {title || "Your travel agent is you"}
+             {title || "Plan your dream Andaman trip your way"}
             </h1>
             <p className={`mb-8 ${isMobile ? 'text-base' : 'text-xl'}`}>
-              {subtitle || "Create your own unique Andaman Islands tour and discover the charm of this paradise on Earth!"}
+              {subtitle || "Create your own itinerary, choose from curated packages, or book just the services you need."}
             </p>
 
             {/* Action Buttons */}
@@ -334,6 +334,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({title, subtitle}) => {
                 <span className="text-[14px] lg:text-base">Select a tour</span>
                 {!isMobile && (<div className="flex justify-center items-center bg-white hover:bg-teal-500 ml-3 rounded-full w-7 h-7">
                   <svg className="hidden sm:block w-5 h-5 text-teal-500 bg:text-white -rotate-45" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                </div>)}
+              </Link>
+              <Link href="/createTour/All" className="flex gap-1 border hover:border-white items-center justify-center bg-white hover:bg-teal-500 hover:text-white text-teal-500 rounded-full px-6 py-3 font-medium">
+                <span className="text-[14px] lg:text-base">Book Services</span>
+                {!isMobile && (<div className="bg-teal-500 hover:bg-white ml-3 rounded-full w-7 h-7 flex justify-center items-center">
+                  <svg className="hidden sm:block w-5 h-5 text-white hover:text-teal-500 -rotate-45" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
                 </div>)}
