@@ -114,7 +114,7 @@ const CreateTourAllMaps: React.FC = () => {
             {/* Category Filters */}
             <div className="flex items-center justify-between mb-6">
                 {/* Desktop filters - hidden on mobile */}
-                <div className="hidden md:flex items-center space-x-2 bg-[#1C1F22] p-5 rounded-[10px] w-full">
+                <div className="hidden md:flex items-center justify-between space-x-2 bg-[#1C1F22] p-5 rounded-[10px] w-full">
                     <div className='flex item-start p-1'>
                         <button
                             className={`px-4 py-2 rounded-full ${activeFilter === "All"

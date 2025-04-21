@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { FaRegMap } from "react-icons/fa6";
 import { HiOutlineShoppingBag } from "react-icons/hi";
+import MapView from './MapView';
+import PlaceDetailPanel from './PlaceDetailPanel';
 
-// Mock data for attractions
 export const attractionsData = [
     {
         id: 1,
@@ -173,228 +174,56 @@ export const attractionsData = [
                         image: "/images/places/corbyns.png",
                         description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
                     },
-
-                ]
-            },
-        ]
-    },
-    {
-        id: 2,
-        name: "Monuments",
-        items: [
-            {
-                id: 21,
-                category: "Archtecture",
-                childrens: [
-                    {
-                        id: 211,
-                        name: "Corbyn's Cove Beach",
-                        image: "/images/places/corbyns.png",
-                        description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
-                    {
-                        id: 212,
-                        name: "Corbyn's Cove Beach",
-                        image: "/images/places/corbyns.png",
-                        description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
-                    {
-                        id: 213,
-                        name: "Corbyn's Cove Beach",
-                        image: "/images/places/corbyns.png",
-                        description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
-                    {
-                        id: 214,
-                        name: "Corbyn's Cove Beach",
-                        image: "/images/places/corbyns.png",
-                        description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
                 ]
             },
             {
-                id: 12,
-                category: "Beaches",
-                childrens: [
-                    {
-                        id: 121,
-                        name: "Corbyn's Cove Beach",
-                        image: "/images/places/corbyns.png",
-                        description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
-                    {
-                        id: 122,
-                        name: "Corbyn's Cove Beach",
-                        image: "/images/places/corbyns.png",
-                        description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
-                    {
-                        id: 123,
-                        name: "Corbyn's Cove Beach",
-                        image: "/images/places/corbyns.png",
-                        description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
-                    {
-                        id: 124,
-                        name: "Corbyn's Cove Beach",
-                        image: "/images/places/corbyns.png",
-                        description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
-                    {
-                        id: 125,
-                        name: "Corbyn's Cove Beach",
-                        image: "/images/places/corbyns.png",
-                        description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
-                    {
-                        id: 126,
-                        name: "Corbyn's Cove Beach",
-                        image: "/images/places/corbyns.png",
-                        description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
-                    {
-                        id: 127,
-                        name: "Corbyn's Cove Beach",
-                        image: "/images/places/corbyns.png",
-                        description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
-                    {
-                        id: 128,
-                        name: "Corbyn's Cove Beach",
-                        image: "/images/places/corbyns.png",
-                        description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
-
-                ]
-            },
-            {
-                id: 13,
-                category: "Corals",
-                childrens: [
-                    {
-                        id: 131,
-                        name: "Corbyn's Cove Beach",
-                        image: "/images/places/corbyns.png",
-                        description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
-                    {
-                        id: 132,
-                        name: "Corbyn's Cove Beach",
-                        image: "/images/places/corbyns.png",
-                        description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
-                    {
-                        id: 133,
-                        name: "Corbyn's Cove Beach",
-                        image: "/images/places/corbyns.png",
-                        description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
-                    {
-                        id: 134,
-                        name: "Corbyn's Cove Beach",
-                        image: "/images/places/corbyns.png",
-                        description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
-                    {
-                        id: 135,
-                        name: "Corbyn's Cove Beach",
-                        image: "/images/places/corbyns.png",
-                        description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
-                    {
-                        id: 136,
-                        name: "Corbyn's Cove Beach",
-                        image: "/images/places/corbyns.png",
-                        description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
-                    {
-                        id: 137,
-                        name: "Corbyn's Cove Beach",
-                        image: "/images/places/corbyns.png",
-                        description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
-                    {
-                        id: 138,
-                        name: "Corbyn's Cove Beach",
-                        image: "/images/places/corbyns.png",
-                        description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
-
-                ]
-            },
-            {
-                id: 13,
+                id: 14,
                 category: "Monuments",
                 childrens: [
                     {
-                        id: 131,
+                        id: 141,
                         name: "Corbyn's Cove Beach",
                         image: "/images/places/corbyns.png",
                         description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
                     },
                     {
-                        id: 132,
+                        id: 142,
                         name: "Corbyn's Cove Beach",
                         image: "/images/places/corbyns.png",
                         description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
                     },
                     {
-                        id: 133,
+                        id: 143,
                         name: "Corbyn's Cove Beach",
                         image: "/images/places/corbyns.png",
                         description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
                     },
                     {
-                        id: 134,
+                        id: 144,
                         name: "Corbyn's Cove Beach",
                         image: "/images/places/corbyns.png",
                         description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
                     },
                     {
-                        id: 135,
+                        id: 145,
                         name: "Corbyn's Cove Beach",
                         image: "/images/places/corbyns.png",
                         description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
                     },
                     {
-                        id: 136,
-                        name: "Corbyn's Cove Beach",
-                        image: "/images/places/corbyns.png",
-                        description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
-
-                ]
-            },
-        ]
-    },
-    {
-        id: 5,
-        name: "Adventuresand entertainment",
-        items: [
-            {
-                id: 51,
-                category: "Archtecture",
-                childrens: [
-                    {
-                        id: 511,
+                        id: 146,
                         name: "Corbyn's Cove Beach",
                         image: "/images/places/corbyns.png",
                         description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
                     },
                     {
-                        id: 512,
+                        id: 147,
                         name: "Corbyn's Cove Beach",
                         image: "/images/places/corbyns.png",
                         description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
                     },
                     {
-                        id: 513,
-                        name: "Corbyn's Cove Beach",
-                        image: "/images/places/corbyns.png",
-                        description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
-                    {
-                        id: 514,
+                        id: 148,
                         name: "Corbyn's Cove Beach",
                         image: "/images/places/corbyns.png",
                         description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
@@ -402,50 +231,49 @@ export const attractionsData = [
                 ]
             },
             {
-                id: 13,
-                category: "Corals",
+                id: 15,
+                category: "Waterfulls",
                 childrens: [
                     {
-                        id: 131,
+                        id: 151,
                         name: "Corbyn's Cove Beach",
                         image: "/images/places/corbyns.png",
                         description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
                     },
                     {
-                        id: 132,
+                        id: 152,
                         name: "Corbyn's Cove Beach",
                         image: "/images/places/corbyns.png",
                         description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
                     },
                     {
-                        id: 133,
+                        id: 153,
                         name: "Corbyn's Cove Beach",
                         image: "/images/places/corbyns.png",
                         description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
                     },
                     {
-                        id: 134,
+                        id: 154,
                         name: "Corbyn's Cove Beach",
                         image: "/images/places/corbyns.png",
                         description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
                     },
                     {
-                        id: 135,
+                        id: 155,
                         name: "Corbyn's Cove Beach",
                         image: "/images/places/corbyns.png",
                         description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
                     },
                     {
-                        id: 136,
+                        id: 156,
                         name: "Corbyn's Cove Beach",
                         image: "/images/places/corbyns.png",
                         description: "Corbyn's Cove Beach is a picturesque beach located on the eastern coast of South Andaman Island, near Port Blair. It is known for its serene beauty, clear waters, and lush coconut palms lining the shore. The beach"
-                    },
-
+                    }
                 ]
             },
         ]
-    },
+    }
 ];
 
 const CreateTourAll: React.FC = () => {
@@ -454,7 +282,9 @@ const CreateTourAll: React.FC = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [subCategories, setSubCategories] = useState<string[]>([]);
     const [showFilters, setShowFilters] = useState(false); // Add this line
-
+    const [maps, setMaps] = useState(false);
+    const [showDetailPanel, setShowDetailPanel] = useState(false);
+    const [selectedDetailPlace, setSelectedDetailPlace] = useState<any>(null);
     // Extract subcategories when active tab changes
     useEffect(() => {
         const tabData = attractionsData.find(tab => tab.name === activeTab);
@@ -467,7 +297,10 @@ const CreateTourAll: React.FC = () => {
             setCurrentPage(1);
         }
     }, [activeTab]);
-
+    // Update the showMapData function to properly toggle the map view
+    const showMapData = () => {
+        setMaps(!maps);
+    }
     // Get all places from the current active tab
     const getPlacesForActiveTab = () => {
         const tabData = attractionsData.find(tab => tab.name === activeTab);
@@ -493,51 +326,11 @@ const CreateTourAll: React.FC = () => {
 
     return (
         <div className="container mx-auto min-h-screen bg-[#222629] text-white p-4">
-            {/* Top Navigation Bar */}
-            <div className="flex items-center flex-col md:flex-row justify-between mb-6">
-                <div className="md:flex hidden space-x-2 bg-[#1C1F22] rounded-full p-1">
-                    {attractionsData.map(tab => (
-                        <button
-                            key={tab.name}
-                            className={`px-4 py-2 rounded-full ${activeTab === tab.name
-                                    ? 'bg-white text-black'
-                                    : 'text-gray-400'
-                                }`}
-                            onClick={() => setActiveTab(tab.name)}
-                        >
-                            {tab.name}
-                        </button>
-                    ))}
-                </div>
-                <div className="flex items-center space-x-2 bg-[#1C1F22] rounded-full p-1 w-fit min-w-full md:min-w-0">
-                    <div className="flex items-center space-x-2">
-                        <span className="bg-[#222629] px-4 py-2 rounded-full">$ 0</span>
-                        <span className="bg-[#222629] px-4 py-2 rounded-full">0 day</span>
-                    </div>
-                    <button className="bg-gradient-to-r from-[#bef264] to-[#06b6d4] text-white px-6 py-2 rounded-full">
-                        Route details
-                    </button>
-                </div>
-                <div className="flex md:hidden overflow-hidden space-x-2 bg-[#1C1F22] rounded-full p-1">
-                    {attractionsData.map(tab => (
-                        <button
-                            key={tab.name}
-                            className={`px-4 py-2 rounded-full ${activeTab === tab.name
-                                    ? 'bg-white text-black'
-                                    : 'text-gray-400'
-                                }`}
-                            onClick={() => setActiveTab(tab.name)}
-                        >
-                            {tab.name}
-                        </button>
-                    ))}
-                </div>
-            </div>
-
+            
             {/* Category Filters */}
             <div className="flex items-center justify-between mb-6">
                 {/* Desktop filters - hidden on mobile */}
-                <div className="hidden md:flex items-center space-x-2 bg-[#1C1F22] p-5 rounded-[10px] w-full">
+                <div className="hidden md:flex items-center justify-between space-x-2 bg-[#1C1F22] p-5 rounded-[10px] w-full">
                     <div className='flex item-start p-1'>
                         <button
                             className={`px-4 py-2 rounded-full ${activeFilter === "All"
@@ -562,7 +355,7 @@ const CreateTourAll: React.FC = () => {
                         ))}
                     </div>
                     <div className="ml-auto py-2 px-5 bg-[#222629] rounded-full">
-                        <button className="text-[#06b6d4] flex items-center">
+                        <button className="text-[#06b6d4] flex items-center" onClick={showMapData}>
                             <FaRegMap/>
                             <span className="ml-1">Map</span>
                         </button>
@@ -610,75 +403,101 @@ const CreateTourAll: React.FC = () => {
                         )}
                     </div>
                     
-                    <div className="py-1.5 px-3 bg-[#222629] rounded-full">
-                        <button className="text-[#06b6d4] flex items-center">
+                    <div className={!maps ? "py-1.5 px-3 bg-[#222629] rounded-full" : "bg-white rounded-full py-1.5 px-3"}>
+                        <button className={!maps ? "text-[#06b6d4] flex items-center" : "text-black flex items-center"}>
                             <FaRegMap />
-                            <span className="ml-1">Map</span>
+                            <span className="ml-1" onClick={() => showMapData()}>Map</span>
                         </button>
                     </div>
                 </div>
             </div>
 
             {/* Places Grid */}
-            <div className="grid grid-cols-2 gap-6 mb-6">
-                {currentPlaces.map((place) => (
-                    <div key={place.id} className="bg-[#1C1F22] rounded-xl overflow-hidden">
-                        <div className="relative h-48">
-                            <Image
-                                src={place.image}
-                                alt={place.name}
-                                fill
-                                className="object-cover"
-                            />
+
+            {
+                maps === false && (
+                    <>
+                    <div className="grid grid-cols-2 gap-6 mb-6">
+                        {currentPlaces.map((place) => (
+                            <div key={place.id} className="bg-[#1C1F22] rounded-xl overflow-hidden">
+                                <div className="relative h-48">
+                                    <Image
+                                        src={place.image}
+                                        alt={place.name}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
+                                <div className="p-4">
+                                    <h3 className="text-lg font-semibold mb-1">{place.name}</h3>
+                                    <p className="text-sm text-gray-400 line-clamp-2">
+                                        {place.description}
+                                    </p>
+                                </div>
+
+                                
+                                <div className="flex justify-between items-center p-4">
+                                  <button 
+                                    className="text-[#06b6d4] rounded-full p-2 hover:bg-[#111827]"
+                                    onClick={() => {
+                                      setSelectedDetailPlace(place);
+                                      setShowDetailPanel(true);
+                                    }}
+                                  >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                      <circle cx="12" cy="12" r="10"></circle>
+                                      <polyline points="12 16 16 12 12 8"></polyline>
+                                      <line x1="8" y1="12" x2="16" y2="12"></line>
+                                    </svg>
+                                  </button>
+                                  <button className="text-white bg-[#06b6d4] p-2 rounded-full border border-[#06b6d4] hover:border-white">
+                                    <HiOutlineShoppingBag/>
+                                  </button>
+                                </div>
+                                
+                                {showDetailPanel && selectedDetailPlace && (
+                                  <PlaceDetailPanel 
+                                    place={selectedDetailPlace} 
+                                    onClose={() => setShowDetailPanel(false)} 
+                                  />
+                                )}
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="flex items-center justify-end space-x-3 md:space-x-4">
+                        <div className="text-sm font-light text-[#06b6d4]">
+                            {String(currentPage).padStart(2, '0')}/{String(totalPages).padStart(2, '0')}
                         </div>
-                        <div className="p-4">
-                            <h3 className="text-lg font-semibold mb-1">{place.name}</h3>
-                            <p className="text-sm text-gray-400 line-clamp-2">
-                                {place.description}
-                            </p>
-                        </div>
-                        <div className="flex justify-between items-center p-4">
-                            <button className="text-[#06b6d4] rounded-full p-2 hover:bg-[#111827]">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polyline points="12 16 16 12 12 8"></polyline>
-                                    <line x1="8" y1="12" x2="16" y2="12"></line>
+                        <div className="flex space-x-2">
+                            <button
+                                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                                disabled={currentPage === 1}
+                                className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
+                                >
+                                <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                                 </svg>
                             </button>
-                            <button className="text-white bg-[#06b6d4] p-2 rounded-full border border-[#06b6d4] hover:border-white">
-                                <HiOutlineShoppingBag/>
+                            <button
+                                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                                disabled={currentPage === totalPages}
+                                className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
+                            >
+                                <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
                             </button>
                         </div>
                     </div>
-                ))}
-            </div>
-
-            {/* Pagination */}
-            <div className="flex items-center justify-end space-x-3 md:space-x-4">
-                <div className="text-sm font-light text-[#06b6d4]">
-                    {String(currentPage).padStart(2, '0')}/{String(totalPages).padStart(2, '0')}
-                </div>
-                <div className="flex space-x-2">
-                    <button
-                        onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                        disabled={currentPage === 1}
-                        className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
-                    >
-                        <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                        </svg>
-                    </button>
-                    <button
-                        onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-                        disabled={currentPage === totalPages}
-                        className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
-                    >
-                        <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
+                    </>
+                )
+            }
+            {maps === true && (
+                <>
+                    <MapView places={currentPlaces}/>
+                </>
+            )}
         </div>
     );
 };

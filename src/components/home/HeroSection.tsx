@@ -15,7 +15,12 @@ interface Location {
   locationSrc: string;
 }
 
-const HeroSection: React.FC = () => {
+interface HeroSectionProps {
+  title?: string;
+  subtitle?: string;
+}
+
+const HeroSection: React.FC<HeroSectionProps> = ({title, subtitle}) => {
   const [locationsMap, setLocationsMap] = useState("/images/maps/herosections/hero-map-diglipur.png");
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
@@ -70,14 +75,12 @@ const HeroSection: React.FC = () => {
 
     }
   ]);
-
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(
     locations.find(loc => loc.name === "Neil") || null
   );
   const [displayedLocation, setDisplayedLocation] = useState<Location | null>(
     locations.find(loc => loc.name === "Neil") || null
   );
-
   // const calculatePosition = (angle: number, radius: number = 200) => {
   //   const radian = (angle + 10) * (Math.PI / 180); // Removed +8 adjustment
   //   const x = 250 + radius * Math.cos(radian);
@@ -310,11 +313,10 @@ const HeroSection: React.FC = () => {
           {/* Main Content */}
           <div className={`flex flex-col ${isMobile ? 'w-full' : 'w-1/2'} ${isTablet ? 'pl-6' : ''}`}>
             <h1 className={`font-bold leading-tight w-full mb-4 ${isMobile ? 'text-4xl' : isTablet ? 'text-5xl' : 'text-6xl'}`}>
-              Your travel agent is you
+             {title || "Your travel agent is you"}
             </h1>
             <p className={`mb-8 ${isMobile ? 'text-base' : 'text-xl'}`}>
-              Create your own unique Andaman Islands tour and<br className="hidden md:block" />
-              discover the charm of this paradise on Earth!
+              {subtitle || "Create your own unique Andaman Islands tour and discover the charm of this paradise on Earth!"}
             </p>
 
             {/* Action Buttons */}
