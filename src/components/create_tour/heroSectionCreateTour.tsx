@@ -3,6 +3,9 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 import CreateTourAll from "./CreateTourAll";
+import HotelSearchForm from "./All/HotelSearchForm";
+import HotelParkList from "./All/HotelParkList";
+import {FaChevronLeft} from 'react-icons/fa';
 
 // Define types for our data
 interface Slide {
@@ -157,7 +160,19 @@ const HeroSectionCreateTour: React.FC = () => {
   const [showMap, setShowMap] = useState(false);
   const [selectedItem, setSelectedItem] = useState<Slide | null>(null);
   const [selectedItems, setSelectedItems] = useState<Slide[]>([]);
-  
+  const [showHotelList, setShowHotelList] = useState(false);
+
+    //   Function to handle search action
+  const handleSearch = () => {
+    setShowHotelList(true);
+  }
+
+    // Function to go back to search form
+  const handleBackToSearch = () => {
+    setShowHotelList(false);
+  }
+
+
   // Set initial active tab based on URL query
   useEffect(() => {
     if (tab) {
@@ -165,13 +180,8 @@ const HeroSectionCreateTour: React.FC = () => {
     }
   }, [tab]);
   
-  // Set initial active category when switching to attractions tab
-  useEffect(() => {
-    if (activeTab === 'attractions' && activeCategoryId === null && attractionCategories.length > 0) {
-      setActiveCategoryId(attractionCategories[0].id);
-    }
-  }, [activeTab]);
-  
+
+
   // Handle tab change
   const handleTabChange = (tabId: string) => {
     setActiveTab(tabId);
@@ -196,26 +206,8 @@ const HeroSectionCreateTour: React.FC = () => {
     setCurrentSlide(index >= 0 ? index : 0);
   };
   
-  // Handle category selection
-  const handleCategorySelect = (categoryId: number) => {
-    setActiveCategoryId(categoryId);
-    setShowMap(false);
-    setSelectedItem(null);
-  };
-  
-  // Handle item selection
-  const handleItemSelect = (item: Slide) => {
-    setSelectedItem(item);
-    setShowMap(true);
-  };
-  
-  // Handle adding item to selected items
-  const handleAddItem = (item: Slide) => {
-    if (!selectedItems.some(i => i.id === item.id)) {
-      setSelectedItems([...selectedItems, item]);
-    }
-  };
-  
+
+
   // Handle navigation
   const handleNext = () => {
     if (activeTab === 'islands') {
@@ -233,9 +225,8 @@ const HeroSectionCreateTour: React.FC = () => {
     }
   };
   
-  // Get current active category
-  const activeCategory = attractionCategories.find(cat => cat.id === activeCategoryId);
-  
+
+
   return (
     <section className="bg-[#222629] text-white py-[20px] md:py-[50px] h-auto">
       <div className="container mx-auto px-4 sm:px-6">
@@ -243,10 +234,19 @@ const HeroSectionCreateTour: React.FC = () => {
         <div className="relative mb-6">
           <div className="flex flex-col lg:flex-row gap-4 items-align w-full justify-between overflow-x-auto">
             <div className="lg:hidden flex items-center space-x-2 bg-[#1C1F22] rounded-full p-1 w-fit min-w-full md:min-w-0">
-              <div className="flex items-center space-x-2">
-                <span className="bg-[#222629] px-4 py-2 rounded-full">$ 0</span>
-                <span className="bg-[#222629] px-4 py-2 rounded-full">0 day</span>
-              </div>
+                {showHotelList ?(
+                    <div className="flex items-center space-x-2">
+                        <span className="bg-[#222629] px-4 py-2 rounded-full">$ 0</span>
+                        <span className="bg-[#222629] px-4 py-2 rounded-full">0 day</span>
+                    </div>
+                    )
+                    :
+                    (
+                    <button className="bg-[#333] text-white px-4 py-2 rounded-full flex items-center"
+                    onClick={handleBackToSearch}>
+                        <FaChevronLeft className="mr-1"/> Edit
+                    </button>
+                )}
               <button className="bg-gradient-to-r from-[#bef264] to-[#06b6d4] text-white px-6 py-2 rounded-full">
                 Route details
               </button>
@@ -270,11 +270,20 @@ const HeroSectionCreateTour: React.FC = () => {
             </div>
             
             <div className="hidden lg:flex items-center space-x-2 bg-[#1C1F22] rounded-full p-1 w-fit min-w-full md:min-w-0">
-              <div className="flex items-center space-x-2">
-                <span className="bg-[#222629] px-4 py-2 rounded-full">$ 0</span>
-                <span className="bg-[#222629] px-4 py-2 rounded-full">0 day</span>
-              </div>
-              <button className="bg-gradient-to-r from-[#bef264] to-[#06b6d4] text-white px-6 py-2 rounded-full">
+            {showHotelList ?(
+                    <button className="bg-[#222629] hover:bg-white hover:text-black text-white px-4 py-2 rounded-full flex items-center"
+                    onClick={handleBackToSearch}>
+                        <FaChevronLeft className="mr-1"/> Edit
+                    </button>
+                    )
+                    :
+                    (
+                    <div className="flex items-center space-x-2">
+                        <span className="bg-[#222629] px-4 py-2 rounded-full">$ 0</span>
+                        <span className="bg-[#222629] px-4 py-2 rounded-full">0 day</span>
+                    </div>
+                )}
+                <button className="bg-gradient-to-r from-[#bef264] to-[#06b6d4] text-white px-6 py-2 rounded-full">
                 Route details
               </button>
             </div>
@@ -367,9 +376,11 @@ const HeroSectionCreateTour: React.FC = () => {
         
         {/* Hotels Tab Content */}
         {activeTab === 'hotels' && (
-          <div className="flex justify-center items-center h-64">
-            <p className="text-xl">Hotel selection will be displayed here</p>
-          </div>
+            <>
+          {!showHotelList?(<HotelSearchForm onSearch={handleSearch}/>):(
+              <HotelParkList onBackToSearch={handleBackToSearch}/>
+            )}
+            </>
         )}
         
         {/* Transport Tab Content */}

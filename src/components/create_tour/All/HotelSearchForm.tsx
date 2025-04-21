@@ -5,21 +5,12 @@ import { FaChevronDown } from "react-icons/fa";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { BsBuilding } from "react-icons/bs";
 
-interface TabItem {
-  id: string;
-  label: string;
-}
+interface HotelSearchFormProps {
+    onSearch: () => void; // Function to call when Find button is clicked
+    }
 
-const HotelSearchForm: React.FC = () => {
-  // Tabs state
-  const [activeTab, setActiveTab] = useState('Hotels');
-  const tabs: TabItem[] = [
-    { id: 'Islands', label: 'Islands' },
-    { id: 'Attractions', label: 'Attractions' },
-    { id: 'Hotels', label: 'Hotels' },
-    { id: 'Transport', label: 'Transport' },
-    { id: 'Adventures', label: 'Adventures and entertainment' },
-  ];
+const HotelSearchForm: React.FC<HotelSearchFormProps> = ({ onSearch }) => {
+
 
   // Date selection state
   const [checkInDate, setCheckInDate] = useState<Date>(new Date());
@@ -37,7 +28,7 @@ const HotelSearchForm: React.FC = () => {
   const [adults, setAdults] = useState(1);
   const [infants, setInfants] = useState(0);
   const [roomType, setRoomType] = useState('Rest');
-
+  const [ShowListFlag, setShowListFlag] = useState(false);
   // Initialize display dates
   useEffect(() => {
     setCheckInDisplayDate(new Date(checkInDate));
@@ -156,9 +147,16 @@ const HotelSearchForm: React.FC = () => {
     if (checkOutYear === checkInYear && checkOutMonth === checkInMonth) {
       return day <= checkInDate.getDate();
     }
-    
     return false;
   };
+
+
+
+  const showHotelList = () => {
+    onSearch()
+  }
+
+
 
   // Check if a date is selected
   const isDateSelected = (day: number | null, isCheckIn: boolean): boolean => {
@@ -187,120 +185,97 @@ const HotelSearchForm: React.FC = () => {
 
   return (
     <div className="container mx-auto bg-[#222629] text-white rounded-2xl overflow-hidden">
-      {/* Top navigation and price info */}
-      <div className="flex justify-between items-center p-4">
-        <div className="flex space-x-2 overflow-x-auto no-scrollbar">
-          {tabs.map(tab => (
-            <button
-              key={tab.id}
-              className={`whitespace-nowrap px-4 py-2 rounded-full text-sm ${
-                activeTab === tab.id ? 'bg-white text-black' : 'text-gray-400'
-              }`}
-              onClick={() => setActiveTab(tab.id)}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-        
-        <div className="flex items-center space-x-2">
-          <span className="bg-[#222629] px-4 py-2 rounded-full text-sm">0 $</span>
-          <span className="bg-[#222629] px-4 py-2 rounded-full text-sm">0 day</span>
-          <button className="bg-gradient-to-r from-[#bef264] to-[#06b6d4] text-white px-4 py-2 rounded-full text-sm">
-            Route details
-          </button>
-        </div>
-      </div>
-      
       {/* Main content */}
-      <div className="p-6 bg-[#1C1F22] rounded-[20px]">
-        <div className="grid grid-cols-3 gap-6">
+      <div className="py-6 px-10 bg-[#1C1F22] rounded-[20px]">
+        <div className="grid grid-cols-3 gap-10">
           {/* Left column - Options */}
           <div className="space-y-6">
             {/* Adults selection */}
-            <div className="flex items-center justify-between py-2 bg-[#222629] rounded-[20px]">
+            <div className="relative flex items-center justify-between py-3 bg-[#222629] rounded-[20px]">
               <div className="flex items-center space-x-3 ">
                 <button 
                   onClick={decrementAdults}
-                  className="w-8 h-8 flex items-center justify-center text-white bg-[#1C1F22] rounded-full"
+                  className="absolute left-[-20px] w-12 h-12 flex items-center justify-center text-white bg-[#1C1F22] rounded-full"
                 >
-                  -
+                  <span className='bg-[#222629] rounded-full w-8 h-8 p-1'>-</span>
                 </button>
-                <span className="text-white">Adults (2+ years)</span>
+                <span className="text-white pl-6">Adults (2+ years)</span>
               </div>
               <div className="flex items-center space-x-3">
-                <span>{adults}</span>
+                <span className='pr-8'>{adults}</span>
                 <button 
                   onClick={incrementAdults}
-                  className="w-8 h-8 flex items-center justify-center text-white bg-[#1C1F22] rounded-full"
+                  className="absolute right-[-20px] w-12 h-12 flex items-center justify-center text-white bg-[#1C1F22] rounded-full"
                 >
-                  +
+                  <span className='bg-[#222629] rounded-full w-8 h-8 p-1'>+</span>
                 </button>
               </div>
             </div>
             
             {/* Infants selection */}
-            <div className="flex items-center justify-between py-2 bg-[#222629] rounded-[20px]">
+            <div className="relative flex items-center justify-between py-3 bg-[#222629] rounded-[20px]">
               <div className="flex items-center space-x-3">
                 <button 
                   onClick={decrementInfants}
-                  className="w-8 h-8 flex items-center justify-center text-white bg-[#1C1F22] rounded-full"
+                  className="absolute left-[-20px] w-12 h-12 flex items-center justify-center text-white bg-[#1C1F22] rounded-full"
                 >
-                  -
+                  <span className='bg-[#222629] rounded-full w-8 h-8 p-1'>-</span>
                 </button>
-                <span className="text-white">Infants (0-2 years)</span>
+                <span className="text-white pl-6">Infants (0-2 years)</span>
               </div>
               <div className="flex items-center space-x-3">
-                <span>{infants}</span>
+                <span className='pr-8'>{infants}</span>
                 <button 
                   onClick={incrementInfants}
-                  className="w-8 h-8 flex items-center justify-center text-white bg-[#1C1F22] rounded-full"
+                  className="absolute right-[-20px] w-12 h-12 flex items-center justify-center text-white bg-[#1C1F22] rounded-full"
                 >
-                  +
+                  <span className='bg-[#222629] rounded-full w-8 h-8 p-1'>+</span>
                 </button>
               </div>
             </div>
             
             {/* Room type selection */}
-            <div className="flex items-center justify-between py-2 bg-[#222629] rounded-[20px]">
+            <div className="relative flex items-center justify-between py-3 bg-[#222629] rounded-[20px]">
               <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 flex items-center justify-center text-[#06b6d4] bg-transparent">
-                  <BsBuilding size={20} />
+                <div className="absolute left-[-20px] w-12 h-12 flex items-center justify-center text-[#06b6d4] bg-[#1C1F22] rounded-full">
+                  <BsBuilding size={20} className='bg-[#222629] rounded-full w-8 h-8 p-1'/>
                 </div>
-                <span className="text-white">Type</span>
+                <span className="text-white pl-6">Type</span>
               </div>
               <div className="flex items-center space-x-2">
-                <span>{roomType}</span>
-                <FaChevronDown className="text-white text-xs" />
+                <span className='pr-8'>{roomType}</span>
+                <div className="absolute right-[-20px] w-12 h-12 flex items-center justify-center text-[#06b6d4] bg-[#1C1F22] rounded-full">
+                <FaChevronDown className="text-white text-xs bg-[#222629] w-8 h-8 p-1 rounded-full" />
+                </div>
               </div>
             </div>
             
             {/* Find button */}
             <div className="mt-12">
-              <button className="bg-white text-black font-medium py-3 px-8 rounded-full">
+              <button className="bg-white text-black font-medium py-3 px-8 rounded-full" onClick={showHotelList}>
                 Find
               </button>
             </div>
           </div>
           
           {/* Middle column - Check-in calendar */}
-          <div className="bg-[#1C1F22] rounded-lg p-4">
+          <div className="relative bg-[#222629] rounded-lg p-4">
             <div className="flex items-center justify-between mb-4">
               <button 
-                className="text-white"
+                className="absolute left-[-25px] bg-[#1C1F22] p-2 rounded-full text-white"
                 onClick={() => navigateMonth(true, false)}
               >
-                <IoIosArrowBack size={20} />
+                <IoIosArrowBack size={30} className='bg-[#222629] rounded-full p-[5px]' />
               </button>
-              <div className="text-center">
+              <div className="text-center flex justify-between items-center w-full px-5">
                 <div className="text-sm text-white mb-1">Check-in date</div>
                 <div className="text-white font-medium">{getMonthYearDisplay(checkInDisplayDate)}</div>
               </div>
               <button 
-                className="text-white"
+                className="absolute right-[-25px] bg-[#1C1F22] p-2 rounded-full text-whitetext-white"
                 onClick={() => navigateMonth(true, true)}
               >
-                <IoIosArrowForward size={20} />
+                <IoIosArrowForward size={30} className='bg-[#222629] rounded-full p-[5px]'/>
               </button>
             </div>
             
@@ -317,7 +292,7 @@ const HotelSearchForm: React.FC = () => {
               {checkInCalendarDays.map((day, index) => (
                 <button
                   key={`checkin-${index}`}
-                  className={`w-8 h-8 flex items-center justify-center rounded-full text-sm ${
+                  className={`w-8 h-8 flex items-center justify-center rounded-[5px] text-sm ${
                     day === null 
                       ? 'invisible' 
                       : isDateSelected(day, true)
@@ -334,23 +309,24 @@ const HotelSearchForm: React.FC = () => {
           </div>
           
           {/* Right column - Check-out calendar */}
-          <div className="bg-[#1C1F22] rounded-lg p-4">
+          <div className="relative bg-[#222629] rounded-lg p-4">
             <div className="flex items-center justify-between mb-4">
               <button 
-                className="text-white"
+                className="absolute left-[-25px] bg-[#1C1F22] p-2 rounded-full text-white"
                 onClick={() => navigateMonth(false, false)}
+
               >
-                <IoIosArrowBack size={20} />
+                <IoIosArrowBack size={30} className='bg-[#222629] rounded-full p-[5px]'/>
               </button>
-              <div className="text-center">
+              <div className="text-center flex justify-between items-center w-full px-5">
                 <div className="text-sm text-white mb-1">Date of departure</div>
                 <div className="text-white font-medium">{getMonthYearDisplay(checkOutDisplayDate)}</div>
               </div>
               <button 
-                className="text-white"
+                className="absolute right-[-25px] bg-[#1C1F22] p-2 rounded-full text-white"
                 onClick={() => navigateMonth(false, true)}
               >
-                <IoIosArrowForward size={20} />
+                <IoIosArrowForward size={30} className='bg-[#222629] rounded-full p-[5px]'/>
               </button>
             </div>
             
