@@ -12,10 +12,10 @@ const CreateDreamTripSection: React.FC = () => {
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 1024);
     };
-    
+
     checkIfMobile();
     window.addEventListener('resize', checkIfMobile);
-    
+
     return () => {
       window.removeEventListener('resize', checkIfMobile);
     };
@@ -24,26 +24,32 @@ const CreateDreamTripSection: React.FC = () => {
   const features = [
     {
       icon: <HeartIcon />,
-      title: "Select only those places you want to visit",
-      description: "You are given the freedom to choose attractions allowing you to create a unique itinerary to suit your tastes"
+      title: "Create Your Own Tour",
+      description: "Choose locations, stays, and transport",
+      CTA: "Start"
     },
     {
       icon: <ClockIcon />,
-      title: "Manage your time independently",
-      description: "You are given the opportunity to adjust the duration of your trip by increasing or decreasing the number of days"
+      title: " Select a Ready-Made Tour",
+      description: "Explore curated itineraries",
+      CTA: "Browse Tours"
+
     },
     {
       icon: <HomeIcon />,
-      title: "Choose hotels according to your preferences",
-      description: "Make a choice and reserve hotels according to your route, selecting them according to your preferences and budget"
+      title: "Book Services Only",
+      description: "Just need ferries, hotels, or adventures?",
+      CTA: "Book Now"
+
     },
     {
       icon: <SmileIcon />,
-      title: "Find plenty of entertainment for yourself",
-      description: "There is plenty of entertainment on the islands. Select them and find something that will give you pleasure"
+      title: "Need Help Planning?",
+      description: "Not sure where to start? Let us assist you in crafting the perfect trip.",
+      CTA: "Request Assistance"
     }
   ];
-
+  console.log(features);
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev === features.length - 1 ? 0 : prev + 1));
   };
@@ -96,9 +102,8 @@ const CreateDreamTripSection: React.FC = () => {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`h-1 rounded-full transition-all ${
-                  currentSlide === index ? "w-8 bg-[#06b6d4]" : "w-2 bg-gray-500"
-                }`}
+                className={`h-1 rounded-full transition-all ${currentSlide === index ? "w-8 bg-[#06b6d4]" : "w-2 bg-gray-500"
+                  }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
             ))}
@@ -107,9 +112,9 @@ const CreateDreamTripSection: React.FC = () => {
           {/* Buttons */}
           <div className="flex flex-col gap-4 mt-auto">
             <button className="flex items-center justify-center px-4 py-3 rounded-full bg-gradient-to-r from-[#bef264] to-[#06b6d4] text-white font-medium w-full">
-              Create a tour
+                {features[currentSlide].CTA}
             </button>
-            
+
             <div className="relative inline-block w-full">
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#FAFF00] to-[#00ACB1] p-[1px]">
                 <div className="absolute inset-[1px] rounded-full bg-[#1a1d1f]"></div>
@@ -152,9 +157,9 @@ const CreateDreamTripSection: React.FC = () => {
               <div className="flex flex-col justify-between row-span-4 p-6 rounded-xl shadow-md h-[375px] bg-[#222629] rounded-[12px]">
                 <div className="text-cyan-400 mb-2"><HeartIcon /></div>
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-xl font-semibold mb-2">Select only those places you want to visit</h3>
+                  <h3 className="text-xl font-semibold mb-2">Create Your Own Tour</h3>
                   <p className="text-gray-400">
-                    You are given the freedom to choose attractions allowing you to create a unique itinerary to suit your tastes
+                    Choose locations, stays, and transport
                   </p>
                 </div>
               </div>
@@ -164,9 +169,9 @@ const CreateDreamTripSection: React.FC = () => {
                 <div className="lg:bg-[#1C1F22] bg-none lg:p-2 p-0 rounded-full relative lg:absolute top-[-35px] left-[30px]">
                   <div className="text-cyan-400 w-12 h-12"><ClockIcon /></div>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Manage your time independently</h3>
+                <h3 className="text-xl font-semibold mb-2">Select a Ready-Made Tour</h3>
                 <p className="text-gray-400">
-                  You are given the opportunity to adjust the duration of your trip by increasing or decreasing the number of days
+                  Explore curated itineraries.
                 </p>
               </div>
             </div>
@@ -174,9 +179,9 @@ const CreateDreamTripSection: React.FC = () => {
               <div className="flex flex-col justify-between p-6 rounded-xl shadow-md h-[375px] bg-[#222629]" >
                 <div className="text-cyan-400 mb-2"><ClockIcon /></div>
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-xl font-semibold mb-2">Choose hotels according to your preferences</h3>
+                  <h3 className="text-xl font-semibold mb-2">Select a Ready-Made Tour</h3>
                   <p className="text-gray-400">
-                    Make a choice and reserve hotels according to your route, selecting them according to your preferences and budget
+                    Explore curated itineraries.
                   </p>
                 </div>
               </div>
@@ -185,9 +190,9 @@ const CreateDreamTripSection: React.FC = () => {
               <div className="flex flex-col justify-between p-6 rounded-xl shadow-md h-[375px] bg-[#222629]" >
                 <div className="text-cyan-400 mb-2"><HomeIcon /></div>
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-xl font-semibold mb-2">Choose hotels according to your preferences</h3>
+                  <h3 className="text-xl font-semibold mb-2">Book Services Only</h3>
                   <p className="text-gray-400">
-                    Make a choice and reserve hotels according to your route, selecting them according to your preferences and budget
+                    Just need ferries, hotels, or adventures?
                   </p>
                 </div>
               </div>
@@ -199,9 +204,9 @@ const CreateDreamTripSection: React.FC = () => {
           <div className="bg-[#1E293B] flex flex-col justify-between p-6 rounded-xl shadow-md h-[375px] bg-[#222629] rounded-[12px]">
             <div className="text-cyan-400 mb-2"><SmileIcon /></div>
             <div>
-              <h3 className="text-xl font-semibold mb-2">Find plenty of entertainment for yourself</h3>
+              <h3 className="text-xl font-semibold mb-2">Need Help Planning?</h3>
               <p className="text-gray-400">
-                There is plenty of entertainment on the islands. Select them and find something that will give you pleasure
+                Not sure where to start? Let us assist you in crafting the perfect trip.
               </p>
 
             </div>
