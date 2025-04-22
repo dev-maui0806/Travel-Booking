@@ -85,7 +85,7 @@ const PopularToursSection = () => {
               </svg>
             </button>
           </div>
-          <div className="relative right-4 w-full justify-end bottom-5 flex md:hidden absolute items-center gap-3">
+          <div className="right-4 w-full justify-end bottom-5 flex md:hidden absolute items-center gap-3">
             <button
               onClick={handlePrev}
               aria-label="Previous slide"
