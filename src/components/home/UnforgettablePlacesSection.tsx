@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from "next/navigation";
 
 // Mock data for places
 const placesData = [
@@ -44,9 +45,9 @@ const placesData = [
 ];
 
 const UnforgettablePlacesSection: React.FC = () => {
-  const [activeTabId, setActiveTabId] = useState(placesData[0].id);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
+  const router = useRouter();
+  const [activeTabId, setActiveTabId] = useState(placesData[4].id);
+  const [currentIndex, setCurrentIndex] = useState(4);
   const activePlace = placesData.find(place => place.id === activeTabId);
 
   const handleNext = () => {
@@ -60,9 +61,11 @@ const UnforgettablePlacesSection: React.FC = () => {
     setCurrentIndex(prevIndex);
     setActiveTabId(placesData[prevIndex].id);
   };
-
+  const goToCreateTour = () =>{
+    router.push(`/createTour/`);
+  }
   return (
-    <section className="bg-[#1a1d1f] text-white pt-[50px] pb-[80px]">
+    <section className="bg-[#1a1d1f] text-white pt-[50px] pb-[50px]">
       <div className="container mx-auto px-4">
         {/* Title Section */}
         <div className="pt-6 md:pt-16 pb-4 md:pb-8">
@@ -98,9 +101,9 @@ const UnforgettablePlacesSection: React.FC = () => {
 
         {/* Main Content */}
         {activePlace && (
-          <div className="relative lg:h-[700px] md:h-[600px] h-[300px] pb-[100px]">
+          <div className="relative lg:h-[700px] md:h-[600px] h-[600px] bg-gradient-to-t from-black via-black/60 to-transparent rounded-[10px]">
             {/* Main Image */}
-            <div className="relative w-full h-full md:rounded-2xl overflow-hidden">
+            <div className="relative w-full md:rounded-2xl overflow-hidden h-[300px]">
               <Image
                 src={activePlace.image}
                 alt={activePlace.name}
@@ -111,13 +114,16 @@ const UnforgettablePlacesSection: React.FC = () => {
             </div>
 
             {/* Mobile Description Overlay */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/60 to-transparent pt-20 pb-16 px-4 md:hidden">
+            <div className=" bottom-0 left-0 right-0 py-10 md:pt-20 md:pb-16 px-4 md:hidden">
               <h3 className="text-[28px] font-light mb-2">
                 {activePlace.name}
               </h3>
-              <p className="text-[15px] text-gray-200 leading-snug opacity-80">
+              <p className="text-[15px] text-gray-200 pb-3 leading-snug opacity-80">
                 {activePlace.description}
               </p>
+              <button onClick={goToCreateTour} className="flex items-center justify-center px-4 py-3 rounded-full bg-gradient-to-r from-[#bef264] to-[#06b6d4] text-white font-medium w-full">
+                Start Exploring Port Blair
+            </button>
             </div>
 
             {/* Desktop Preview Card */}
@@ -140,7 +146,7 @@ const UnforgettablePlacesSection: React.FC = () => {
             </div>
 
             {/* Navigation Controls */}
-            <div className="absolute right-0 bottom-[20px] md:right-0 flex items-center space-x-3 md:space-x-4">
+            <div className="relative md:absolute right-0 bottom-[20px] md:right-0 flex px-4 justify-end items-center space-x-3 md:space-x-4">
               <span className="text-sm font-light text-[#06b6d4]">
                 {String(currentIndex + 1).padStart(2, '0')}/{String(placesData.length).padStart(2, '0')}
               </span>

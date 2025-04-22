@@ -298,7 +298,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({title, subtitle}) => {
             </div>
           )}
 
-          {/* Search Bar (Mobile) */}
+          {/* Search Bar (Mobile)
           {isMobile && (
             <div className="relative w-[200px]">
               <Link href="/" className="relative flex items-center pl-4 pr-12 py-3 shadow-lg">
@@ -308,7 +308,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({title, subtitle}) => {
                 </div>
               </Link>
             </div>
-          )}
+          )} */}
 
           {/* Main Content */}
           <div className={`flex flex-col ${isMobile ? 'w-full' : 'w-1/2'} ${isTablet ? 'pl-6' : ''}`}>

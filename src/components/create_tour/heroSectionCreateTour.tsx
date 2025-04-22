@@ -190,7 +190,9 @@ const HeroSectionCreateTour: React.FC = () => {
     // Reset states when changing tabs
     setShowMap(false);
     setSelectedItem(null);
-    
+    if(tabId !== 'hotels'){
+        setShowHotelList(false);
+    }
     if (tabId === 'islands') {
       setCurrentSlide(0);
       setActiveIslandId(islandSlides[0].id);
@@ -233,18 +235,19 @@ const HeroSectionCreateTour: React.FC = () => {
         {/* Navigation Tabs */}
         <div className="relative mb-6">
           <div className="flex flex-col lg:flex-row gap-4 items-align w-full justify-between overflow-x-auto">
-            <div className="lg:hidden flex items-center space-x-2 bg-[#1C1F22] rounded-full p-1 w-fit min-w-full md:min-w-0">
-                {showHotelList ?(
+            <div className="lg:hidden flex justify-between items-center space-x-2 bg-[#1C1F22] rounded-full p-1 w-fit min-w-full md:min-w-0">
+                {!showHotelList ?(
                     <div className="flex items-center space-x-2">
-                        <span className="bg-[#222629] px-4 py-2 rounded-full">$ 0</span>
-                        <span className="bg-[#222629] px-4 py-2 rounded-full">0 day</span>
+                        <span className="bg-[#222629] px-4 py-4 rounded-full text-xs md:text-lg">$ 0</span>
+                        <span className="bg-[#222629] px-4 py-4 rounded-full text-xs md:text-lg">0 day</span>
                     </div>
                     )
                     :
                     (
-                    <button className="bg-[#333] text-white px-4 py-2 rounded-full flex items-center"
+                    <button className="bg-[#222629] hover:bg-white  hover:black text-xs md:test-lg text-white px-4 py-4 rounded-full flex items-center justify-between gap-1"
                     onClick={handleBackToSearch}>
-                        <FaChevronLeft className="mr-1"/> Edit
+                        <FaChevronLeft/>
+                        <span>Edit</span>
                     </button>
                 )}
               <button className="bg-gradient-to-r from-[#bef264] to-[#06b6d4] text-white px-6 py-2 rounded-full">
@@ -294,7 +297,7 @@ const HeroSectionCreateTour: React.FC = () => {
         {activeTab === 'islands' && (
           <div className="flex flex-col gap-6">
             {/* Island Selection Tabs */}
-            <div className="flex items-center space-x-2 bg-[#1C1F22] rounded-full p-1 w-fit overflow-x-auto">
+            <div className="flex items-center space-x-2 bg-[#1C1F22] rounded-full p-1 overflow-x-auto">
               {islandSlides.map((island) => (
                 <button
                   key={island.id}

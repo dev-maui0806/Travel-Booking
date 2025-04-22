@@ -69,7 +69,7 @@ const CreateTourAllMaps: React.FC = () => {
     };
 
     return (
-        <div className="container mx-auto min-h-screen bg-[#222629] text-white p-4">
+        <section className="container mx-auto min-h-screen bg-[#222629] text-white p-4">
             {/* Top Navigation Bar */}
             <div className="flex flex-col md:flex-row items-between md:items-center gap-2 justify-between mb-6">
                 <div className="md:flex hidden space-x-2 bg-[#1C1F22] rounded-full p-1">
@@ -387,7 +387,7 @@ const CreateTourAllMaps: React.FC = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

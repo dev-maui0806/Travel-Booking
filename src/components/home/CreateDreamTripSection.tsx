@@ -25,20 +25,20 @@ const CreateDreamTripSection: React.FC = () => {
     {
       icon: <HeartIcon />,
       title: "Create Your Own Tour",
-      description: "Choose locations, stays, and transport",
+      description: "Choose locations, stays, and transport to design your trip.",
       CTA: "Start"
     },
     {
       icon: <ClockIcon />,
-      title: " Select a Ready-Made Tour",
-      description: "Explore curated itineraries",
+      title: " Select a Pre-Made Tour",
+      description: "Explore curated itineraries built for different tastes.",
       CTA: "Browse Tours"
 
     },
     {
       icon: <HomeIcon />,
       title: "Book Services Only",
-      description: "Just need ferries, hotels, or adventures?",
+      description: "Just need ferries, hotels, or adventures? Book only what you need.",
       CTA: "Book Now"
 
     },
@@ -46,7 +46,7 @@ const CreateDreamTripSection: React.FC = () => {
       icon: <SmileIcon />,
       title: "Need Help Planning?",
       description: "Not sure where to start? Let us assist you in crafting the perfect trip.",
-      CTA: "Request a Call Back"
+      CTA: "Request Assistance"
     }
   ];
   console.log(features);
@@ -65,7 +65,7 @@ const CreateDreamTripSection: React.FC = () => {
   // Mobile Carousel View
   if (isMobile) {
     return (
-      <section className="bg-[#1C1F22] py-12 px-6 text-white relative overflow-hidden min-h-screen flex flex-col justify-between">
+      <section className="bg-[#1C1F22] py-4 md:py-12 px-6 text-white relative overflow-hidden md:min-h-screen flex flex-col justify-between">
         <div className="container mx-auto flex flex-col h-full">
           {/* Top content */}
           <div className="mb-6">
@@ -110,19 +110,19 @@ const CreateDreamTripSection: React.FC = () => {
           </div>
 
           {/* Buttons */}
-          <div className="flex flex-col gap-4 mt-auto">
+          <div className="flex flex-col mt-auto">
             <button className="flex items-center justify-center px-4 py-3 rounded-full bg-gradient-to-r from-[#bef264] to-[#06b6d4] text-white font-medium w-full">
                 {features[currentSlide].CTA}
             </button>
 
-            <div className="relative inline-block w-full">
+            {/* <div className="relative inline-block w-full">
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#FAFF00] to-[#00ACB1] p-[1px]">
                 <div className="absolute inset-[1px] rounded-full bg-[#1a1d1f]"></div>
               </div>
               <button className="relative w-full px-6 py-3 text-center rounded-full">
                 Request assistance
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
