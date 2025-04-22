@@ -46,7 +46,7 @@ const CreateDreamTripSection: React.FC = () => {
       icon: <SmileIcon />,
       title: "Need Help Planning?",
       description: "Not sure where to start? Let us assist you in crafting the perfect trip.",
-      CTA: "Request Assistance"
+      CTA: "Request a Call Back"
     }
   ];
   console.log(features);
