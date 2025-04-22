@@ -123,8 +123,8 @@ const ServicesSection = () => {
       <div className="container mx-auto px-4">
         {/* Header section */}
         <div className="mb-8 md:mb-12">
-          <h2 className="text-5xl font-light mb-4">Services</h2>
-          <p className="text-gray-400 max-w-2xl mb-6">
+          <h2 className="text-3xl md:text-5xl font-light mb-4">Services</h2>
+          <p className="text-xl md:text-3xl text-gray-400 max-w-2xl mb-6">
             On our website you can order transport, buy a ferry ticket,
             book a hotel and buy yourself an exciting adventure
           </p>

@@ -55,12 +55,37 @@ const PopularToursSection = () => {
       {/* <div className="absolute inset-0 -z- bg-black/90">
         <div className='bg-gray-100 w-full h-full bg-opacity-50'></div>
       </div> */}
-      <div className="container mx-auto px-4 py-12 md:py-16 lg:py-20">
+      <div className="container mx-auto px-4 py-20 md:py-16 lg:py-20">
         {/* Title and navigation */}
         <div className="flex justify-between items-center mb-6 md:mb-10">
-          <h2 className="text-4xl md:text-5xl font-light">Popular tours</h2>
+          <div className="flex flex-col justify-start items-start gap-2">
+            <h2 className="text-3xl md:text-5xl font-light">READY-MADE TOURS</h2>
+            <h3 className='text-xl md:text-3xl font-light'>Pre-curated itineraries for a hassle-free trip</h3>
+          </div>
+          <div className="hidden md:flex items-center gap-3">
+            <button
+              onClick={handlePrev}
+              aria-label="Previous slide"
+              className="flex items-center justify-center w-10 h-10 rounded-full border border-white/30 cursor-pointer bg-transparent hover:border-white focus:bg-white focus:text-black transition-colors"
+              disabled={currentSlide === 0}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 19L8 12L15 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
 
-          <div className="flex items-center gap-3">
+            <button
+              onClick={handleNext}
+              aria-label="Next slide"
+              className="flex items-center justify-center w-10 h-10 rounded-full border border-white/30 cursor-pointer bg-transparent hover:border-white focus:bg-white focus:text-black transition-colors"
+              disabled={currentSlide === tours.length - getVisibleSlides()}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 5L16 12L9 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          </div>
+          <div className="relative right-4 w-full justify-end bottom-5 flex md:hidden absolute items-center gap-3">
             <button
               onClick={handlePrev}
               aria-label="Previous slide"
