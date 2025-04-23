@@ -89,10 +89,10 @@ const ReviewsSection = () => {
   const formatNumber = (num: number) => num < 10 ? `0${num}` : num;
   
   return (
-    <section className="bg-[#222629] py-12 md:py-20">
+    <section className="bg-[#222629] py-12 md:py-16">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-4xl md:text-5xl text-white font-light">Reviews</h2>
+          <h2 className="text-3xl md:text-5xl text-white font-light">Reviews</h2>
           
           {/* Navigation controls for desktop */}
           <div className="hidden md:flex items-center">

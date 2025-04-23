@@ -3,7 +3,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { FiPhone, FiUser, FiShoppingCart } from "react-icons/fi";
+import { FiPhone, FiMail, FiUser, FiShoppingCart } from "react-icons/fi";
+import { BsWhatsapp, BsFacebook, BsInstagram } from 'react-icons/bs';
+import { FaTelegramPlane } from 'react-icons/fa';
+
 import { RiCloseLine } from "react-icons/ri";
 
 const Header: React.FC = () => {
@@ -108,23 +111,67 @@ const Header: React.FC = () => {
               </svg>
             </button>
             <div className="flex flex-col space-y-4 text-white">
-              <Link href="/" className="text-lg py-2" onClick={toggleMenu}>Home</Link>
-              <Link href="/createTour" className="text-lg py-2" onClick={toggleMenu}>Create a tour</Link>
-              <Link href="/selectTour" className="text-lg py-2" onClick={toggleMenu}>Select tour</Link>
-              <Link href="/services" className="text-lg py-2" onClick={toggleMenu}>Services</Link>
-              <Link href="/aboutIslands" className="text-lg py-2" onClick={toggleMenu}>About the Islands</Link>
-              <Link href="/blog" className="text-lg py-2" onClick={toggleMenu}>Blog</Link>
-              <Link href="/gallery" className="text-lg py-2" onClick={toggleMenu}>Gallery</Link>
-              <Link href="/aboutUs" className="text-lg py-2" onClick={toggleMenu}>About us</Link>
-              <Link href="/contacts" className="text-lg py-2" onClick={toggleMenu}>Contacts</Link>
-              <div className="mt-4">
+              <Link href="/home" className="text-lg py-2 w-full bg-[#222629] rounded-[5px] pl-2" onClick={toggleMenu}>Home</Link>
+              <Link href="/createTour" className="text-lg py-2 w-full bg-[#222629] rounded-[5px] pl-2" onClick={toggleMenu}>Create a tour</Link>
+              <Link href="/selectTour" className="text-lg py-2 w-full bg-[#222629] rounded-[5px] pl-2" onClick={toggleMenu}>Select tour</Link>
+              <Link href="/services" className="text-lg py-2 w-full bg-[#222629] rounded-[5px] pl-2" onClick={toggleMenu}>Services</Link>
+              <Link href="/abouttheIslands" className="text-lg py-2 w-full bg-[#222629] rounded-[5px] pl-2" onClick={toggleMenu}>About the Islands</Link>
+              <Link href="/blogs" className="text-lg py-2 w-full bg-[#222629] rounded-[5px] pl-2" onClick={toggleMenu}>Blog</Link>
+              <Link href="/gallery" className="text-lg py-2 w-full bg-[#222629] rounded-[5px] pl-2" onClick={toggleMenu}>Gallery</Link>
+              <Link href="/aboutUs" className="text-lg py-2 w-full bg-[#222629] rounded-[5px] pl-2" onClick={toggleMenu}>About us</Link>
+              <Link href="/contacts" className="text-lg py-2 w-full bg-[#222629] rounded-[5px] pl-2" onClick={toggleMenu}>Contacts</Link>
+              {/* <div className="mt-4">
                 <Link href="/searchFlights" className="text-lg py-2 flex items-center">
                   <span className='text-white'>Search for flights</span>
                   <div className="w-7 h-7 flex items-center justify-center mr-2 rotate-45">
                     <Image src="/images/icon/flight.png" alt="Flight" width={40} height={40} priority />
                   </div>
                 </Link>
+              </div> */}
+              <div className='flex items-center justify-between'>
+                <div className="flex flex-row justify-between w-full gap-4">
+                  <div className="bg-[#222629] w-[48%] rounded-xl px-1 py-4 flex flex-col items-start gap-8">
+                    <div className="w-10 h-10 rounded-full bg-[#292E32] bg-opacity-20 flex items-center justify-center">
+                      <FiPhone className="text-[#00ACB1]" size={20} />
+                    </div>
+                    <span className="text-[15px] text-[#BABABA] w-full">+00 000 00 00</span>
+                  </div>
+
+                  <div className="bg-[#222629] w-[48%] rounded-xl px-1 py-4 flex flex-col items-start gap-8">
+                    <div className="w-10 h-10 rounded-full bg-[#292E32] bg-opacity-20 flex items-center justify-center">
+                      <FiMail className="text-[#00ACB1]" size={20} />
+                    </div>
+                    <span className="text-[15px] text-[#BABABA] w-full">gmail@gmail.com</span>
+                  </div>
+                </div>
+
               </div>
+              <div className="flex items-center justify-between rounded-[10px] bg-[#222629] mt-8 py-4 px-4">
+                <div className="flex flex-col items-center">
+                  <div className="w-12 h-12 rounded-full bg-[#292E32] flex items-center justify-center mb-2">
+                    <FaTelegramPlane size={24} className="text-[#00ACB1]" />
+                  </div>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="w-12 h-12 rounded-full bg-[#292E32] flex items-center justify-center mb-2">
+                    <BsWhatsapp size={24} className="text-[#00ACB1]" />
+                  </div>
+
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="w-12 h-12 rounded-full bg-[#292E32] flex items-center justify-center mb-2">
+                    <BsFacebook size={24} className="text-[#00ACB1]" />
+                  </div>
+
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="w-12 h-12 rounded-full bg-[#292E32] flex items-center justify-center mb-2">
+                    <BsInstagram size={24} className="text-[#00ACB1]" />
+                  </div>
+
+                </div>
+              </div>
+
             </div>
           </div>
         )}
@@ -201,13 +248,14 @@ const Header: React.FC = () => {
         {/* Tablet menu */}
         {isMenuOpen && isOpentabletMenu && (
           <div className="fixed flex flex-row justify-end inset-0 bg-transparent z-10 p-2 gap-[20px] md:pr-[50px] pr-[70px] pt-[20px]">
-           
+
             <div className="flex flex-row justify-center gap-2 text-white pt-[5px]">
+              <Link href="/home" className="text-sm" onClick={toggleMenu}>Home</Link>
               <Link href="/createTour" className="text-sm" onClick={toggleMenu}>Create a tour</Link>
               <Link href="/selectTour" className="text-sm" onClick={toggleMenu}>Select tour</Link>
               <Link href="/services" className="text-sm" onClick={toggleMenu}>Services</Link>
-              <Link href="/aboutIslands" className="text-sm " onClick={toggleMenu}>About the Islands</Link>
-              <Link href="/blog" className="text-sm " onClick={toggleMenu}>Blog</Link>
+              <Link href="/abouttheIslands" className="text-sm " onClick={toggleMenu}>About the Islands</Link>
+              <Link href="/blogs" className="text-sm " onClick={toggleMenu}>Blog</Link>
               <Link href="/gallery" className="text-sm " onClick={toggleMenu} >Gallery</Link>
               <Link href="/aboutUs" className="text-sm " onClick={toggleMenu}>About us</Link>
               <Link href="/contacts" className="text-sm " onClick={toggleMenu}>Contacts</Link>
@@ -239,8 +287,8 @@ const Header: React.FC = () => {
           <Link href="/createTour" className="text-white text-base hover:text-primary">Create a tour</Link>
           <Link href="/selectTour" className="text-white text-base hover:text-primary">Select tour</Link>
           <Link href="/services" className="text-white text-base hover:text-primary">Services</Link>
-          <Link href="/aboutIslands" className="text-white text-base hover:text-primary">About the Islands</Link>
-          <Link href="/blog" className="text-white text-base hover:text-primary">Blog</Link>
+          <Link href="/abouttheIslands" className="text-white text-base hover:text-primary">About the Islands</Link>
+          <Link href="/blogs" className="text-white text-base hover:text-primary">Blog</Link>
           <Link href="/gallery" className="text-white text-base hover:text-primary">Gallery</Link>
           <Link href="/aboutUs" className="text-white text-base hover:text-primary">About us</Link>
           <Link href="/contacts" className="text-white text-base hover:text-primary">Contacts</Link>

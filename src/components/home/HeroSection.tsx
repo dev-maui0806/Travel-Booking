@@ -136,7 +136,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({title, subtitle}) => {
   return (
     <>
       <section
-        className="relative w-full text-white bg-cover bg-center bg-no-repeat flex items-center overflow-hidden"
+        className="relative w-full text-white bg-cover py-12 md:py-16 bg-center bg-no-repeat flex items-center overflow-hidden"
         style={{
           backgroundImage: "url('/images/ocean-bg.png')",
           height: isMobile ? "700px" : isTablet ? "700px" : "800px"
@@ -312,10 +312,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({title, subtitle}) => {
 
           {/* Main Content */}
           <div className={`flex flex-col ${isMobile ? 'w-full' : 'w-1/2'} ${isTablet ? 'pl-6' : ''}`}>
-            <h1 className={`font-bold leading-tight w-full mb-4 ${isMobile ? 'text-4xl' : isTablet ? 'text-5xl' : 'text-6xl'}`}>
+            <h1 className={`font-bold leading-tight w-full mb-4 ${isMobile ? 'text-3xl' : isTablet ? 'text-5xl' : 'text-5xl'}`}>
              {title || "Plan your dream Andaman trip your way"}
             </h1>
-            <p className={`mb-8 ${isMobile ? 'text-base' : 'text-xl'}`}>
+            <p className={`mb-8 ${isMobile ? 'text-xl' : 'text-3xl'}`}>
               {subtitle || "Create your own itinerary, choose from curated packages, or book just the services you need."}
             </p>
 

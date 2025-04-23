@@ -46,7 +46,7 @@ const PopularToursSection = () => {
   };
 
   return (
-    <section className="relative overflow-hidden text-white">
+    <section className="relative overflow-hidden text-white py-12 md:py-16">
       {/* Full-width background image */}
       <div className="absolute inset-0 -z-10 bg-black/90">
         {/* Can add a background image here if needed */}
@@ -55,7 +55,7 @@ const PopularToursSection = () => {
       {/* <div className="absolute inset-0 -z- bg-black/90">
         <div className='bg-gray-100 w-full h-full bg-opacity-50'></div>
       </div> */}
-      <div className="container mx-auto px-4 py-20 md:py-16 lg:py-20">
+      <div className="container mx-auto px-4">
         {/* Title and navigation */}
         <div className="flex justify-between items-center mb-6 md:mb-10">
           <div className="flex flex-col justify-start items-start gap-2">
@@ -85,7 +85,7 @@ const PopularToursSection = () => {
               </svg>
             </button>
           </div>
-          <div className="right-4 w-full justify-end bottom-5 flex md:hidden absolute items-center gap-3">
+          <div className="right-4 w-full justify-end bottom-2 flex md:hidden absolute items-center gap-3">
             <button
               onClick={handlePrev}
               aria-label="Previous slide"

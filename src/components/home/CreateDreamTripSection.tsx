@@ -65,14 +65,14 @@ const CreateDreamTripSection: React.FC = () => {
   // Mobile Carousel View
   if (isMobile) {
     return (
-      <section className="bg-[#1C1F22] py-4 md:py-12 px-6 text-white relative overflow-hidden md:min-h-screen flex flex-col justify-between">
+      <section className="bg-[#1C1F22] py-12 md:py-16 px-6 text-white relative overflow-hidden md:min-h-screen flex flex-col justify-between">
         <div className="container mx-auto flex flex-col h-full">
           {/* Top content */}
           <div className="mb-6">
-            <h2 className="text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
               Create your dream trip yourself
             </h2>
-            <p className="text-base text-gray-300">
+            <p className="text-xl md:text-3xl text-gray-300">
               We invite you to use our site to create your own tour to the Andaman Islands. Now you have the opportunity to choose and customize your ideal trip directly online
             </p>
           </div>

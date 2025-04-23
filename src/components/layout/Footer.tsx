@@ -29,14 +29,14 @@ const Footer: React.FC = () => {
             </p>
 
             <div className="flex flex-row justify-between gap-4 mt-8">
-              <div className="bg-[#222629] w-[48%] rounded-xl p-4 flex flex-col items-start gap-8">
+              <div className="bg-[#222629] w-[48%] rounded-xl pt-4 px-1 flex flex-col items-start gap-8">
                 <div className="w-10 h-10 rounded-full bg-[#292E32] bg-opacity-20 flex items-center justify-center">
                   <FiPhone className="text-[#00ACB1]" size={20} />
                 </div>
                 <span className="text-[15px] text-[#BABABA]">+00 000 00 00</span>
               </div>
               
-              <div className="bg-[#222629] w-[48%] rounded-xl p-4 flex flex-col items-start gap-8">
+              <div className="bg-[#222629] w-[48%] rounded-xl pt-4 px-1 flex flex-col items-start gap-8">
                 <div className="w-10 h-10 rounded-full bg-[#292E32] bg-opacity-20 flex items-center justify-center">
                   <FiMail className="text-[#00ACB1]" size={20} />
                 </div>

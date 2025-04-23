@@ -64,7 +64,7 @@ const CreateJourneySection = () => {
   };
 
   return (
-    <section className="relative py-16">
+    <section className="relative py-12 md:py-16">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -79,10 +79,10 @@ const CreateJourneySection = () => {
       <div className="relative z-10">
         {/* SECTION 1: Header - Full Width */}
         <div className="container mx-auto px-4 mb-10">
-          <h2 className="text-4xl md:text-5xl font-light text-white">
-            Create your own journey
+          <h2 className="text-3xl md:text-5xl font-light text-white">
+          Start building your own Andaman itinerary in just 3 steps.
           </h2>
-          <p className="text-white/70 mt-2 max-w-md">
+          <p className="text-white/70 text-xl md:text-3xl mt-2 max-w-md">
             Have questions or doubts? Simply fill out our contact form and we will
             contact you as soon as possible. Or maybe you just want to leave a
             review, we will be very grateful to you.
@@ -148,7 +148,7 @@ const CreateJourneySection = () => {
                       hover:bg-gray-100 transition-colors duration-300 flex w-full justify-center md:justify-between"
                   >
                     <span className="text-[16px] text-[#222629]">
-                      Send</span>
+                    Create Your Tour Now</span>
                     <span className="hidden md:block ml-2 bg-[#1C1F22] rounded-full p-1 -rotate-45">
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
                         <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>

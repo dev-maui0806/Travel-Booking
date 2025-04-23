@@ -122,9 +122,8 @@ const TravelBlogSection = () => {
 
   return (
     <section className="bg-[#15191D] text-white py-12 md:py-16 relative">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-light mb-8">Travel Blog</h2>
-
+      <div className="container relative mx-auto px-4">
+        <h2 className="text-3xl md:text-5xl font-light mb-8">Travel Blog</h2>
         {/* Mobile View - Single Card with Pagination */}
         <div className="md:hidden">
           <div className="relative mb-6">
@@ -138,11 +137,11 @@ const TravelBlogSection = () => {
                 />
               </div>
 
-              <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/80 to-transparent">
+              <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
                 <h3 className="text-xl font-semibold">{blogPostsData[currentSlide].title}</h3>
               </div>
 
-              <Link href={`/blog/${blogPostsData[currentSlide].slug}`} className="absolute bottom-5 right-5 w-10 h-10 bg-white rounded-full flex items-center justify-center">
+              <Link href={`/blog/${blogPostsData[currentSlide].slug}`} className="absolute bottom-5 right-3 w-10 h-10 bg-white rounded-full flex items-center justify-center">
                 <svg className="w-5 h-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>

@@ -65,13 +65,13 @@ const UnforgettablePlacesSection: React.FC = () => {
     router.push(`/createTour/`);
   }
   return (
-    <section className="bg-[#1a1d1f] text-white pt-[50px] pb-[50px]">
+    <section className="bg-[#1a1d1f] text-white py-12 md:py-16">
       <div className="container mx-auto px-4">
         {/* Title Section */}
-        <div className="pt-6 md:pt-16 pb-4 md:pb-8">
-          <h2 className="text-[32px] leading-[1.2] md:text-5xl font-extralight">
+        <div className="">
+          <h2 className="text-3xl leading-[1.2] md:text-5xl font-extralight">
             Unforgettable places of{' '}
-            <span className="block md:inline">the islands</span>
+            <span className="block md:inline md:5xl text-3xl">the islands</span>
           </h2>
         </div>
 
