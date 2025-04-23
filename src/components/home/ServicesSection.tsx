@@ -3,7 +3,10 @@
 import { useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
+import { MdLocalHotel } from "react-icons/md";
+import { FaFerry } from "react-icons/fa6";
+import { FaCarRear } from "react-icons/fa6";
+import { PiAirplaneTakeoffLight } from "react-icons/pi";
 // Mock Data for Services
 const servicesData = [
   {
@@ -96,7 +99,8 @@ const servicesData = [
 const ServicesSection = () => {
   const [currentSet, setCurrentSet] = useState(0);
   const totalSets = Math.ceil(servicesData.length / 6);
-  
+  const [mobileExperienceSet, setMobileExperienceSet] = useState(0);
+  const totalMobileExperienceSets = Math.ceil(servicesData.length / 4);
   const handleNext = () => {
     setCurrentSet((prev) => (prev + 1) % totalSets);
   };
@@ -117,6 +121,21 @@ const ServicesSection = () => {
   };
 
   const currentServices = getCurrentServices();
+
+  const getMobileExperienceServices = () => {
+    const startIndex = mobileExperienceSet * 4;
+    return servicesData.slice(startIndex, startIndex + 4);
+  };
+
+  const handleMobileNext = () => {
+    setMobileExperienceSet((prev) => (prev + 1) % totalMobileExperienceSets);
+  };
+
+  const handleMobilePrev = () => {
+    setMobileExperienceSet((prev) => (prev === 0 ? totalMobileExperienceSets - 1 : prev - 1));
+  };
+
+  const currentMobileServices = getMobileExperienceServices();
 
   return (
     <section className="bg-black text-white py-12 md:py-16 relative overflow-hidden">
@@ -286,44 +305,100 @@ const ServicesSection = () => {
             </button>
           </div>
         </div>
+        
+        {/* Mobile Layout */}
+        <div className="md:hidden space-y-8">
+          <button className='text-sm text-white bg-gradient-to-r from-[#bef264] to-[#06b6d4] w-full px-3 py-4 rounded-full hover:bg-[#00ACB1]'>View All Services</button>
+          {/* Essentials Section */}
+          <div>
+            <h3 className="text-lg font-medium mb-4">Essentials</h3>
+            <p className="text-sm text-gray-400 mb-6">For your convenience in getting around and staying comfortably.</p>
+            
+            <div className="grid grid-rows-2 sm:grid-cols-1 gap-1">
+              <div className="grid grid-cols-2 gap-1">
+                <Link href="/services/ferry" className=" flex flex-col gap-3 justify-between items-center px-1 border-[1px] border-[#00ACB1] py-2 rounded-[5px]">
+                  <div className="w-12 h-12 bg-[#222629] rounded-full flex items-center justify-center">
+                  <FaFerry width = {24} height={24} className="text-[#00ACB1]"/>
+                  </div>
+                  <span className="text-xs text-center">Ferry</span>
+                  <button className ="w-full text-xs text-center bg-gradient-to-r px-2 py-1 from-[#bef264] to-[#06b6d4] rounded-[5px]">Book Now</button>
+                </Link>
+                <Link href="/services/hotel" className=" flex flex-col gap-3 justify-between items-center px-1 border-[1px] border-[#00ACB1] py-2 rounded-[5px]">
+                  <div className="w-12 h-12 bg-[#222629] rounded-full flex items-center justify-center">
+                    <MdLocalHotel width = {24} height={24} className="text-[#00ACB1]"/>
+                  </div>
+                  <span className="text-xs text-center">Hotel</span>
+                  <button className ="w-full text-xs text-center bg-gradient-to-r px-2 py-1 from-[#bef264] to-[#06b6d4] rounded-[5px]">Book Now</button>
+                </Link>
+              </div>
+              <div className="grid grid-cols-2 gap-1">
+              <Link href="/services/cab" className=" flex flex-col gap-3 justify-between items-center px-1 border-[1px] border-[#00ACB1] py-2 rounded-[5px]">
+                <div className="w-12 h-12 bg-[#222629] rounded-full flex items-center justify-center">
+                  <FaCarRear width={24} height={24}  className="text-[#00ACB1]"/>
+                </div>
+                <span className="text-xs text-center">Cab</span>
+                <button className ="w-full text-xs text-center bg-gradient-to-r px-2 py-1 from-[#bef264] to-[#06b6d4] rounded-[5px]">Book Now</button>
+              </Link>
+              <Link href="/services/airport-pickup" className=" flex flex-col gap-3 justify-between items-center px-1 border-[1px] border-[#00ACB1] py-2 rounded-[5px]">
+                <div className="w-12 h-12 bg-[#222629] rounded-full flex items-center justify-center">
+                  <PiAirplaneTakeoffLight width={24} height={24} className='text-[#00ACB1]'/>
+                </div>
+                <span className="text-xs text-center">Airport Pickup</span>
+                <button className ="w-full text-xs text-center bg-gradient-to-r px-2 py-1 from-[#bef264] to-[#06b6d4] rounded-[5px]">Book Now</button>
+              </Link>
+              </div>
 
-        {/* Mobile carousel */}
-        <div className="md:hidden">
-          <div className="relative">
-            <div className="w-full">
-              <div className="relative h-[240px] rounded-lg overflow-hidden">
-                <Image
-                  src={currentServices[0]?.image || "/images/placeholder.png"}
-                  alt={currentServices[0]?.title || "Service"}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-              </div>
-              
-              <div className="mt-4">
-                <h3 className="text-xl font-medium mb-2">{currentServices[0]?.title}</h3>
-                <p className="text-gray-400 text-sm">{currentServices[0]?.description}</p>
-              </div>
             </div>
           </div>
 
-          {/* Mobile pagination dots */}
-          <div className="flex justify-center mt-6 gap-1">
-            {Array.from({ length: totalSets }).map((_, index) => (
-              <button
-                key={index}
-                className={`h-2 rounded-full transition-all duration-300 
-                  ${index === currentSet ? 'w-8 bg-green-400' : 'w-2 bg-gray-600'}`}
-                onClick={() => setCurrentSet(index)}
-              />
-            ))}
+          {/* Experiences Section */}
+          <div>
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-medium">Experiences</h3>
+              <div className="flex items-center gap-2">
+            <span className="text-sm mr-2">{formatSetNumber(mobileExperienceSet)}/{formatSetNumber(totalMobileExperienceSets - 1)}</span>
+                <button 
+                  onClick={handleMobilePrev}
+                  className="w-8 h-8 flex items-center justify-center rounded-full border border-[#00ACB1]"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 19L8 12L15 5" stroke="#00ACB1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+                <button 
+                  onClick={handleMobileNext}
+                  className="w-8 h-8 flex items-center justify-center rounded-full border border-[#00ACB1]"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 5L16 12L9 19" stroke="#00ACB1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <p className="text-sm text-gray-400 mb-6">Make your trip unforgettable with these limited adventures.</p>
+            
+            <div className="grid grid-cols-2 gap-4">
+              {currentMobileServices.map((service) => (
+                <Link href={service.link} key={service.id} className="block">
+                  <div className="relative aspect-square rounded-xl overflow-hidden mb-2">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  </div>
+                  <h4 className="text-sm font-medium">{service.title}</h4>
+                </Link>
+              ))}
+            </div>
           </div>
 
-          {/* Mobile view all button */}
-          <div className="mt-8 flex justify-center">
-            <Link href="/services" className="w-full max-w-xs bg-gradient-to-r from-green-400 to-blue-500 text-white py-4 px-6 rounded-full text-center">
-              View all
+          {/* Book Now Button */}
+          <div className="pt-4">
+            <Link href="/services" className="block w-full bg-white text-black font-medium py-4 px-6 rounded-full text-center">
+              Book Now
             </Link>
           </div>
         </div>
