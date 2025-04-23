@@ -123,7 +123,7 @@ const TravelBlogSection = () => {
   return (
     <section className="bg-[#15191D] text-white py-12 md:py-16 relative">
       <div className="container relative mx-auto px-4">
-        <h2 className="text-3xl md:text-5xl font-light mb-8">Travel Blog</h2>
+        <h2 className="text-3xl md:text-5xl font-light mb-8">Island story and travel tips</h2>
         {/* Mobile View - Single Card with Pagination */}
         <div className="md:hidden">
           <div className="relative mb-6">
@@ -162,10 +162,10 @@ const TravelBlogSection = () => {
             ))}
           </div>
 
-          {/* Mobile Read All Button */}
+          {/* Mobile Explore Button */}
           <div className="flex justify-center">
             <Link href="/blog" className="w-full max-w-xs py-4 rounded-full text-center font-medium text-white bg-gradient-to-r from-[#D8F153] to-[#0CCDDA]">
-              Read all
+              Explore More
             </Link>
           </div>
         </div>
@@ -207,7 +207,7 @@ const TravelBlogSection = () => {
               <div className="flex justify-end items-end">
                 <div className="mt-8 flex justify-center">
                   <button className=" flex items-center px-4 text-base py-3 rounded-full bg-gradient-to-r from-[#bef264] to-[#06b6d4] text-white font-medium transition-all w-[120px] h-[44px] duration-300 hover:shadow-[0_0_20px_rgba(45,212,191,0.4)]">
-                    View all
+                    Explore More
                     <div className="ml-2 w-6 h-6 rounded-full bg-white flex items-center justify-center -rotate-45">
                       <svg className="w-6 h-6 text-[#06b6d4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M5 12h14M12 5l7 7-7 7" />

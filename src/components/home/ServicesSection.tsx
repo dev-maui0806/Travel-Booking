@@ -308,7 +308,6 @@ const ServicesSection = () => {
         
         {/* Mobile Layout */}
         <div className="md:hidden space-y-8">
-          <button className='text-sm text-white bg-gradient-to-r from-[#bef264] to-[#06b6d4] w-full px-3 py-4 rounded-full hover:bg-[#00ACB1]'>View All Services</button>
           {/* Essentials Section */}
           <div>
             <h3 className="text-lg font-medium mb-4">Essentials</h3>
@@ -332,21 +331,23 @@ const ServicesSection = () => {
                 </Link>
               </div>
               <div className="grid grid-cols-2 gap-1">
-              <Link href="/services/cab" className=" flex flex-col gap-3 justify-between items-center px-1 border-[1px] border-[#00ACB1] py-2 rounded-[5px]">
-                <div className="w-12 h-12 bg-[#222629] rounded-full flex items-center justify-center">
-                  <FaCarRear width={24} height={24}  className="text-[#00ACB1]"/>
-                </div>
-                <span className="text-xs text-center">Cab</span>
-                <button className ="w-full text-xs text-center bg-gradient-to-r px-2 py-1 from-[#bef264] to-[#06b6d4] rounded-[5px]">Book Now</button>
-              </Link>
-              <Link href="/services/airport-pickup" className=" flex flex-col gap-3 justify-between items-center px-1 border-[1px] border-[#00ACB1] py-2 rounded-[5px]">
-                <div className="w-12 h-12 bg-[#222629] rounded-full flex items-center justify-center">
-                  <PiAirplaneTakeoffLight width={24} height={24} className='text-[#00ACB1]'/>
-                </div>
-                <span className="text-xs text-center">Airport Pickup</span>
-                <button className ="w-full text-xs text-center bg-gradient-to-r px-2 py-1 from-[#bef264] to-[#06b6d4] rounded-[5px]">Book Now</button>
-              </Link>
+                <Link href="/services/cab" className=" flex flex-col gap-3 justify-between items-center px-1 border-[1px] border-[#00ACB1] py-2 rounded-[5px]">
+                  <div className="w-12 h-12 bg-[#222629] rounded-full flex items-center justify-center">
+                    <FaCarRear width={24} height={24}  className="text-[#00ACB1]"/>
+                  </div>
+                  <span className="text-xs text-center">Cab</span>
+                  <button className ="w-full text-xs text-center bg-gradient-to-r px-2 py-1 from-[#bef264] to-[#06b6d4] rounded-[5px]">Book Now</button>
+                </Link>
+                <Link href="/services/airport-pickup" className=" flex flex-col gap-3 justify-between items-center px-1 border-[1px] border-[#00ACB1] py-2 rounded-[5px]">
+                  <div className="w-12 h-12 bg-[#222629] rounded-full flex items-center justify-center">
+                    <PiAirplaneTakeoffLight width={24} height={24} className='text-[#00ACB1]'/>
+                  </div>
+                  <span className="text-xs text-center">Airport Pickup</span>
+                  <button className ="w-full text-xs text-center bg-gradient-to-r px-2 py-1 from-[#bef264] to-[#06b6d4] rounded-[5px]">Book Now</button>
+                </Link>
               </div>
+          <button className='text-sm mt-4 text-white bg-gradient-to-r from-[#bef264] to-[#06b6d4] w-full px-3 py-4 rounded-full hover:bg-[#00ACB1]'>View All Essentials</button>
+
 
             </div>
           </div>
@@ -356,7 +357,7 @@ const ServicesSection = () => {
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-medium">Experiences</h3>
               <div className="flex items-center gap-2">
-            <span className="text-sm mr-2">{formatSetNumber(mobileExperienceSet)}/{formatSetNumber(totalMobileExperienceSets - 1)}</span>
+              <span className="text-sm mr-2 text-[#00ACB1]">{formatSetNumber(mobileExperienceSet)}/{formatSetNumber(totalMobileExperienceSets - 1)}</span>
                 <button 
                   onClick={handleMobilePrev}
                   className="w-8 h-8 flex items-center justify-center rounded-full border border-[#00ACB1]"
@@ -389,17 +390,28 @@ const ServicesSection = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                   </div>
-                  <h4 className="text-sm font-medium">{service.title}</h4>
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-sm font-medium">{service.title}</h4>
+                    <button
+                      className="w-8 h-8 flex items-center justify-center rounded-full border border-white"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.location.href = service.link;
+                      }}
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 5L16 12L9 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </button>
+                  </div>
                 </Link>
               ))}
             </div>
           </div>
 
           {/* Book Now Button */}
-          <div className="pt-4">
-            <Link href="/services" className="block w-full bg-white text-black font-medium py-4 px-6 rounded-full text-center">
-              Book Now
-            </Link>
+          <div className="pt-1 w-full flex justify-end item-center">
+            <Link href="/services" className='text-center text-sm text-white bg-gradient-to-r from-[#bef264] to-[#06b6d4] w-full px-3 py-4 rounded-full hover:bg-[#00ACB1]'>View All Services</Link>
           </div>
         </div>
       </div>

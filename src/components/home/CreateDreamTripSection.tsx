@@ -49,7 +49,6 @@ const CreateDreamTripSection: React.FC = () => {
       CTA: "Request Assistance"
     }
   ];
-  console.log(features);
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev === features.length - 1 ? 0 : prev + 1));
   };
