@@ -346,7 +346,7 @@ const CreateTourAll: React.FC = () => {
 
             {/* Filter Section */}
             <div className="flex flex-col justify-start items-start md:flex-row md:justify-between md:items-center gap-4 mb-8">
-                <div className="relative w-full md:w-64">
+                <div className="relative w-full md:w-1/2 md:w-64">
                     <select 
                         className="w-full bg-[#1C1F22] text-white px-4 py-3 rounded-lg appearance-none cursor-pointer"
                         onChange={(e) => setActiveFilter(e.target.value)}
@@ -356,21 +356,6 @@ const CreateTourAll: React.FC = () => {
                         {subCategories.map((category) => (
                             <option key={category} value={category}>{category}</option>
                         ))}
-                    </select>
-                    <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
-                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
-                            <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                    </div>
-                </div>
-
-                <div className="relative w-full md:w-32">
-                    <select 
-                        className="w-full bg-[#1C1F22] text-white px-4 py-3 rounded-lg appearance-none cursor-pointer"
-                    >
-                        <option>Sort by</option>
-                        <option>Popular</option>
-                        <option>Latest</option>
                     </select>
                     <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
                         <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">

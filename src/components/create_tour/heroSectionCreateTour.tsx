@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
@@ -326,7 +326,7 @@ const HeroSectionCreateTour: React.FC = () => {
   const [currentMapIndex, setCurrentMapIndex] = useState(0);
   const [isAutoplay, setIsAutoplay] = useState(true);
   const autoplayDelay = 3000;
-
+  const exploreIslandRef = useRef<HTMLDivElement>(null);
   //   Function to handle search action
   const handleSearch = () => {
     setShowHotelList(true);
@@ -389,10 +389,42 @@ const HeroSectionCreateTour: React.FC = () => {
     if (index >= 0) {
       setCurrentSlide(index);
       setCurrentImageIndex(0);
-      setIsAutoplay(true)
+      setIsAutoplay(true);
+      
+      // Smooth scroll to explore section
+      exploreIslandRef.current?.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
     }
   };
 
+  const handleMapLocationClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    
+    // Define clickable areas for each island (coordinates are relative to the map container)
+    const islandAreas = {
+      'Port Blair': { x1: 100, y1: 300, x2: 150, y2: 350 },
+      'Havelock': { x1: 200, y1: 250, x2: 250, y2: 300 },
+      'Neil': { x1: 180, y1: 280, x2: 230, y2: 330 },
+      'Long': { x1: 160, y1: 200, x2: 210, y2: 250 },
+      'Diglipur': { x1: 120, y1: 50, x2: 170, y2: 100 },
+      'Mayabandar': { x1: 140, y1: 150, x2: 190, y2: 200 }
+    };
+
+    // Find which island was clicked
+    for (const [islandName, area] of Object.entries(islandAreas)) {
+      if (x >= area.x1 && x <= area.x2 && y >= area.y1 && y <= area.y2) {
+        const island = islandSlides.find(i => i.title === islandName);
+        if (island) {
+          handleIslandSelect(island.id);
+        }
+        break;
+      }
+    }
+  };
 
   // Handle navigation
   const handleNext = () => {
@@ -411,9 +443,7 @@ const HeroSectionCreateTour: React.FC = () => {
     }
   };
 
-
-
-
+  
 
   return (
     <section className="bg-[#222629] text-white py-[20px] md:py-[50px] h-auto">
@@ -426,24 +456,29 @@ const HeroSectionCreateTour: React.FC = () => {
             </h3>
           </div>
           <div className="flex flex-col lg:flex-row gap-4 items-align w-full justify-end overflow-x-auto">
-            <div className="lg:hidden flex justify-between items-center space-x-2 bg-[#1C1F22] rounded-full p-1 w-fit min-w-full md:min-w-0">
-              {!showHotelList ? (
-                <div className="flex items-center space-x-2">
-                  <span className="bg-[#222629] px-4 py-4 rounded-full text-xs md:text-lg">$ 0</span>
-                  <span className="bg-[#222629] px-4 py-4 rounded-full text-xs md:text-lg">0 day</span>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between items-start gap-2 bg-[#1C1F22] rounded-[10px] sm:rounded-full p-1 min-w-full">
+              {/* Island Dropdown */}
+              <div className="relative w-full sm:w-1/2 md:2/5 h-full">
+                <select
+                  value={activeIslandId}
+                  onChange={(e) => handleIslandSelect(Number(e.target.value))}
+                  className="w-full bg-[#222629] text-white px-4 py-2 rounded-full appearance-none cursor-pointer text-center"
+                >
+                  {islandSlides.map((island) => (
+                    <option key={island.id} value={island.id}>
+                      {island.title}
+                    </option>
+                  ))}
+                </select>
+                <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
                 </div>
-              )
-                :
-                (
-                  <button className="bg-[#222629] hover:bg-white  hover:black text-xs md:test-lg text-white px-4 py-4 rounded-full flex items-center justify-between gap-1"
-                    onClick={handleBackToSearch}>
-                    <FaChevronLeft />
-                    <span>Edit</span>
-                  </button>
-                )}
-              <button className="bg-gradient-to-r from-[#bef264] to-[#06b6d4] text-white px-6 py-2 rounded-full">
-                Tour Summary
-              </button>
+              </div>
+              <div className="text-xs w-full h-full sm:w-1/2 md:w-2/5 md:text-base">
+                <button className="bg-gradient-to-r w-full h-full from-[#bef264] to-[#06b6d4] text-white px-6 py-2 rounded-full">Tour Summary</button>
+              </div>
             </div>
 
             {/* Main Navigation Tabs */}
@@ -461,25 +496,6 @@ const HeroSectionCreateTour: React.FC = () => {
                 </button>
               ))}
             </div> */}
-
-            <div className="hidden lg:flex items-center space-x-2 bg-[#1C1F22] rounded-full p-1 w-fit min-w-full md:min-w-0">
-              {showHotelList ? (
-                <button className="bg-[#222629] hover:bg-white hover:text-black text-white px-4 py-2 rounded-full flex items-center"
-                  onClick={handleBackToSearch}>
-                  <FaChevronLeft className="mr-1" /> Edit
-                </button>
-              )
-                :
-                (
-                  <div className="flex items-center space-x-2">
-                    <span className="bg-[#222629] px-4 py-2 rounded-full">$ 0</span>
-                    <span className="bg-[#222629] px-4 py-2 rounded-full">0 day</span>
-                  </div>
-                )}
-              <button className="bg-gradient-to-r from-[#bef264] to-[#06b6d4] text-white px-6 py-2 rounded-full">
-                Tour Summary
-              </button>
-            </div>
           </div>
         </div>
 
@@ -505,8 +521,8 @@ const HeroSectionCreateTour: React.FC = () => {
             {/* Island Content */}
             <div className="flex flex-col md:flex-row gap-4 lg:h-[550px] md:h-[500px]">
               {/* Left Section: Map */}
-              <div className="w-full md:w-1/3 bg-[#1C1F22] rounded-[10px] flex flex-col justify-center items-center p-4">
-                <div className="relative w-full h-3/4">
+              <div className="w-full md:w-1/3 bg-[#1C1F22] rounded-[10px] flex flex-col justify-between items-center p-4">
+                <div className="relative w-full h-[70%]">
                   <Image
                     src={islandSlides[currentSlide].MapImage}
                     alt={`${islandSlides[currentSlide].title} Map`}
@@ -514,42 +530,56 @@ const HeroSectionCreateTour: React.FC = () => {
                     height={500}
                     className="w-full h-full object-contain"
                   />
-                </div>
-
-                {/* Navigation Tabs at Bottom */}
-                <div className="flex items-center justify-between w-full mt-4">
-                  <button
-                    onClick={() => {
-                      const prevIndex = (currentSlide - 1 + islandSlides.length) % islandSlides.length;
-                      handleIslandSelect(islandSlides[prevIndex].id);
-                    }}
-                    className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
-                    aria-label="Previous island"
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                    </svg>
-                  </button>
-
-                  <button
-                    onClick={() => handleIslandSelect(islandSlides[currentSlide].id)}
-                    className="px-4 py-2 rounded-full bg-[#222629] text-sm transition-colors hover:bg-white/10"
-                  >
-                    {islandSlides[currentSlide].title}
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      const nextIndex = (currentSlide + 1) % islandSlides.length;
-                      handleIslandSelect(islandSlides[nextIndex].id);
-                    }}
-                    className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
-                    aria-label="Next island"
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
+                  {/* Interactive Island Points */}
+                  <div className="absolute inset-0">
+                    {/* Diglipur */}
+                    <div 
+                      className="absolute top-[14%] right-[40%] flex flex-col items-center cursor-pointer group"
+                      onClick={() => handleIslandSelect(5)}
+                    >
+                      <div className="w-[100px] h-5 rounded-[5px] bg-[#06b6d4] opacity-0 group-hover:opacity-0 transition-opacity"></div>
+                    </div>
+                    
+                    {/* Mayabandar */}
+                    <div 
+                      className="absolute top-[30%] sm:top-[30%] md:top-[30%] left-[24%] flex flex-col items-center cursor-pointer group"
+                      onClick={() => handleIslandSelect(6)}
+                    >
+                      <div className="w-[100px] h-5 sm:h-8 md:h-5 rounded-[5px] bg-[#06b6d4] opacity-0 group-hover:opacity-0 transition-opacity"></div>
+                    </div>
+                    
+                    {/* Long */}
+                    <div 
+                      className="absolute top-[43%] right-[18%] flex flex-col items-center cursor-pointer group"
+                      onClick={() => handleIslandSelect(3)}
+                    >
+                      <div className="w-[100px] h-5 rounded-[5px] bg-[#06b6d4] opacity-0 group-hover:opacity-0 transition-opacity"></div>
+                    </div>
+                    
+                    {/* Port Blair */}
+                    <div 
+                      className="absolute top-[53%] left-[16%] flex flex-col items-center cursor-pointer group"
+                      onClick={() => handleIslandSelect(1)}
+                    >
+                      <div className="w-[100px] h-10 md:h-5 md:w-[80px] rounded-[5px] bg-[#06b6d4] opacity-0 group-hover:opacity-0 transition-opacity"></div>
+                    </div>
+                    
+                    {/* Havelock */}
+                    <div 
+                      className="absolute top-[56%] sm:top-[57%] md:top-[55%] right-[10%] sm:right-[10%] md:right-[5%] flex flex-col items-center cursor-pointer group"
+                      onClick={() => handleIslandSelect(2)}
+                    >
+                      <div className="w-[100px] h-6 sm:w-[120px] md:w-[90px] md:h-4 rounded-[5px] bg-[#06b6d4] opacity-0 group-hover:opacity-0 transition-opacity"></div>
+                    </div>
+                    
+                    {/* Neil */}
+                    <div 
+                      className="absolute top-[63%] right-[25%] flex flex-col items-center cursor-pointer group"
+                      onClick={() => handleIslandSelect(4)}
+                    >
+                      <div className="w-[100px] h-5 rounded-[5px] bg-[#06b6d4] opacity-0 group-hover:opacity-0 transition-opacity"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
