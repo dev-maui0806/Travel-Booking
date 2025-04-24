@@ -417,7 +417,7 @@ const CreateTourAll: React.FC = () => {
             {
                 maps === false && (
                     <>
-                    <div className="grid grid-cols-2 gap-6 mb-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         {currentPlaces.map((place) => (
                             <div key={place.id} className="bg-[#1C1F22] rounded-xl overflow-hidden">
                                 <div className="relative h-48">
