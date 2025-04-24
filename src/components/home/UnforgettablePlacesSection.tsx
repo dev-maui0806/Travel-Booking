@@ -69,9 +69,9 @@ const UnforgettablePlacesSection: React.FC = () => {
       <div className="container mx-auto px-4">
         {/* Title Section */}
         <div className="">
-          <h2 className="text-3xl leading-[1.2] md:text-5xl font-extralight">
+          <h2 className="text-3xl leading-[1.2] md:text-4xl font-extralight">
             Unforgettable places of{' '}
-            <span className="block md:inline md:5xl text-3xl">the islands</span>
+            <span className="block md:inline md:text-4xl text-3xl">the islands</span>
           </h2>
         </div>
 

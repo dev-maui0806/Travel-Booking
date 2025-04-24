@@ -123,7 +123,7 @@ const TravelBlogSection = () => {
   return (
     <section className="bg-[#15191D] text-white py-12 md:py-16 relative">
       <div className="container relative mx-auto px-4">
-        <h2 className="text-3xl md:text-5xl font-light mb-8">Island story and travel tips</h2>
+        <h2 className="text-3xl md:text-4xl font-light mb-8">Island story and travel tips</h2>
         {/* Mobile View - Single Card with Pagination */}
         <div className="md:hidden">
           <div className="relative mb-6">

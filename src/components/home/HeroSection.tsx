@@ -312,10 +312,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({title, subtitle}) => {
 
           {/* Main Content */}
           <div className={`flex flex-col ${isMobile ? 'w-full' : 'w-1/2'} ${isTablet ? 'pl-6' : ''}`}>
-            <h1 className={`font-bold leading-tight w-full mb-4 ${isMobile ? 'text-3xl' : isTablet ? 'text-5xl' : 'text-5xl'}`}>
+            <h1 className={`font-bold leading-tight w-full mb-4 ${isMobile ? 'text-3xl' : isTablet ? 'text-4xl' : 'text-4xl'}`}>
              {title || "Plan your dream Andaman trip your way"}
             </h1>
-            <p className={`mb-8 ${isMobile ? 'text-xl' : 'text-3xl'}`}>
+            <p className={`mb-8 ${isMobile ? 'text-xl' : 'text-2xl'}`}>
               {subtitle || "Create your own itinerary, choose from curated packages, or book just the services you need."}
             </p>
 

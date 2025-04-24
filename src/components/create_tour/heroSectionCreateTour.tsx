@@ -39,38 +39,199 @@ const HeroSectionCreateTour: React.FC = () => {
   const islandSlides = [
     {
       id: 1,
-      image: "/images/places/corbyns.png",
+      MapImage: "/images/maps/create_tour/google-map-diglipur.png",
       title: "Diglipur",
       description: "The fascinating town of Diglipur is the largest town in North Andaman Islands and yet often goes unnoticed because of its distance from other popular tourist attractions (Havelock and Port Blair). But, perhaps it is this same distance that makes Diglipur such a different and adventurous place!",
-      mapImage: "/images/maps/create_tour/google-map-diglipur.png"
+      image: [
+        {
+          id:11,
+          imagePath: "/images/places/corbyns.png",
+        },
+        {
+          id:12,
+          imagePath: "/images/places/havelock.png",
+        },
+        {
+          id:13,
+          imagePath: "/images/places/long.png",
+        },
+        {
+          id:14,
+          imagePath: "/images/places/neil.png",
+        },
+        {
+          id:15,
+          imagePath: "/images/places/port.png",
+        },
+        {
+          id:16,
+          imagePath: "/images/places/mayabunder.png",
+        },
+      ]
     },
     {
       id: 2,
-      image: "/images/places/havelock.png",
+      MapImage: "/images/maps/create_tour/google-map-havelock.png",
       title: "Havelock",
       description: "The fascinating town of Diglipur is the largest town in North Andaman Islands and yet often goes unnoticed because of its distance from other popular tourist attractions (Havelock and Port Blair). But, perhaps it is this same distance that makes Diglipur such a different and adventurous place!",
-      mapImage: "/images/maps/create_tour/google-map-havelock.png"
+      image: [
+        {
+          id:21,
+          imagePath: "/images/places/havelock.png",
+        },
+        {
+          id:22,
+          imagePath: "/images/places/corbyns.png",
+        },
+        {
+          id:23,
+          imagePath: "/images/places/port.png",
+        },
+        {
+          id:24,
+          imagePath: "/images/places/neil.png",
+        },
+        {
+          id:25,
+          imagePath: "/images/places/mayabunder.png",
+        },
+        {
+          id:26,
+          imagePath: "/images/places/long.png",
+        },
+        {
+          id:27,
+          imagePath: "/images/places/corbyns.png",
+        },
+      ]
     },
     {
       id: 3,
-      image: "/images/places/long.png",
+      MapImage: "/images/maps/create_tour/google-map-long.png",
       title: "Long",
       description: "The fascinating town of Diglipur is the largest town in North Andaman Islands and yet often goes unnoticed because of its distance from other popular tourist attractions (Havelock and Port Blair). But, perhaps it is this same distance that makes Diglipur such a different and adventurous place!",
-      mapImage: "/images/maps/create_tour/google-map-long.png"
+      image: [
+        {
+          id:31,
+          imagePath: "/images/places/long.png",
+        },
+        {
+          id:32,
+          imagePath: "/images/places/corbyns.png",
+        },
+        {
+          id:33,
+          imagePath: "/images/places/mayabunder.png",
+        },
+        {
+          id:34,
+          imagePath: "/images/places/neil.png",
+        },
+        {
+          id:35,
+          imagePath: "/images/places/long.png",
+        },
+        {
+          id:36,
+          imagePath: "/images/places/port.png",
+        },
+        {
+          id:37,
+          imagePath: "/images/places/corbyns.png",
+        },
+      ]
     },
     {
       id: 4,
-      image: "/images/places/neil.png",
+      MapImage: "/images/maps/create_tour/google-map-neil.png",
       title: "Neil",
       description: "The fascinating town of Diglipur is the largest town in North Andaman Islands and yet often goes unnoticed because of its distance from other popular tourist attractions (Havelock and Port Blair). But, perhaps it is this same distance that makes Diglipur such a different and adventurous place!",
-      mapImage: "/images/maps/create_tour/google-map-neil.png"
+      image: [
+        {
+          id:41,
+          imagePath: "/images/places/neil.png",
+        },
+        {
+          id:42,
+          imagePath: "/images/places/long.png",
+        },
+        {
+          id:43,
+          imagePath: "/images/places/corbyns.png",
+        },
+        {
+          id:44,
+          imagePath: "/images/places/neil.png",
+        },
+        {
+          id:45,
+          imagePath: "/images/places/port.png",
+        },
+        {
+          id:46,
+          imagePath: "/images/places/mayabunder.png",
+        },
+        {
+          id:47,
+          imagePath: "/images/places/corbyns.png",
+        },
+      ]
     },
     {
       id: 5,
-      image: "/images/places/port.png",
+      MapImage: "/images/maps/create_tour/google-map-port_blair.png",
       title: "Port Blair",
       description: "The fascinating town of Diglipur is the largest town in North Andaman Islands and yet often goes unnoticed because of its distance from other popular tourist attractions (Havelock and Port Blair). But, perhaps it is this same distance that makes Diglipur such a different and adventurous place!",
-      mapImage: "/images/maps/create_tour/google-map-port_blair.png"
+      image: [
+        {
+          id:51,
+          imagePath: "/images/places/port.png",
+        },
+        {
+          id:52,
+          imagePath: "/images/places/neil.png",
+        },
+        {
+          id:53,
+          imagePath: "/images/places/long.png",
+        },
+        {
+          id:54,
+          imagePath: "/images/places/corbyns.png",
+        },
+        {
+          id:55,
+          imagePath: "/images/places/mayabunder.png",
+        },
+      ]
+    },
+    {
+      id: 6,
+      MapImage: "/images/maps/create_tour/google-map-mayabandar.png",
+      title: "MayaBandar",
+      description: "The fascinating town of Diglipur is the largest town in North Andaman Islands and yet often goes unnoticed because of its distance from other popular tourist attractions (Havelock and Port Blair). But, perhaps it is this same distance that makes Diglipur such a different and adventurous place!",
+      image: [
+        {
+          id:51,
+          imagePath: "/images/places/mayabunder.png",
+        },
+        {
+          id:52,
+          imagePath: "/images/places/corbyns.png",
+        },
+        {
+          id:53,
+          imagePath: "/images/places/neil.png",
+        },
+        {
+          id:54,
+          imagePath: "/images/places/port.png",
+        },
+        {
+          id:55,
+          imagePath: "/images/places/long.png",
+        },
+      ]
     },
   ];
   
@@ -154,13 +315,17 @@ const HeroSectionCreateTour: React.FC = () => {
   
   // State management
   const [activeTab, setActiveTab] = useState<string>('islands');
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [activeIslandId, setActiveIslandId] = useState(islandSlides[0].id);
+  const [currentSlide, setCurrentSlide] = useState(4);
+  const [activeIslandId, setActiveIslandId] = useState(islandSlides[4].id);
   const [activeCategoryId, setActiveCategoryId] = useState<number | null>(null);
   const [showMap, setShowMap] = useState(false);
   const [selectedItem, setSelectedItem] = useState<Slide | null>(null);
   const [selectedItems, setSelectedItems] = useState<Slide[]>([]);
   const [showHotelList, setShowHotelList] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentMapIndex, setCurrentMapIndex] = useState(0);
+  const [isAutoplay, setIsAutoplay] = useState(true);
+  const autoplayDelay = 3000;
 
     //   Function to handle search action
   const handleSearch = () => {
@@ -180,6 +345,22 @@ const HeroSectionCreateTour: React.FC = () => {
     }
   }, [tab]);
   
+
+  useEffect(() => {
+    let autoplayTimer: NodeJS.Timeout;
+    if(isAutoplay && activeTab === 'islands') {
+      autoplayTimer = setInterval(() => {
+        const currentIsland = islandSlides[currentSlide];
+        const nextImageIndex = (currentImageIndex + 1) % currentIsland.image.length;
+        setCurrentImageIndex(nextImageIndex);
+      }, autoplayDelay);
+    }
+    return ()=> {
+      if(autoplayTimer){
+        clearInterval(autoplayTimer);
+      }
+    };
+  }, [currentImageIndex, currentSlide, activeTab, isAutoplay]);
 
 
   // Handle tab change
@@ -205,27 +386,32 @@ const HeroSectionCreateTour: React.FC = () => {
   const handleIslandSelect = (islandId: number) => {
     setActiveIslandId(islandId);
     const index = islandSlides.findIndex(island => island.id === islandId);
-    setCurrentSlide(index >= 0 ? index : 0);
+    if(index >=0){
+      setCurrentSlide(index);
+      setCurrentImageIndex(0);
+      setIsAutoplay(true)
+    }
   };
-  
 
 
   // Handle navigation
   const handleNext = () => {
     if (activeTab === 'islands') {
-      const nextIndex = (currentSlide + 1) % islandSlides.length;
-      setCurrentSlide(nextIndex);
-      setActiveIslandId(islandSlides[nextIndex].id);
+      const currentIsland = islandSlides[currentSlide];
+      const nextImageIndex = (currentImageIndex + 1) % currentIsland.image.length;
+      setCurrentImageIndex(nextImageIndex);
     }
   };
   
   const handlePrev = () => {
     if (activeTab === 'islands') {
-      const prevIndex = (currentSlide - 1 + islandSlides.length) % islandSlides.length;
-      setCurrentSlide(prevIndex);
-      setActiveIslandId(islandSlides[prevIndex].id);
+      const currentIsland = islandSlides[currentSlide];
+      const prevImageIndex = (currentImageIndex - 1 + currentIsland.image.length) % currentIsland.image.length;
+      setCurrentImageIndex(prevImageIndex);
     }
   };
+
+
   
 
 
@@ -233,7 +419,12 @@ const HeroSectionCreateTour: React.FC = () => {
     <section className="bg-[#222629] text-white py-[20px] md:py-[50px] h-auto">
       <div className="container mx-auto px-4 sm:px-6">
         {/* Navigation Tabs */}
-        <div className="relative mb-6">
+        <div className="relative mb-6 flex flex-col gap-4 py-3">
+          <div className="flex flex-col justify-start items-start w-full gap-5">
+            <h2 className="w-full text-3xl md:text-4xl lg:text-4xl">Select an Island to Begin Your Custom Tour</h2>
+            <h3 className="w-full text-xl md:text-2xl lg:text-2xl">Click on any island from the map to view highlights and start exploring locations.
+            </h3>
+          </div>
           <div className="flex flex-col lg:flex-row gap-4 items-align w-full justify-between overflow-x-auto">
             <div className="lg:hidden flex justify-between items-center space-x-2 bg-[#1C1F22] rounded-full p-1 w-fit min-w-full md:min-w-0">
                 {!showHotelList ?(
@@ -319,7 +510,7 @@ const HeroSectionCreateTour: React.FC = () => {
               <div className="w-full md:w-1/3 bg-[#1C1F22] rounded-[10px] flex flex-col justify-center items-center p-4">
                 <div className="relative w-full h-full">
                   <Image
-                    src={islandSlides[currentSlide].mapImage}
+                    src={islandSlides[currentSlide].MapImage}
                     alt={`${islandSlides[currentSlide].title} Map`}
                     width={500}
                     height={500}
@@ -329,21 +520,24 @@ const HeroSectionCreateTour: React.FC = () => {
               </div>
               
               {/* Right Section: Island Image and Description */}
-              <div className="bg-[#1C1F22] w-full relative md:w-2/3 flex flex-col gap-[24px] justify-start items-center rounded-[10px]">
-                <div className="relative w-full h-3/4">
+              <div className="bg-[#1C1F22] w-full relative md:w-2/3 flex flex-col gap-10 pb-[15px] justify-start items-center rounded-[10px]">
+                <div className="relative w-full h-3/5">
                   <Image
-                    src={islandSlides[currentSlide].image}
+                    src={islandSlides[currentSlide].image[currentImageIndex].imagePath}
                     alt={islandSlides[currentSlide].title}
                     width={600}
                     height={400}
                     className="w-full h-full object-cover rounded-t-lg"
                   />
+                  <h4 className ="text-2xl absolute left-4 bg-black bg-opacity-30 px-3 py-2 rounded-[10px] top-2">{islandSlides[currentSlide].title}</h4>
                 </div>
-                <div className="w-full h-1/4 flex px-[32px] py-[10px] md:py-[0px] flex-col sm:flex-row justify-between rounded-b-lg">
-                  <p className="text-sm w-full md:w-3/5">{islandSlides[currentSlide].description}</p>
+                <div className="w-full h-1/5 flex px-[32px] py-[10px] md:py-[0px] flex-col sm:flex-row justify-between rounded-b-lg">
+                  <p className="text-sm w-full md:w-3/5 overflow-hidden line-clamp-5 md:line-clamp-7">
+                    {islandSlides[currentSlide].description}
+                  </p>
                   <div className="flex items-center justify-end space-x-3 md:space-x-4 w-full md:w-2/5">
                     <span className="text-sm font-light text-[#06b6d4]">
-                      {String(currentSlide + 1).padStart(2, '0')}/{String(islandSlides.length).padStart(2, '0')}
+                      {String(currentImageIndex + 1).padStart(2, '0')}/{String(islandSlides[currentSlide].image.length).padStart(2, '0')}
                     </span>
                     <div className="flex space-x-2">
                       <button

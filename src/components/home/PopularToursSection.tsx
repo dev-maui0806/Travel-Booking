@@ -59,8 +59,8 @@ const PopularToursSection = () => {
         {/* Title and navigation */}
         <div className="flex justify-between items-center mb-6 md:mb-10">
           <div className="flex flex-col justify-start items-start gap-2">
-            <h2 className="text-3xl md:text-5xl font-light">READY-MADE TOURS</h2>
-            <h3 className='text-xl md:text-3xl font-light'>Pre-curated itineraries for a hassle-free trip</h3>
+            <h2 className="text-3xl md:text-4xl font-light">READY-MADE TOURS</h2>
+            <h3 className='text-xl md:text-2xl font-light'>Pre-curated itineraries for a hassle-free trip</h3>
           </div>
           <div className="hidden md:flex items-center gap-3">
             <button

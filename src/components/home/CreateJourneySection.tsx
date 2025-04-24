@@ -79,10 +79,10 @@ const CreateJourneySection = () => {
       <div className="relative z-10">
         {/* SECTION 1: Header - Full Width */}
         <div className="container mx-auto px-4 mb-10">
-          <h2 className="text-3xl md:text-5xl font-light text-white">
+          <h2 className="text-3xl md:text-4xl font-light text-white">
           Start building your own Andaman itinerary in just 3 steps.
           </h2>
-          <p className="text-white/70 text-xl md:text-3xl mt-2 max-w-md">
+          <p className="text-white/70 text-xl md:text-2xl mt-2 max-w-md">
             Have questions or doubts? Simply fill out our contact form and we will
             contact you as soon as possible. Or maybe you just want to leave a
             review, we will be very grateful to you.
