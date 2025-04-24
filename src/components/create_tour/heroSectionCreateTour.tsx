@@ -5,7 +5,7 @@ import Image from "next/image";
 import CreateTourAll from "./CreateTourAll";
 import HotelSearchForm from "./All/HotelSearchForm";
 import HotelParkList from "./All/HotelParkList";
-import {FaChevronLeft} from 'react-icons/fa';
+import { FaChevronLeft } from 'react-icons/fa';
 
 // Define types for our data
 interface Slide {
@@ -25,7 +25,7 @@ interface Category {
 const HeroSectionCreateTour: React.FC = () => {
   const router = useRouter();
   const { tab } = router.query;
-  
+
   // Navigation tabs
   const navTabs = [
     { id: 'islands', label: 'Islands' },
@@ -34,37 +34,37 @@ const HeroSectionCreateTour: React.FC = () => {
     { id: 'transport', label: 'Transport' },
     { id: 'adventures', label: 'Adventures and entertainment' },
   ];
-  
+
   // Island slides data
   const islandSlides = [
     {
       id: 1,
-      MapImage: "/images/maps/create_tour/google-map-diglipur.png",
-      title: "Diglipur",
-      description: "The fascinating town of Diglipur is the largest town in North Andaman Islands and yet often goes unnoticed because of its distance from other popular tourist attractions (Havelock and Port Blair). But, perhaps it is this same distance that makes Diglipur such a different and adventurous place!",
+      MapImage: "/images/maps/create_tour/google-map-port_blair.png",
+      title: "Port Blair",
+      description: "The fascinating town of Port Blair is the largest town in North Andaman Islands and yet often goes unnoticed because of its distance from other popular tourist attractions (Havelock and Port Blair). But, perhaps it is this same distance that makes Diglipur such a different and adventurous place!",
       image: [
         {
-          id:11,
+          id: 11,
           imagePath: "/images/places/corbyns.png",
         },
         {
-          id:12,
+          id: 12,
           imagePath: "/images/places/havelock.png",
         },
         {
-          id:13,
+          id: 13,
           imagePath: "/images/places/long.png",
         },
         {
-          id:14,
+          id: 14,
           imagePath: "/images/places/neil.png",
         },
         {
-          id:15,
+          id: 15,
           imagePath: "/images/places/port.png",
         },
         {
-          id:16,
+          id: 16,
           imagePath: "/images/places/mayabunder.png",
         },
       ]
@@ -76,31 +76,31 @@ const HeroSectionCreateTour: React.FC = () => {
       description: "The fascinating town of Diglipur is the largest town in North Andaman Islands and yet often goes unnoticed because of its distance from other popular tourist attractions (Havelock and Port Blair). But, perhaps it is this same distance that makes Diglipur such a different and adventurous place!",
       image: [
         {
-          id:21,
+          id: 21,
           imagePath: "/images/places/havelock.png",
         },
         {
-          id:22,
+          id: 22,
           imagePath: "/images/places/corbyns.png",
         },
         {
-          id:23,
+          id: 23,
           imagePath: "/images/places/port.png",
         },
         {
-          id:24,
+          id: 24,
           imagePath: "/images/places/neil.png",
         },
         {
-          id:25,
+          id: 25,
           imagePath: "/images/places/mayabunder.png",
         },
         {
-          id:26,
+          id: 26,
           imagePath: "/images/places/long.png",
         },
         {
-          id:27,
+          id: 27,
           imagePath: "/images/places/corbyns.png",
         },
       ]
@@ -112,31 +112,31 @@ const HeroSectionCreateTour: React.FC = () => {
       description: "The fascinating town of Diglipur is the largest town in North Andaman Islands and yet often goes unnoticed because of its distance from other popular tourist attractions (Havelock and Port Blair). But, perhaps it is this same distance that makes Diglipur such a different and adventurous place!",
       image: [
         {
-          id:31,
+          id: 31,
           imagePath: "/images/places/long.png",
         },
         {
-          id:32,
+          id: 32,
           imagePath: "/images/places/corbyns.png",
         },
         {
-          id:33,
+          id: 33,
           imagePath: "/images/places/mayabunder.png",
         },
         {
-          id:34,
+          id: 34,
           imagePath: "/images/places/neil.png",
         },
         {
-          id:35,
+          id: 35,
           imagePath: "/images/places/long.png",
         },
         {
-          id:36,
+          id: 36,
           imagePath: "/images/places/port.png",
         },
         {
-          id:37,
+          id: 37,
           imagePath: "/images/places/corbyns.png",
         },
       ]
@@ -148,59 +148,59 @@ const HeroSectionCreateTour: React.FC = () => {
       description: "The fascinating town of Diglipur is the largest town in North Andaman Islands and yet often goes unnoticed because of its distance from other popular tourist attractions (Havelock and Port Blair). But, perhaps it is this same distance that makes Diglipur such a different and adventurous place!",
       image: [
         {
-          id:41,
+          id: 41,
           imagePath: "/images/places/neil.png",
         },
         {
-          id:42,
+          id: 42,
           imagePath: "/images/places/long.png",
         },
         {
-          id:43,
+          id: 43,
           imagePath: "/images/places/corbyns.png",
         },
         {
-          id:44,
+          id: 44,
           imagePath: "/images/places/neil.png",
         },
         {
-          id:45,
+          id: 45,
           imagePath: "/images/places/port.png",
         },
         {
-          id:46,
+          id: 46,
           imagePath: "/images/places/mayabunder.png",
         },
         {
-          id:47,
+          id: 47,
           imagePath: "/images/places/corbyns.png",
         },
       ]
     },
     {
       id: 5,
-      MapImage: "/images/maps/create_tour/google-map-port_blair.png",
-      title: "Port Blair",
+      MapImage: "/images/maps/create_tour/google-map-diglipur.png",
+      title: "Diglipur",
       description: "The fascinating town of Diglipur is the largest town in North Andaman Islands and yet often goes unnoticed because of its distance from other popular tourist attractions (Havelock and Port Blair). But, perhaps it is this same distance that makes Diglipur such a different and adventurous place!",
       image: [
         {
-          id:51,
-          imagePath: "/images/places/port.png",
-        },
-        {
-          id:52,
-          imagePath: "/images/places/neil.png",
-        },
-        {
-          id:53,
-          imagePath: "/images/places/long.png",
-        },
-        {
-          id:54,
+          id: 51,
           imagePath: "/images/places/corbyns.png",
         },
         {
-          id:55,
+          id: 52,
+          imagePath: "/images/places/neil.png",
+        },
+        {
+          id: 53,
+          imagePath: "/images/places/long.png",
+        },
+        {
+          id: 54,
+          imagePath: "/images/places/port.png",
+        },
+        {
+          id: 55,
           imagePath: "/images/places/mayabunder.png",
         },
       ]
@@ -212,29 +212,29 @@ const HeroSectionCreateTour: React.FC = () => {
       description: "The fascinating town of Diglipur is the largest town in North Andaman Islands and yet often goes unnoticed because of its distance from other popular tourist attractions (Havelock and Port Blair). But, perhaps it is this same distance that makes Diglipur such a different and adventurous place!",
       image: [
         {
-          id:51,
+          id: 51,
           imagePath: "/images/places/mayabunder.png",
         },
         {
-          id:52,
+          id: 52,
           imagePath: "/images/places/corbyns.png",
         },
         {
-          id:53,
+          id: 53,
           imagePath: "/images/places/neil.png",
         },
         {
-          id:54,
+          id: 54,
           imagePath: "/images/places/port.png",
         },
         {
-          id:55,
+          id: 55,
           imagePath: "/images/places/long.png",
         },
       ]
     },
   ];
-  
+
   // Attraction categories
   const attractionCategories: Category[] = [
     {
@@ -312,11 +312,11 @@ const HeroSectionCreateTour: React.FC = () => {
       ]
     },
   ];
-  
+
   // State management
   const [activeTab, setActiveTab] = useState<string>('islands');
-  const [currentSlide, setCurrentSlide] = useState(4);
-  const [activeIslandId, setActiveIslandId] = useState(islandSlides[4].id);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [activeIslandId, setActiveIslandId] = useState(islandSlides[0].id);
   const [activeCategoryId, setActiveCategoryId] = useState<number | null>(null);
   const [showMap, setShowMap] = useState(false);
   const [selectedItem, setSelectedItem] = useState<Slide | null>(null);
@@ -327,12 +327,12 @@ const HeroSectionCreateTour: React.FC = () => {
   const [isAutoplay, setIsAutoplay] = useState(true);
   const autoplayDelay = 3000;
 
-    //   Function to handle search action
+  //   Function to handle search action
   const handleSearch = () => {
     setShowHotelList(true);
   }
 
-    // Function to go back to search form
+  // Function to go back to search form
   const handleBackToSearch = () => {
     setShowHotelList(false);
   }
@@ -344,19 +344,19 @@ const HeroSectionCreateTour: React.FC = () => {
       setActiveTab(tab as string);
     }
   }, [tab]);
-  
+
 
   useEffect(() => {
     let autoplayTimer: NodeJS.Timeout;
-    if(isAutoplay && activeTab === 'islands') {
+    if (isAutoplay && activeTab === 'islands') {
       autoplayTimer = setInterval(() => {
         const currentIsland = islandSlides[currentSlide];
         const nextImageIndex = (currentImageIndex + 1) % currentIsland.image.length;
         setCurrentImageIndex(nextImageIndex);
       }, autoplayDelay);
     }
-    return ()=> {
-      if(autoplayTimer){
+    return () => {
+      if (autoplayTimer) {
         clearInterval(autoplayTimer);
       }
     };
@@ -367,12 +367,12 @@ const HeroSectionCreateTour: React.FC = () => {
   const handleTabChange = (tabId: string) => {
     setActiveTab(tabId);
     router.push(`/createTour/All?tab=${tabId}`, undefined, { shallow: true });
-    
+
     // Reset states when changing tabs
     setShowMap(false);
     setSelectedItem(null);
-    if(tabId !== 'hotels'){
-        setShowHotelList(false);
+    if (tabId !== 'hotels') {
+      setShowHotelList(false);
     }
     if (tabId === 'islands') {
       setCurrentSlide(0);
@@ -381,12 +381,12 @@ const HeroSectionCreateTour: React.FC = () => {
       setActiveCategoryId(attractionCategories[0].id);
     }
   };
-  
+
   // Handle island selection
   const handleIslandSelect = (islandId: number) => {
     setActiveIslandId(islandId);
     const index = islandSlides.findIndex(island => island.id === islandId);
-    if(index >=0){
+    if (index >= 0) {
       setCurrentSlide(index);
       setCurrentImageIndex(0);
       setIsAutoplay(true)
@@ -402,7 +402,7 @@ const HeroSectionCreateTour: React.FC = () => {
       setCurrentImageIndex(nextImageIndex);
     }
   };
-  
+
   const handlePrev = () => {
     if (activeTab === 'islands') {
       const currentIsland = islandSlides[currentSlide];
@@ -412,7 +412,7 @@ const HeroSectionCreateTour: React.FC = () => {
   };
 
 
-  
+
 
 
   return (
@@ -425,90 +425,88 @@ const HeroSectionCreateTour: React.FC = () => {
             <h3 className="w-full text-xl md:text-2xl lg:text-2xl">Click on any island from the map to view highlights and start exploring locations.
             </h3>
           </div>
-          <div className="flex flex-col lg:flex-row gap-4 items-align w-full justify-between overflow-x-auto">
+          <div className="flex flex-col lg:flex-row gap-4 items-align w-full justify-end overflow-x-auto">
             <div className="lg:hidden flex justify-between items-center space-x-2 bg-[#1C1F22] rounded-full p-1 w-fit min-w-full md:min-w-0">
-                {!showHotelList ?(
-                    <div className="flex items-center space-x-2">
-                        <span className="bg-[#222629] px-4 py-4 rounded-full text-xs md:text-lg">$ 0</span>
-                        <span className="bg-[#222629] px-4 py-4 rounded-full text-xs md:text-lg">0 day</span>
-                    </div>
-                    )
-                    :
-                    (
-                    <button className="bg-[#222629] hover:bg-white  hover:black text-xs md:test-lg text-white px-4 py-4 rounded-full flex items-center justify-between gap-1"
+              {!showHotelList ? (
+                <div className="flex items-center space-x-2">
+                  <span className="bg-[#222629] px-4 py-4 rounded-full text-xs md:text-lg">$ 0</span>
+                  <span className="bg-[#222629] px-4 py-4 rounded-full text-xs md:text-lg">0 day</span>
+                </div>
+              )
+                :
+                (
+                  <button className="bg-[#222629] hover:bg-white  hover:black text-xs md:test-lg text-white px-4 py-4 rounded-full flex items-center justify-between gap-1"
                     onClick={handleBackToSearch}>
-                        <FaChevronLeft/>
-                        <span>Edit</span>
-                    </button>
+                    <FaChevronLeft />
+                    <span>Edit</span>
+                  </button>
                 )}
               <button className="bg-gradient-to-r from-[#bef264] to-[#06b6d4] text-white px-6 py-2 rounded-full">
-                Route details
+                Tour Summary
               </button>
             </div>
-            
+
             {/* Main Navigation Tabs */}
-            <div className="flex items-center space-x-2 bg-[#1C1F22] rounded-full p-1 w-fit min-w-full md:min-w-0 overflow-x-auto">
+            {/* <div className="flex items-center space-x-2 bg-[#1C1F22] rounded-full p-1 w-fit min-w-full md:min-w-0 overflow-x-auto">
               {navTabs.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => handleTabChange(tab.id)}
-                  className={`px-3 md:px-6 py-1.5 md:py-2 rounded-full whitespace-nowrap transition-colors text-sm md:text-base ${
-                    activeTab === tab.id
+                  className={`px-3 md:px-6 py-1.5 md:py-2 rounded-full whitespace-nowrap transition-colors text-sm md:text-base ${activeTab === tab.id
                       ? 'bg-white text-black'
                       : 'text-gray-400 hover:text-gray-300'
-                  }`}
+                    }`}
                 >
                   {tab.label}
                 </button>
               ))}
-            </div>
-            
+            </div> */}
+
             <div className="hidden lg:flex items-center space-x-2 bg-[#1C1F22] rounded-full p-1 w-fit min-w-full md:min-w-0">
-            {showHotelList ?(
-                    <button className="bg-[#222629] hover:bg-white hover:text-black text-white px-4 py-2 rounded-full flex items-center"
-                    onClick={handleBackToSearch}>
-                        <FaChevronLeft className="mr-1"/> Edit
-                    </button>
-                    )
-                    :
-                    (
-                    <div className="flex items-center space-x-2">
-                        <span className="bg-[#222629] px-4 py-2 rounded-full">$ 0</span>
-                        <span className="bg-[#222629] px-4 py-2 rounded-full">0 day</span>
-                    </div>
+              {showHotelList ? (
+                <button className="bg-[#222629] hover:bg-white hover:text-black text-white px-4 py-2 rounded-full flex items-center"
+                  onClick={handleBackToSearch}>
+                  <FaChevronLeft className="mr-1" /> Edit
+                </button>
+              )
+                :
+                (
+                  <div className="flex items-center space-x-2">
+                    <span className="bg-[#222629] px-4 py-2 rounded-full">$ 0</span>
+                    <span className="bg-[#222629] px-4 py-2 rounded-full">0 day</span>
+                  </div>
                 )}
-                <button className="bg-gradient-to-r from-[#bef264] to-[#06b6d4] text-white px-6 py-2 rounded-full">
-                Route details
+              <button className="bg-gradient-to-r from-[#bef264] to-[#06b6d4] text-white px-6 py-2 rounded-full">
+                Tour Summary
               </button>
             </div>
           </div>
         </div>
-        
+
         {/* Islands Tab Content */}
         {activeTab === 'islands' && (
           <div className="flex flex-col gap-6">
             {/* Island Selection Tabs */}
-            <div className="flex items-center space-x-2 bg-[#1C1F22] rounded-full p-1 overflow-x-auto">
+            {/* <div className="flex items-center space-x-2 bg-[#1C1F22] rounded-full p-1 overflow-x-auto">
               {islandSlides.map((island) => (
                 <button
                   key={island.id}
                   onClick={() => handleIslandSelect(island.id)}
-                  className={`px-3 md:px-6 py-1.5 md:py-2 rounded-full whitespace-nowrap transition-colors text-sm md:text-base ${
-                    activeIslandId === island.id
+                  className={`px-3 md:px-6 py-1.5 md:py-2 rounded-full whitespace-nowrap transition-colors text-sm md:text-base ${activeIslandId === island.id
                       ? 'bg-white text-black'
                       : 'text-gray-400 hover:text-gray-300'
-                  }`}
+                    }`}
                 >
                   {island.title}
                 </button>
               ))}
-            </div>
-            
+            </div> */}
+
             {/* Island Content */}
             <div className="flex flex-col md:flex-row gap-4 lg:h-[550px] md:h-[500px]">
               {/* Left Section: Map */}
               <div className="w-full md:w-1/3 bg-[#1C1F22] rounded-[10px] flex flex-col justify-center items-center p-4">
-                <div className="relative w-full h-full">
+                <div className="relative w-full h-3/4">
                   <Image
                     src={islandSlides[currentSlide].MapImage}
                     alt={`${islandSlides[currentSlide].title} Map`}
@@ -517,44 +515,83 @@ const HeroSectionCreateTour: React.FC = () => {
                     className="w-full h-full object-contain"
                   />
                 </div>
+
+                {/* Navigation Tabs at Bottom */}
+                <div className="flex items-center justify-between w-full mt-4">
+                  <button
+                    onClick={() => {
+                      const prevIndex = (currentSlide - 1 + islandSlides.length) % islandSlides.length;
+                      handleIslandSelect(islandSlides[prevIndex].id);
+                    }}
+                    className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
+                    aria-label="Previous island"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+
+                  <button
+                    onClick={() => handleIslandSelect(islandSlides[currentSlide].id)}
+                    className="px-4 py-2 rounded-full bg-[#222629] text-sm transition-colors hover:bg-white/10"
+                  >
+                    {islandSlides[currentSlide].title}
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      const nextIndex = (currentSlide + 1) % islandSlides.length;
+                      handleIslandSelect(islandSlides[nextIndex].id);
+                    }}
+                    className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
+                    aria-label="Next island"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </div>
               </div>
-              
+
               {/* Right Section: Island Image and Description */}
-              <div className="bg-[#1C1F22] w-full relative md:w-2/3 flex flex-col gap-10 pb-[15px] justify-start items-center rounded-[10px]">
-                <div className="relative w-full h-3/5">
+              <div className="bg-[#1C1F22] w-full relative md:w-2/3 flex flex-col gap-4 justify-between rounded-[10px] overflow-hidden">
+                <div className="relative w-full h-[300px] md:h-[400px]">
                   <Image
                     src={islandSlides[currentSlide].image[currentImageIndex].imagePath}
                     alt={islandSlides[currentSlide].title}
                     width={600}
                     height={400}
-                    className="w-full h-full object-cover rounded-t-lg"
+                    className="w-full h-full object-cover"
                   />
-                  <h4 className ="text-2xl absolute left-4 bg-black bg-opacity-30 px-3 py-2 rounded-[10px] top-2">{islandSlides[currentSlide].title}</h4>
+                  <div className="absolute top-4 left-4 bg-black/30 px-4 py-2 rounded-[10px]">
+                    <h4 className="text-xl md:text-2xl font-medium">{islandSlides[currentSlide].title}</h4>
+                  </div>
                 </div>
-                <div className="w-full h-1/5 flex px-[32px] py-[10px] md:py-[0px] flex-col sm:flex-row justify-between rounded-b-lg">
-                  <p className="text-sm w-full md:w-3/5 overflow-hidden line-clamp-5 md:line-clamp-7">
+
+                <div className="px-6 pb-6 flex flex-col sm:flex-row justify-between items-end gap-4">
+                  <p className="text-sm text-white/80 w-full sm:w-3/5 line-clamp-3">
                     {islandSlides[currentSlide].description}
                   </p>
-                  <div className="flex items-center justify-end space-x-3 md:space-x-4 w-full md:w-2/5">
+                  <div className="flex items-center gap-4 w-full sm:w-auto justify-end">
                     <span className="text-sm font-light text-[#06b6d4]">
                       {String(currentImageIndex + 1).padStart(2, '0')}/{String(islandSlides[currentSlide].image.length).padStart(2, '0')}
                     </span>
-                    <div className="flex space-x-2">
+                    <div className="flex gap-2">
                       <button
                         onClick={handlePrev}
-                        className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
+                        className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
                         aria-label="Previous"
                       >
-                        <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>
                       </button>
                       <button
                         onClick={handleNext}
-                        className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-white/10 transition-colors"
+                        className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
                         aria-label="Next"
                       >
-                        <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                       </button>
@@ -565,35 +602,35 @@ const HeroSectionCreateTour: React.FC = () => {
             </div>
           </div>
         )}
-        
+
         {/* Attractions Tab Content */}
         {activeTab === 'attractions' && (
-            <CreateTourAll/>
+          <CreateTourAll />
         )}
-        
+
         {/* Hotels Tab Content */}
         {activeTab === 'hotels' && (
-            <>
-          {!showHotelList?(<HotelSearchForm onSearch={handleSearch}/>):(
-              <HotelParkList onBackToSearch={handleBackToSearch}/>
+          <>
+            {!showHotelList ? (<HotelSearchForm onSearch={handleSearch} />) : (
+              <HotelParkList onBackToSearch={handleBackToSearch} />
             )}
-            </>
+          </>
         )}
-        
+
         {/* Transport Tab Content */}
         {activeTab === 'transport' && (
           <div className="flex justify-center items-center h-64">
             <p className="text-xl">Transport options will be displayed here</p>
           </div>
         )}
-        
+
         {/* Adventures Tab Content */}
         {activeTab === 'adventures' && (
           <div className="flex justify-center items-center h-64">
             <p className="text-xl">Adventures and entertainment options will be displayed here</p>
           </div>
         )}
-        
+
         {/* Selected Items Section */}
         {selectedItems.length > 0 && (
           <div className="mt-8">
