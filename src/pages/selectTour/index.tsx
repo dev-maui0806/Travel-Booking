@@ -9,6 +9,8 @@ import PopularToursSection from "@/components/home/PopularToursSection";
 import ReviewsSection from "@/components/home/ReviewsSection";
 import CreateJourneySection from "@/components/home/CreateJourneySection";
 import "../../app/globals.css";
+
+
 const SelectTourIndex: React.FC = () => {
     return(
         <Suspense fallback={<div>Loading...</div>}>

@@ -555,12 +555,12 @@ const HeroSectionCreateTour: React.FC = () => {
 
               {/* Right Section: Island Image and Description */}
               <div className="bg-[#1C1F22] w-full relative md:w-2/3 flex flex-col gap-4 justify-between rounded-[10px] overflow-hidden">
-                <div className="relative w-full h-[300px] md:h-[400px]">
+                <div className="relative w-full h-[250px] md:h-[350px]">
                   <Image
                     src={islandSlides[currentSlide].image[currentImageIndex].imagePath}
                     alt={islandSlides[currentSlide].title}
-                    width={600}
-                    height={400}
+                    width={500}
+                    height={350}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute top-4 left-4 bg-black/30 px-4 py-2 rounded-[10px]">
@@ -598,16 +598,14 @@ const HeroSectionCreateTour: React.FC = () => {
                     </div>
                   </div>
                 </div>
+                <div className="flex text-center w-full px-6 pb-4">
+                  <button className="h-[50px] w-full rounded-[10px] text-md bg-gradient-to-r from-[#bef264] to-[#06b6d4] ">Start Exploring Locations in {islandSlides[currentSlide].title} </button>
+                </div>
               </div>
             </div>
           </div>
         )}
-
-        {/* Attractions Tab Content */}
-        {activeTab === 'attractions' && (
-          <CreateTourAll />
-        )}
-
+        
         {/* Hotels Tab Content */}
         {activeTab === 'hotels' && (
           <>

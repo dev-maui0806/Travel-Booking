@@ -68,10 +68,10 @@ const CreateDreamTripSection: React.FC = () => {
         <div className="container mx-auto flex flex-col h-full">
           {/* Top content */}
           <div className="mb-6">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Create your dream trip yourself
             </h2>
-            <p className="text-xl md:text-3xl text-gray-300">
+            <p className="text-xl md:text-2xl text-gray-300">
               We invite you to use our site to create your own tour to the Andaman Islands. Now you have the opportunity to choose and customize your ideal trip directly online
             </p>
           </div>

@@ -22,6 +22,7 @@ const CreateTourIndex: React.FC = () => {
         <Header/>
         <HeroSection  title="Create a Tour" subtitle="Choose from our curated selection of Andaman Islands tours designed for unforgettable experiences"/>
         <HeroSectionCreateTour/>
+        
         {/* <CreateTourAllMaps/> */}
         {/* <HotelSearchForm/> */}
         <PopularToursSection/>
