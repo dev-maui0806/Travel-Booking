@@ -325,179 +325,97 @@ const CreateTourAll: React.FC = () => {
     const currentPlaces = filteredPlaces.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
     return (
-        <div className="container mx-auto min-h-screen bg-[#222629] text-white p-4">
-
-            {/* Category Filters */}
+<div className="container mx-auto min-h-screen bg-[#222629] text-white px-4 py-8">
+            {/* Header Section */}
             <div className="flex items-center justify-between mb-6">
-                {/* Desktop filters - hidden on mobile */}
-                <div className="hidden md:flex items-center justify-between space-x-2 bg-[#1C1F22] p-5 rounded-[10px] w-full">
-                    <div className='flex item-start p-1'>
-                        <button
-                            className={`px-4 py-2 rounded-full ${activeFilter === "All"
-                                    ? 'bg-white text-black'
-                                    : 'text-gray-400'
-                                }`}
-                            onClick={() => setActiveFilter("All")}
-                        >
-                            All
-                        </button>
-                        {subCategories.map(category => (
-                            <button
-                                key={category}
-                                className={`px-4 py-2 rounded-full ${activeFilter === category
-                                        ? 'bg-white text-black'
-                                        : 'text-gray-400'
-                                    }`}
-                                onClick={() => setActiveFilter(category)}
-                            >
-                                {category}
-                            </button>
-                        ))}
+                <div className="flex items-center gap-3">
+                    <div className="bg-[#06b6d4] rounded-full p-3">
+                        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                     </div>
-                    <div className={`ml-auto py-2 px-5 ${!maps?"bg-[#222629]":"bg-white"} rounded-full`}>
-                        <button className={!maps?"text-[#06b6d4] flex items-center":"text-black flex items-center"} onClick={showMapData}>
-                            <FaRegMap/>
-                            <span className="ml-1">Map</span>
-                        </button>
+                    <h2 className="text-2xl md:text-4xl">Explore Port Blair – Add Locations to Your Tour</h2>
+                </div>
+                {/* <button className="flex items-center gap-2 bg-[#1C1F22] hover:bg-[#2A2E32] px-4 py-2 rounded-full">
+                    <span>Add to Tour</span>
+                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                </button> */}
+            </div>
+
+            {/* Filter Section */}
+            <div className="flex flex-col justify-start items-start md:flex-row md:justify-between md:items-center gap-4 mb-8">
+                <div className="relative w-full md:w-64">
+                    <select 
+                        className="w-full bg-[#1C1F22] text-white px-4 py-3 rounded-lg appearance-none cursor-pointer"
+                        onChange={(e) => setActiveFilter(e.target.value)}
+                        value={activeFilter}
+                    >
+                        <option value="All">Browse by Experience</option>
+                        {subCategories.map((category) => (
+                            <option key={category} value={category}>{category}</option>
+                        ))}
+                    </select>
+                    <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
+                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                     </div>
                 </div>
-                
-                {/* Mobile filters - shown only on mobile */}
-                <div className="flex md:hidden items-center justify-between w-full bg-[#1C1F22] rounded-[10px] p-2">
-                    <div className="relative">
-                        <button 
-                            onClick={() => setShowFilters && setShowFilters(!showFilters)}
-                            className="flex items-center space-x-1 px-4 py-1.5 rounded-full bg-white text-black"
-                        >
-                            <span>All</span>
-                            <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-                        
-                        {/* Dropdown for filters - add state if needed */}
-                        {showFilters && (
-                            <div className="absolute top-full left-0 mt-1 bg-[#1C1F22] rounded-lg shadow-lg z-10 w-40">
-                                <button
-                                    className={`w-full text-left px-3 py-2 ${activeFilter === "All" ? 'text-[#06b6d4]' : 'text-gray-400'}`}
-                                    onClick={() => {
-                                        setActiveFilter("All");
-                                        setShowFilters && setShowFilters(false);
-                                    }}
-                                >
-                                    All
-                                </button>
-                                {subCategories.map(category => (
-                                    <button
-                                        key={category}
-                                        className={`w-full text-left px-3 py-2 ${activeFilter === category ? 'text-[#06b6d4]' : 'text-gray-400'}`}
-                                        onClick={() => {
-                                            setActiveFilter(category);
-                                            setShowFilters && setShowFilters(false);
-                                        }}
-                                    >
-                                        {category}
-                                    </button>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                    
-                    <div className={!maps ? "py-1.5 px-3 bg-[#222629] rounded-full" : "bg-white rounded-full py-1.5 px-3"}>
-                        <button className={!maps ? "text-[#06b6d4] flex items-center" : "text-black flex items-center"}>
-                            <FaRegMap />
-                            <span className="ml-1" onClick={() => showMapData()}>Map</span>
-                        </button>
+
+                <div className="relative w-full md:w-32">
+                    <select 
+                        className="w-full bg-[#1C1F22] text-white px-4 py-3 rounded-lg appearance-none cursor-pointer"
+                    >
+                        <option>Sort by</option>
+                        <option>Popular</option>
+                        <option>Latest</option>
+                    </select>
+                    <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
+                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                     </div>
                 </div>
             </div>
 
             {/* Places Grid */}
-
-            {
-                maps === false && (
-                    <>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                        {currentPlaces.map((place) => (
-                            <div key={place.id} className="bg-[#1C1F22] rounded-xl overflow-hidden">
-                                <div className="relative h-48">
-                                    <Image
-                                        src={place.image}
-                                        alt={place.name}
-                                        fill
-                                        className="object-cover"
-                                    />
-                                </div>
-                                <div className="p-4">
-                                    <h3 className="text-lg font-semibold mb-1">{place.name}</h3>
-                                    <p className="text-sm text-gray-400 line-clamp-2">
-                                        {place.description}
-                                    </p>
-                                </div>
-
-                                
-                                <div className="flex justify-between items-center p-4">
-                                  <button 
-                                    className="text-[#06b6d4] rounded-full p-2 hover:bg-[#111827]"
-                                    onClick={() => {
-                                      setSelectedDetailPlace(place);
-                                      setShowDetailPanel(true);
-                                    }}
-                                  >
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                      <circle cx="12" cy="12" r="10"></circle>
-                                      <polyline points="12 16 16 12 12 8"></polyline>
-                                      <line x1="8" y1="12" x2="16" y2="12"></line>
-                                    </svg>
-                                  </button>
-                                  <button className="text-white bg-[#06b6d4] p-2 rounded-full border border-[#06b6d4] hover:border-white">
-                                    <HiOutlineShoppingBag/>
-                                  </button>
-                                </div>
-                                
-                                {showDetailPanel && selectedDetailPlace && (
-                                  <PlaceDetailPanel 
-                                    place={selectedDetailPlace} 
-                                    onClose={() => setShowDetailPanel(false)} 
-                                  />
-                                )}
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="flex items-center justify-end space-x-3 md:space-x-4">
-                        <div className="text-sm font-light text-[#06b6d4]">
-                            {String(currentPage).padStart(2, '0')}/{String(totalPages).padStart(2, '0')}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mb-8">
+                {currentPlaces.map((place) => (
+                    <div key={place.id} className="bg-[#1C1F22] rounded-lg overflow-hidden">
+                        <div className="relative h-64">
+                            <Image
+                                src={place.image}
+                                alt={place.name}
+                                layout="fill"
+                                objectFit="cover"
+                            />
                         </div>
-                        <div className="flex space-x-2">
-                            <button
-                                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                                disabled={currentPage === 1}
-                                className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
-                                >
-                                <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                                </svg>
-                            </button>
-                            <button
-                                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-                                disabled={currentPage === totalPages}
-                                className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
-                            >
-                                <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
+                        <div className="p-4 flex justify-between items-center">
+                            <h3 className="text-xl font-medium">{place.name}</h3>
+                            <button className="bg-[#06b6d4] hover:bg-[#0891b2] text-white px-4 py-2 rounded-full text-sm">
+                                Add to Tour
                             </button>
                         </div>
                     </div>
-                    </>
-                )
-            }
-            {maps === true && (
-                <>
-                    <MapView places={currentPlaces}/>
-                </>
-            )}
+                ))}
+            </div>
+
+            {/* Bottom Info Section */}
+            <div className="flex flex-col md:flex-row items-start justify-start md:items-center gap-4 md:justify-between bg-[#1C1F22] rounded-lg p-4">
+                <div className="flex items-center gap-3">
+                    <div className="bg-[#06b6d4] rounded-full p-2">
+                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </div>
+                    <p className="text-xs md:text-sm">You've selected 3 locations in Port Blair. Don't forget to plan your stay, car/ferry.</p>
+                </div>
+                <button className="text-[#06b6d4] w-full text-right hover:text-[#0891b2] font-medium">
+                    Plan Essentials
+                </button>
+            </div>
         </div>
     );
 };

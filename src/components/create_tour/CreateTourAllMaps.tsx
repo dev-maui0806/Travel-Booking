@@ -71,7 +71,7 @@ const CreateTourAllMaps: React.FC = () => {
     return (
         <section className="container mx-auto min-h-screen bg-[#222629] text-white p-4">
             {/* Top Navigation Bar */}
-            <div className="flex flex-col md:flex-row items-between md:items-center gap-2 justify-between mb-6">
+            <div className="flex flex-col md:flex-row items-end md:items-center gap-2 justify-end mb-6">
                 <div className="md:flex hidden space-x-2 bg-[#1C1F22] rounded-full p-1">
                     {attractionsData.map(tab => (
                         <button

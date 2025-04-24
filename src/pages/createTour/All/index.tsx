@@ -13,8 +13,8 @@ import { Suspense } from "react";
 import "../../../app/globals.css";
 import CreateTourAllMaps from "@/components/create_tour/CreateTourAllMaps";
 import HotelSearchForm from "@/components/create_tour/All/HotelSearchForm";
-
-
+import MapView from "@/components/create_tour/MapView";
+import attractionCategories from "@/components/create_tour/heroSectionCreateTour";
 
 const CreateTourIndex: React.FC = () => {
   return (
@@ -22,9 +22,9 @@ const CreateTourIndex: React.FC = () => {
         <Header/>
         <HeroSection  title="Create a Tour" subtitle="Choose from our curated selection of Andaman Islands tours designed for unforgettable experiences"/>
         <HeroSectionCreateTour/>
-        
+        <CreateTourAll />
         {/* <CreateTourAllMaps/> */}
-        {/* <HotelSearchForm/> */}
+        {/* <HotelSearchForm /> */}
         <PopularToursSection/>
         {/* <TravelBlogSection/> */}
         <ReviewsSection/>

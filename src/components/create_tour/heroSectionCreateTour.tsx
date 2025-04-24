@@ -605,7 +605,12 @@ const HeroSectionCreateTour: React.FC = () => {
             </div>
           </div>
         )}
-        
+
+        {/* Attractions Tab Content */}
+        {activeTab === 'attractions' && (
+          <CreateTourAll />
+        )}
+
         {/* Hotels Tab Content */}
         {activeTab === 'hotels' && (
           <>
