@@ -476,9 +476,6 @@ const HeroSectionCreateTour: React.FC = () => {
                   </svg>
                 </div>
               </div>
-              <div className="text-xs w-full h-full sm:w-1/2 md:w-2/5 md:text-base">
-                <button className="bg-gradient-to-r w-full h-full from-[#bef264] to-[#06b6d4] text-white px-6 py-2 rounded-full">Tour Summary</button>
-              </div>
             </div>
 
             {/* Main Navigation Tabs */}
@@ -585,7 +582,7 @@ const HeroSectionCreateTour: React.FC = () => {
 
               {/* Right Section: Island Image and Description */}
               <div className="bg-[#1C1F22] w-full relative md:w-2/3 flex flex-col gap-4 justify-between rounded-[10px] overflow-hidden">
-                <div className="relative w-full h-[250px] md:h-[350px]">
+                <div className="relative w-full h-[250px] md:h-[300px]">
                   <Image
                     src={islandSlides[currentSlide].image[currentImageIndex].imagePath}
                     alt={islandSlides[currentSlide].title}
@@ -696,6 +693,14 @@ const HeroSectionCreateTour: React.FC = () => {
             </div>
           </div>
         )}
+        <div className="text-xs w-full h-full py-3 flex justify-end md:text-base">
+          <div className="bg-gradient-to-r flex justify-center gap-3 items-center w-[220px] h-full from-[#bef264] to-[#06b6d4] text-white px-6 py-2 rounded-full">
+          <button className="text-md h-[40px]">Tour Summary</button>
+          <div className="w-[24px] h-[24px] bg-[#06b6d4] text-white text-center rounded-full">
+            0
+          </div>
+          </div>
+        </div>
       </div>
     </section>
   );
