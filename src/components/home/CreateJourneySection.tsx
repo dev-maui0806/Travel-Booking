@@ -82,7 +82,7 @@ const CreateJourneySection = () => {
           <h2 className="text-3xl md:text-4xl font-light text-white">
           Start building your own Andaman itinerary in just 3 steps.
           </h2>
-          <p className="text-white/70 text-xl md:text-2xl mt-2 max-w-md">
+          <p className="text-white/70 text-xl md:text-2xl mt-2 w-full">
             Have questions or doubts? Simply fill out our contact form and we will
             contact you as soon as possible. Or maybe you just want to leave a
             review, we will be very grateful to you.
@@ -94,8 +94,8 @@ const CreateJourneySection = () => {
           <div className="flex flex-col justify-between md:flex-row gap-6">
             {/* SECTION 2: Form (Left Side) */}
             <div className="md:w-3/5 lg:w-1/2">
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="relative">
+              <form onSubmit={handleSubmit} className="space-y-4 flex flex-col justify-start items-end">
+                <div className="w-full relative">
                   <input
                     type="text"
                     name="name"
@@ -110,7 +110,7 @@ const CreateJourneySection = () => {
                   />
                 </div>
 
-                <div className="relative">
+                <div className="w-full relative">
                   <input
                     type="email"
                     name="email"
@@ -125,7 +125,7 @@ const CreateJourneySection = () => {
                   />
                 </div>
 
-                <div className="relative">
+                <div className="w-full relative">
                   <textarea
                     name="message"
                     value={formData.message}
@@ -141,11 +141,11 @@ const CreateJourneySection = () => {
                   ></textarea>
                 </div>
 
-                <div className="flex md:w-[100px] w-full">
+                <div className="flex right-0 md:w-[220px] w-full">
                   <button
                     type="submit"
                     className="px-3 py-3 bg-white text-gray-900 rounded-full font-medium flex items-center 
-                      hover:bg-gray-100 transition-colors duration-300 flex w-full justify-center md:justify-between"
+                      hover:bg-gray-100 transition-colors duration-300 flex w-full justify-center md:justify-end"
                   >
                     <span className="text-[16px] text-[#222629]">
                     Create Your Tour Now</span>

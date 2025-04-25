@@ -280,6 +280,10 @@ const CreateTourAll: React.FC = () => {
     const [activeTab, setActiveTab] = useState("Islands");
     const [activeFilter, setActiveFilter] = useState("All");
     const [currentPage, setCurrentPage] = useState(1);
+    const  [showAllItems, setShowAllItems] = useState(false);
+
+
+
     const [subCategories, setSubCategories] = useState<string[]>([]);
     const [showFilters, setShowFilters] = useState(false); // Add this line
     const [maps, setMaps] = useState(false);
@@ -323,15 +327,28 @@ const CreateTourAll: React.FC = () => {
     const itemsPerPage = 4;
     const totalPages = Math.ceil(filteredPlaces.length / itemsPerPage);
     const currentPlaces = filteredPlaces.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+    const displayedPlaces = showAllItems?filteredPlaces:filteredPlaces.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+    const handleViewAllClick = () => {
+        setShowAllItems(!showAllItems);
+        window.scrollTo({
+            top:window.scrollY + 200, 
+            behavior:"smooth"
+        })
+    }
+
+    const handleAddToTour = (place: Object)  => {
+        return <></>;
+    }
 
     return (
-<div className="container mx-auto min-h-screen bg-[#222629] text-white px-4 py-8">
+        <div className="container mx-auto min-h-screen bg-[#222629] text-white px-4 py-8">
             {/* Header Section */}
             <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
                     <div className="bg-[#06b6d4] rounded-full p-3">
                         <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
-                            <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </div>
                     <h2 className="text-2xl md:text-4xl">Explore Port Blair – Add Locations to Your Tour</h2>
@@ -347,7 +364,7 @@ const CreateTourAll: React.FC = () => {
             {/* Filter Section */}
             <div className="flex flex-col justify-start items-start md:flex-row md:justify-between md:items-center gap-4 mb-8">
                 <div className="relative w-full md:w-1/2 md:w-64">
-                    <select 
+                    <select
                         className="w-full bg-[#1C1F22] text-white px-4 py-3 rounded-lg appearance-none cursor-pointer"
                         onChange={(e) => setActiveFilter(e.target.value)}
                         value={activeFilter}
@@ -359,40 +376,110 @@ const CreateTourAll: React.FC = () => {
                     </select>
                     <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
                         <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
-                            <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </div>
                 </div>
             </div>
 
             {/* Places Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mb-8">
-                {currentPlaces.map((place) => (
-                    <div key={place.id} className="bg-[#1C1F22] rounded-lg overflow-hidden">
-                        <div className="relative h-64">
+        {/* Places Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+            {displayedPlaces.map((place) => (
+                <div key={place.id} className="bg-[#1C1F22] rounded-[10px] flex flex-col justify-between gap-1 items-center overflow-hidden">
+                    {/* Title */}
+                    <div className='w-full p-2 flex justify-center pt-4'>
+                        <h3 className=" text-sm md:text-xl font-medium">
+                            {place.name}
+                        </h3>
+                    </div>
+                    <div className=" w-full relative">
+                        {/* Image */}
+                        <div className="relative h-[150px] sm:h-[200px] w-full">
                             <Image
                                 src={place.image}
                                 alt={place.name}
-                                layout="fill"
-                                objectFit="cover"
+                                fill
+                                className="object-cover"
                             />
                         </div>
-                        <div className="p-4 flex justify-between items-center">
-                            <h3 className="text-xl font-medium">{place.name}</h3>
-                            <button className="bg-[#06b6d4] hover:bg-[#0891b2] text-white px-4 py-2 rounded-full text-sm">
+                        
+                    </div>
+                        {/* Add to Tour Button */}
+                        <div className="w-full p-2">
+                            <button 
+                                className="w-full text-xs md:text-xl bg-white hover:bg-[#004E64] text-black py-2 px-4 rounded-[10px] transition-colors duration-200 flex items-center justify-center gap-2"
+                                onClick={() => handleAddToTour(place)}
+                            >
                                 Add to Tour
+                                <svg 
+                                    className="w-3 h-3 md:w-4 md:h-4" 
+                                    fill="none" 
+                                    stroke="currentColor" 
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path 
+                                        strokeLinecap="round" 
+                                        strokeLinejoin="round" 
+                                        strokeWidth={2} 
+                                        d="M9 5l7 7-7 7"
+                                    />
+                                </svg>
+                            </button>
+                        </div>
+                </div>
+            ))}
+        </div>
+
+            {/* View All Button */}
+            {
+                !showAllItems && filteredPlaces.length > itemsPerPage && (
+                    <div className="flex justify-center sm:justify-end md:justify-end w-full mb-8">
+                        <div className='flex w-full justify-center md:w-[300px]'>
+                            <button 
+                                onClick={handleViewAllClick}
+                                className="w-full bg-gradient-to-r from-[#bef264] to-[#06b6d4] text-white px-8 py-3 rounded-full text-lg font-medium hover:opacity-90 transition-opacity shadow-lg flex justify-center items-center gap-2"
+                            >
+                                {showAllItems ? 'Show Less' : 'View All'}
+                                <svg 
+                                    className={`w-4 h-4 transition-transform ${showAllItems ? 'rotate-180' : ''}`} 
+                                    fill="none" 
+                                    stroke="currentColor" 
+                                    viewBox="0 0 24 24"
+                                    >
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                </svg>
                             </button>
                         </div>
                     </div>
-                ))}
-            </div>
+                )
+            }
+             {/* Show Less Button (when showing all items) */}
+             {showAllItems && (
+                <div className="flex justify-center mb-8">
+                    <button 
+                        onClick={handleViewAllClick}
+                        className="bg-gradient-to-r from-[#bef264] to-[#06b6d4] text-white px-8 py-3 rounded-full text-lg font-medium hover:opacity-90 transition-opacity shadow-lg flex items-center gap-2"
+                    >
+                        Show Less
+                        <svg 
+                            className="w-4 h-4 rotate-180" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                </div>
+            )}
 
             {/* Bottom Info Section */}
             <div className="flex flex-col md:flex-row items-start justify-start md:items-center gap-4 md:justify-between bg-[#1C1F22] rounded-lg p-4">
                 <div className="flex items-center gap-3">
                     <div className="bg-[#06b6d4] rounded-full p-2">
                         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </div>
                     <p className="text-xs md:text-sm">You've selected 3 locations in Port Blair. Don't forget to plan your stay, car/ferry.</p>
