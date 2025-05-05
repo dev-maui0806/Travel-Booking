@@ -24,7 +24,7 @@ const CreateTourIndex: React.FC = () => {
         <HeroSectionCreateTour/>
         <CreateTourAll />
         {/* <CreateTourAllMaps/> */}
-        {/* <HotelSearchForm /> */}
+        <HotelSearchForm onSearch={() => {}} />
         <PopularToursSection/>
         {/* <TravelBlogSection/> */}
         <ReviewsSection/>

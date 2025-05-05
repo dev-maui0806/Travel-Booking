@@ -455,8 +455,8 @@ const HeroSectionCreateTour: React.FC = () => {
             <h3 className="w-full text-xl md:text-2xl lg:text-2xl">Click on any island from the map to view highlights and start exploring locations.
             </h3>
           </div>
-          <div className="flex flex-col lg:flex-row gap-4 items-align w-full justify-end overflow-x-auto">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between items-start gap-2 bg-[#1C1F22] rounded-[10px] sm:rounded-full p-1 min-w-full">
+          <div className="flex flex-col lg:flex-row gap-4 items-align justify-end overflow-x-auto">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between items-start gap-2 bg-[#1C1F22] rounded-[10px] sm:rounded-full p-1 ">
               {/* Island Dropdown */}
               <div className="relative w-full sm:w-1/2 md:2/5 h-full">
                 <select
