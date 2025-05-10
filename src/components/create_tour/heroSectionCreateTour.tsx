@@ -6,7 +6,8 @@ import CreateTourAll from "./CreateTourAll";
 import HotelSearchForm from "./All/HotelSearchForm";
 import HotelParkList from "./All/HotelParkList";
 import { FaChevronLeft } from 'react-icons/fa';
-
+import { useDispatch } from 'react-redux';
+import { setSelectedIsland } from '@/store/slices/islandSlice';
 // Define types for our data
 interface Slide {
   id: number;
@@ -22,7 +23,12 @@ interface Category {
   items: Slide[];
 }
 
-const HeroSectionCreateTour: React.FC = () => {
+interface Props {
+  onIslandSelect?: (islandName: string) => void;
+}
+
+const HeroSectionCreateTour: React.FC<Props> = ({ onIslandSelect }) => {
+  const dispatch = useDispatch();
   const router = useRouter();
   const { tab } = router.query;
 
@@ -383,6 +389,10 @@ const HeroSectionCreateTour: React.FC = () => {
   };
 
   // Handle island selection
+  // Add a new state to store the selected island name
+  const [selectedIslandName, setSelectedIslandName] = useState<string>("Port Blair");
+
+  // Modify the handleIslandSelect function
   const handleIslandSelect = (islandId: number) => {
     setActiveIslandId(islandId);
     const index = islandSlides.findIndex(island => island.id === islandId);
@@ -390,6 +400,10 @@ const HeroSectionCreateTour: React.FC = () => {
       setCurrentSlide(index);
       setCurrentImageIndex(0);
       setIsAutoplay(true);
+      setSelectedIslandName(islandSlides[index].title);
+
+      // Dispatch Redux action
+      dispatch(setSelectedIsland(islandSlides[index].title));
       
       // Smooth scroll to explore section
       exploreIslandRef.current?.scrollIntoView({ 
@@ -404,7 +418,6 @@ const HeroSectionCreateTour: React.FC = () => {
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
     
-    // Define clickable areas for each island (coordinates are relative to the map container)
     const islandAreas = {
       'Port Blair': { x1: 100, y1: 300, x2: 150, y2: 350 },
       'Havelock': { x1: 200, y1: 250, x2: 250, y2: 300 },
@@ -414,12 +427,17 @@ const HeroSectionCreateTour: React.FC = () => {
       'Mayabandar': { x1: 140, y1: 150, x2: 190, y2: 200 }
     };
 
-    // Find which island was clicked
     for (const [islandName, area] of Object.entries(islandAreas)) {
       if (x >= area.x1 && x <= area.x2 && y >= area.y1 && y <= area.y2) {
         const island = islandSlides.find(i => i.title === islandName);
         if (island) {
           handleIslandSelect(island.id);
+          // Dispatch the Redux action to update selected island
+          dispatch(setSelectedIsland(islandName));
+          // Call the onIslandSelect prop if provided
+          if (onIslandSelect) {
+            onIslandSelect(islandName);
+          }
         }
         break;
       }
@@ -705,5 +723,4 @@ const HeroSectionCreateTour: React.FC = () => {
     </section>
   );
 };
-
 export default HeroSectionCreateTour;

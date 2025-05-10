@@ -289,7 +289,9 @@ const CreateTourAll: React.FC = () => {
     const [maps, setMaps] = useState(false);
     const [showDetailPanel, setShowDetailPanel] = useState(false);
     const [selectedDetailPlace, setSelectedDetailPlace] = useState<any>(null);
+    
     // Extract subcategories when active tab changes
+
     useEffect(() => {
         const tabData = attractionsData.find(tab => tab.name === activeTab);
         if (tabData) {
