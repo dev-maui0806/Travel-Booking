@@ -5,17 +5,17 @@ interface IslandState {
 }
 
 const initialState: IslandState = {
-  selectedIsland: 'Port Blair',
+  selectedIsland: 'Port Blair'
 };
 
 const islandSlice = createSlice({
   name: 'island',
   initialState,
   reducers: {
-    setSelectedIsland(state, action: PayloadAction<string>) {
+    setSelectedIsland: (state, action: PayloadAction<string>) => {
       state.selectedIsland = action.payload;
-    },
-  },
+    }
+  }
 });
 
 export const { setSelectedIsland } = islandSlice.actions;

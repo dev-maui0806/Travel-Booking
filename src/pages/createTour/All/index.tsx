@@ -11,12 +11,7 @@ import ReviewsSection from "@/components/home/ReviewsSection";
 import CreateJourneySection from "@/components/home/CreateJourneySection";
 import { Suspense } from "react";
 import "../../../app/globals.css";
-import CreateTourAllMaps from "@/components/create_tour/CreateTourAllMaps";
-import HotelSearchForm from "@/components/create_tour/All/HotelSearchForm";
-import MapView from "@/components/create_tour/MapView";
-import attractionCategories from "@/components/create_tour/heroSectionCreateTour";
-import HotelParkList from "@/components/create_tour/All/HotelParkList";
-
+import EssentialsBookingForm from "@/components/create_tour/All/EssentialsBookingForm";
 const CreateTourIndex: React.FC = () => {
   return (
       <Suspense fallback={<div>Loading...</div>}>
@@ -25,8 +20,7 @@ const CreateTourIndex: React.FC = () => {
         <HeroSectionCreateTour/>
         <CreateTourAll />
         {/* <CreateTourAllMaps/> */}
-        <HotelSearchForm onSearch={() => {}} />
-        <HotelParkList onBackToSearch={() => {}} />
+        <EssentialsBookingForm onSearch={() => {}} selectedIsland="Port Blair" />
         <PopularToursSection/>
         {/* <TravelBlogSection/> */}
         <ReviewsSection/>

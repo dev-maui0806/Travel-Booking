@@ -542,7 +542,6 @@ const EssentialsBookingForm: React.FC<EssentialsBookingFormProps> = ({ onSearch,
                     }`}
                   >
                     <span className="flex items-center gap-2">
-                      <span>{tab.icon}</span>
                       <span>{tab.name}</span>
                     </span>
                   </button>
