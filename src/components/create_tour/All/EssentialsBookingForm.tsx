@@ -7,14 +7,17 @@ import { FaChevronDown } from "react-icons/fa";
 import { BsBuilding } from "react-icons/bs";
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
+import HotelParkList from './HotelParkList';
+import CabsList from './CabsList';
 
 interface EssentialsBookingFormProps {
   onSearch: () => void;
+  selectedIsland: string;
 }
 
-const EssentialsBookingForm: React.FC<EssentialsBookingFormProps> = ({ onSearch }) => {
+const EssentialsBookingForm: React.FC<EssentialsBookingFormProps> = ({ onSearch, selectedIsland }) => {
   // Get selected island from Redux store
-  const selectedIsland = useSelector((state: RootState) => state.island.selectedIsland);
+  const selectedIslandFromRedux = useSelector((state: RootState) => state.island.selectedIsland);
   
   // Date selection state
   const [checkInDate, setCheckInDate] = useState<Date>(new Date());
@@ -34,20 +37,21 @@ const EssentialsBookingForm: React.FC<EssentialsBookingFormProps> = ({ onSearch 
   const [adults, setAdults] = useState(1);
   const [infants, setInfants] = useState(0);
   const [roomType, setRoomType] = useState('Rest');
-  const [activeTab, setActiveTab] = useState('Hotels');
+  const [activeTabId, setActiveTabId] = useState('Hotels');
+  const [showContent, setShowContent] = useState(false);
   
   // Constants
   const daysOfWeek = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
   const roomTypes = ['Rest', 'Deluxe', 'Suite', 'Villa'];
   
-  // Essential services data
-  const essentialServices = useMemo(() => [
-    { id: 'Hotels', icon: '🏨', price: '110/night' },
-    { id: 'Cabs', icon: '🚕', price: '50/day' },
-    { id: 'Scooters', icon: '🛵', price: '25/day' },
-    { id: 'Ferries', icon: '⛴️', price: '30/trip' },
-    { id: 'Water Transport', icon: '🚤', price: '40/trip' },
-  ], []);
+  // Essential services data with images
+  const essentialTabs = [
+    { id: 'Hotels', name: 'Hotels', icon: '🏨', image: '/images/services/hotels.png' },
+    { id: 'Cabs', name: 'Cabs', icon: '🚕', image: '/images/services/cabs.png' },
+    { id: 'Scooters', name: 'Scooters', icon: '🛵', image: '/images/services/scooters.png' },
+    { id: 'Ferries', name: 'Ferries', icon: '⛴️', image: '/images/services/ferries.png' },
+    { id: 'Water Transport', name: 'Water Transport', icon: '🚤', image: '/images/services/water-transport.png' },
+  ];
 
   // Initialize display dates
   useEffect(() => {
@@ -297,208 +301,265 @@ const EssentialsBookingForm: React.FC<EssentialsBookingFormProps> = ({ onSearch 
     </button>
   );
 
+  // Handle tab change
+  const handleTabChange = (tabId: string) => {
+    setActiveTabId(tabId);
+    setShowContent(true);
+    onSearch();
+  };
+
+  // Show content when component mounts (for initial Hotels view)
+  useEffect(() => {
+    setShowContent(true);
+  }, []);
+
+  const renderContent = () => {
+    switch (activeTabId) {
+      case 'Hotels':
+        return <HotelParkList onBackToSearch={() => setShowContent(false)} />;
+      case 'Cabs':
+        return <CabsList onBackToSearch={() => setShowContent(false)} />;
+      // Add other cases for different tabs
+      default:
+        return null;
+    }
+  };
+
   return (
-    <div className="container mx-auto bg-[#222629] text-white rounded-2xl overflow-hidden">
-      <div className="py-6 px-4 md:px-10 bg-[#1C1F22] flex flex-col gap-6 rounded-[20px]">
-        <h2 className='text-white text-3xl md:text-4xl font-bold'>When do you plan to start your trip?</h2>
-        <h3 className='text-white text-xl md:text-2xl '>Required to unlock hotel and ferry bookings</h3>
-            <IslandButton />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
-          {/* Left column - Options */}
-          <div className="space-y-6">
-            {/* Essentials Button */}
+    <>
+      <div className="container mx-auto bg-[#222629] text-white rounded-2xl overflow-hidden">
+        <div className="py-6 px-4 md:px-10 bg-[#1C1F22] flex flex-col gap-6 rounded-[20px]">
+          <h2 className='text-white text-3xl md:text-4xl font-bold'>When do you plan to start your trip?</h2>
+          <h3 className='text-white text-xl md:text-2xl '>Required to unlock hotel and ferry bookings</h3>
+          <IslandButton />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
+            {/* Left column - Options */}
+            <div className="space-y-6">
+              {/* Essentials Button */}
 
-            {/* Adults selection */}
-            <div className="relative flex items-center justify-between py-3 bg-[#222629] rounded-[20px]">
-              <div className="flex items-center space-x-3">
-                <button
-                  onClick={decrementAdults}
-                  className="absolute left-[-15px] w-10 h-10 flex items-center justify-center text-white bg-[#1C1F22] rounded-full"
-                >
-                  <span className='text-xl'>-</span>
-                </button>
-                <span className="text-white pl-6">Adults (2+ years)</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <span className='pr-8'>{adults}</span>
-                <button
-                  onClick={incrementAdults}
-                  className="absolute right-[-15px] w-10 h-10 flex items-center justify-center text-white bg-[#1C1F22] rounded-full"
-                >
-                  <span className='text-xl'>+</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Infants selection */}
-            <div className="relative flex items-center justify-between py-3 bg-[#222629] rounded-[20px]">
-              <div className="flex items-center space-x-3">
-                <button
-                  onClick={decrementInfants}
-                  className="absolute left-[-15px] w-10 h-10 flex items-center justify-center text-white bg-[#1C1F22] rounded-full"
-                >
-                  <span className='text-xl'>-</span>
-                </button>
-                <span className="text-white pl-6">Infants (0-2 years)</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <span className='pr-8'>{infants}</span>
-                <button
-                  onClick={incrementInfants}
-                  className="absolute right-[-15px] w-10 h-10 flex items-center justify-center text-white bg-[#1C1F22] rounded-full"
-                >
-                  <span className='text-xl'>+</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Room type selection */}
-            <div className="relative flex items-center justify-between py-3 bg-[#222629] rounded-[20px]">
-              <div className="flex items-center space-x-3">
-                <div className="absolute left-[-15px] w-10 h-10 flex items-center justify-center text-[#06b6d4] bg-[#1C1F22] rounded-full">
-                  <BsBuilding size={20} />
-                </div>
-                <span className="text-white pl-6">Type</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <span className='pr-8'>{roomType}</span>
-                <div className="absolute right-[-15px] w-10 h-10 flex items-center justify-center text-white bg-[#1C1F22] rounded-full">
-                  <FaChevronDown className="text-xs" />
-                </div>
-              </div>
-            </div>
-
-            {/* Date selection for mobile */}
-            <div className="relative flex items-center justify-between py-3 bg-[#222629] rounded-[20px] cursor-pointer">
-              <div 
-                className="flex items-center space-x-3"
-                onClick={() => {
-                  setShowMobileCalendar(true);
-                  setMobileCalendarType('checkin');
-                }}
-              >
-                <div className="absolute left-[-15px] w-10 h-10 flex items-center justify-center text-[#06b6d4] bg-[#1C1F22] rounded-full">
-                  <BsBuilding size={20} />
-                </div>
-                <span className="text-white pl-6">
-                  {checkInDate.toLocaleDateString('en-GB', {
-                    day: '2-digit',
-                    month: '2-digit',
-                    year: 'numeric'
-                  })}
-                </span>
-              </div>
-              <div 
-                className="flex items-center space-x-2"
-                onClick={() => {
-                  setShowMobileCalendar(true);
-                  setMobileCalendarType('checkout');
-                }}
-              >
-                <span className='pr-8'>
-                  {checkOutDate.toLocaleDateString('en-GB', {
-                    day: '2-digit',
-                    month: '2-digit',
-                    year: 'numeric'
-                  })}
-                </span>
-                <div className="absolute right-[-15px] w-10 h-10 flex items-center justify-center text-white bg-[#1C1F22] rounded-full">
-                  <FaChevronDown className="text-xs" />
-                </div>
-              </div>
-            </div>
-
-            {/* Inline calendar for mobile */}
-            {showMobileCalendar && (
-              <div className="md:hidden bg-[#1C1F22] rounded-[20px] overflow-hidden">
-                <div className="flex items-center justify-between p-4">
+              {/* Adults selection */}
+              <div className="relative flex items-center justify-between py-3 bg-[#222629] rounded-[20px]">
+                <div className="flex items-center space-x-3">
                   <button
-                    className="w-8 h-8 bg-[#222629] flex items-center justify-center rounded-full text-white"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      navigateMonth(false);
-                    }}
+                    onClick={decrementAdults}
+                    className="absolute left-[-15px] w-10 h-10 flex items-center justify-center text-white bg-[#1C1F22] rounded-full"
                   >
-                    <IoIosArrowBack size={16} />
+                    <span className='text-xl'>-</span>
                   </button>
-                  <div className="text-white font-medium">
-                    {getMonthName(mobileCalendarType === 'checkin' ? checkInDisplayDate : checkOutDisplayDate)}
+                  <span className="text-white pl-6">Adults (2+ years)</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <span className='pr-8'>{adults}</span>
+                  <button
+                    onClick={incrementAdults}
+                    className="absolute right-[-15px] w-10 h-10 flex items-center justify-center text-white bg-[#1C1F22] rounded-full"
+                  >
+                    <span className='text-xl'>+</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Infants selection */}
+              <div className="relative flex items-center justify-between py-3 bg-[#222629] rounded-[20px]">
+                <div className="flex items-center space-x-3">
+                  <button
+                    onClick={decrementInfants}
+                    className="absolute left-[-15px] w-10 h-10 flex items-center justify-center text-white bg-[#1C1F22] rounded-full"
+                  >
+                    <span className='text-xl'>-</span>
+                  </button>
+                  <span className="text-white pl-6">Infants (0-2 years)</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <span className='pr-8'>{infants}</span>
+                  <button
+                    onClick={incrementInfants}
+                    className="absolute right-[-15px] w-10 h-10 flex items-center justify-center text-white bg-[#1C1F22] rounded-full"
+                  >
+                    <span className='text-xl'>+</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Room type selection */}
+              <div className="relative flex items-center justify-between py-3 bg-[#222629] rounded-[20px]">
+                <div className="flex items-center space-x-3">
+                  <div className="absolute left-[-15px] w-10 h-10 flex items-center justify-center text-[#06b6d4] bg-[#1C1F22] rounded-full">
+                    <BsBuilding size={20} />
                   </div>
+                  <span className="text-white pl-6">Type</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <span className='pr-8'>{roomType}</span>
+                  <div className="absolute right-[-15px] w-10 h-10 flex items-center justify-center text-white bg-[#1C1F22] rounded-full">
+                    <FaChevronDown className="text-xs" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Date selection for mobile */}
+              <div className="relative flex items-center justify-between py-3 bg-[#222629] rounded-[20px] cursor-pointer">
+                <div 
+                  className="flex items-center space-x-3"
+                  onClick={() => {
+                    setShowMobileCalendar(true);
+                    setMobileCalendarType('checkin');
+                  }}
+                >
+                  <div className="absolute left-[-15px] w-10 h-10 flex items-center justify-center text-[#06b6d4] bg-[#1C1F22] rounded-full">
+                    <BsBuilding size={20} />
+                  </div>
+                  <span className="text-white pl-6">
+                    {checkInDate.toLocaleDateString('en-GB', {
+                      day: '2-digit',
+                      month: '2-digit',
+                      year: 'numeric'
+                    })}
+                  </span>
+                </div>
+                <div 
+                  className="flex items-center space-x-2"
+                  onClick={() => {
+                    setShowMobileCalendar(true);
+                    setMobileCalendarType('checkout');
+                  }}
+                >
+                  <span className='pr-8'>
+                    {checkOutDate.toLocaleDateString('en-GB', {
+                      day: '2-digit',
+                      month: '2-digit',
+                      year: 'numeric'
+                    })}
+                  </span>
+                  <div className="absolute right-[-15px] w-10 h-10 flex items-center justify-center text-white bg-[#1C1F22] rounded-full">
+                    <FaChevronDown className="text-xs" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Inline calendar for mobile */}
+              {showMobileCalendar && (
+                <div className="md:hidden bg-[#1C1F22] rounded-[20px] overflow-hidden">
+                  <div className="flex items-center justify-between p-4">
+                    <button
+                      className="w-8 h-8 bg-[#222629] flex items-center justify-center rounded-full text-white"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigateMonth(false);
+                      }}
+                    >
+                      <IoIosArrowBack size={16} />
+                    </button>
+                    <div className="text-white font-medium">
+                      {getMonthName(mobileCalendarType === 'checkin' ? checkInDisplayDate : checkOutDisplayDate)}
+                    </div>
+                    <button
+                      className="w-8 h-8 bg-[#222629] flex items-center justify-center rounded-full text-white"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigateMonth(true);
+                      }}
+                    >
+                      <IoIosArrowForward size={16} />
+                    </button>
+                  </div>
+
+                  {/* Calendar grid */}
+                  <div className="bg-[#222629] mx-4 mb-4 p-2 rounded-lg">
+                    {renderCalendarGrid(mobileCalendarType === 'checkin')}
+                  </div>
+                </div>
+              )}
+
+              {/* Find button */}
+              <div className="mt-6 md:mt-12 flex justify-center">
+                <button 
+                  className="bg-white text-black font-medium py-3 px-8 rounded-full w-full md:w-auto" 
+                  onClick={showHotelList}
+                >
+                  Find
+                </button>
+              </div>
+            </div>
+
+            {/* Calendar sections - Hidden on mobile */}
+            <div className="hidden md:block relative bg-[#222629] rounded-lg p-4">
+              <div className="flex items-center justify-between mb-4">
+                <button
+                  className="w-8 h-8 bg-[#222629] flex items-center justify-center rounded-full text-white"
+                  onClick={() => navigateMonth(false)}
+                >
+                  <IoIosArrowBack size={16} />
+                </button>
+                <div className="text-white font-medium">
+                  {getMonthYearDisplay(checkInDisplayDate)}
+                </div>
+                <button
+                  className="w-8 h-8 bg-[#222629] flex items-center justify-center rounded-full text-white"
+                  onClick={() => navigateMonth(true)}
+                >
+                  <IoIosArrowForward size={16} />
+                </button>
+              </div>
+              <div className="bg-[#222629] p-2 rounded-lg">
+                {renderCalendarGrid(true)}
+              </div>
+            </div>
+            <div className="hidden md:block relative bg-[#222629] rounded-lg p-4">
+              <div className="flex items-center justify-between mb-4">
+                <button
+                  className="w-8 h-8 bg-[#222629] flex items-center justify-center rounded-full text-white invisible"
+                >
+                  <IoIosArrowBack size={16} />
+                </button>
+                <div className="text-white font-medium">
+                  {getMonthYearDisplay(checkOutDisplayDate)}
+                </div>
+                <button
+                  className="w-8 h-8 bg-[#222629] flex items-center justify-center rounded-full text-white invisible"
+                >
+                  <IoIosArrowForward size={16} />
+                </button>
+              </div>
+              <div className="bg-[#222629] p-2 rounded-lg">
+                {renderCalendarGrid(false)}
+              </div>
+            </div>
+          </div>
+
+          {/* Navigation Tabs */}
+          <div className="relative mb-4 md:mb-8">
+            <div className="overflow-x-auto">
+              <div className="flex items-center space-x-2 bg-[#222629] rounded-full p-1 w-fit min-w-full md:min-w-0">
+                {essentialTabs.map((tab) => (
                   <button
-                    className="w-8 h-8 bg-[#222629] flex items-center justify-center rounded-full text-white"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      navigateMonth(true);
-                    }}
+                    key={tab.id}
+                    onClick={() => handleTabChange(tab.id)}
+                    className={`px-3 md:px-6 py-1.5 md:py-2 rounded-full whitespace-nowrap transition-colors text-sm md:text-base ${
+                      activeTabId === tab.id
+                        ? 'bg-white text-black'
+                        : 'text-gray-400 hover:text-gray-300'
+                    }`}
                   >
-                    <IoIosArrowForward size={16} />
+                    <span className="flex items-center gap-2">
+                      <span>{tab.icon}</span>
+                      <span>{tab.name}</span>
+                    </span>
                   </button>
-                </div>
-
-                {/* Calendar grid */}
-                <div className="bg-[#222629] mx-4 mb-4 p-2 rounded-lg">
-                  {renderCalendarGrid(mobileCalendarType === 'checkin')}
-                </div>
+                ))}
               </div>
-            )}
-
-            {/* Find button */}
-            <div className="mt-6 md:mt-12 flex justify-center">
-              <button 
-                className="bg-white text-black font-medium py-3 px-8 rounded-full w-full md:w-auto" 
-                onClick={showHotelList}
-              >
-                Find
-              </button>
-            </div>
-          </div>
-
-          {/* Calendar sections - Hidden on mobile */}
-          <div className="hidden md:block relative bg-[#222629] rounded-lg p-4">
-            <div className="flex items-center justify-between mb-4">
-              <button
-                className="w-8 h-8 bg-[#222629] flex items-center justify-center rounded-full text-white"
-                onClick={() => navigateMonth(false)}
-              >
-                <IoIosArrowBack size={16} />
-              </button>
-              <div className="text-white font-medium">
-                {getMonthYearDisplay(checkInDisplayDate)}
-              </div>
-              <button
-                className="w-8 h-8 bg-[#222629] flex items-center justify-center rounded-full text-white"
-                onClick={() => navigateMonth(true)}
-              >
-                <IoIosArrowForward size={16} />
-              </button>
-            </div>
-            <div className="bg-[#222629] p-2 rounded-lg">
-              {renderCalendarGrid(true)}
-            </div>
-          </div>
-          <div className="hidden md:block relative bg-[#222629] rounded-lg p-4">
-            <div className="flex items-center justify-between mb-4">
-              <button
-                className="w-8 h-8 bg-[#222629] flex items-center justify-center rounded-full text-white invisible"
-              >
-                <IoIosArrowBack size={16} />
-              </button>
-              <div className="text-white font-medium">
-                {getMonthYearDisplay(checkOutDisplayDate)}
-              </div>
-              <button
-                className="w-8 h-8 bg-[#222629] flex items-center justify-center rounded-full text-white invisible"
-              >
-                <IoIosArrowForward size={16} />
-              </button>
-            </div>
-            <div className="bg-[#222629] p-2 rounded-lg">
-              {renderCalendarGrid(false)}
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+      {/* Render content below the form */}
+      {showContent && (
+        <div className="mt-6">
+          {renderContent()}
+        </div>
+      )}
+    </>
   );
 };
 

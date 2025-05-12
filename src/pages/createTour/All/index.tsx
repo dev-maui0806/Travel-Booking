@@ -1,45 +1,38 @@
-import React, { useState } from "react";
-import { Suspense } from "react";
+import React from "react";
+import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import HeroSectionCreateTour from "@/components/create_tour/heroSectionCreateTour";
 import CreateTourAll from "@/components/create_tour/CreateTourAll";
 import PopularToursSection from "@/components/home/PopularToursSection";
+import TravelBlogSection from "@/components/home/TravelBlogSection";
 import ReviewsSection from "@/components/home/ReviewsSection";
 import CreateJourneySection from "@/components/home/CreateJourneySection";
+import { Suspense } from "react";
 import "../../../app/globals.css";
-import EssentialsBookingForm from "@/components/create_tour/All/EssentialsBookingForm";
+import CreateTourAllMaps from "@/components/create_tour/CreateTourAllMaps";
+import HotelSearchForm from "@/components/create_tour/All/HotelSearchForm";
+import MapView from "@/components/create_tour/MapView";
+import attractionCategories from "@/components/create_tour/heroSectionCreateTour";
+import HotelParkList from "@/components/create_tour/All/HotelParkList";
 
 const CreateTourIndex: React.FC = () => {
-  const [selectedIsland, setSelectedIsland] = useState<string>("Port Blair");
-
-  const handleSearch = () => {
-    console.log("Searching for options in", selectedIsland);
-  };
-
-  const handleIslandSelect = (islandName: string) => {
-    setSelectedIsland(islandName);
-  };
-
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Header/>
-      <HeroSection  
-        title="Create a Tour" 
-        subtitle="Choose from our curated selection of Andaman Islands tours designed for unforgettable experiences"
-      />
-      <HeroSectionCreateTour onIslandSelect={handleIslandSelect}/>
-      <CreateTourAll />
-      <EssentialsBookingForm 
-        selectedIsland={selectedIsland}
-        onSearch={handleSearch}
-      />
-      <PopularToursSection/>
-      <ReviewsSection/>
-      <CreateJourneySection/>
-      <Footer/>
-    </Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Header/>
+        <HeroSection  title="Create a Tour" subtitle="Choose from our curated selection of Andaman Islands tours designed for unforgettable experiences"/>
+        <HeroSectionCreateTour/>
+        <CreateTourAll />
+        {/* <CreateTourAllMaps/> */}
+        <HotelSearchForm onSearch={() => {}} />
+        <HotelParkList onBackToSearch={() => {}} />
+        <PopularToursSection/>
+        {/* <TravelBlogSection/> */}
+        <ReviewsSection/>
+        <CreateJourneySection/>
+        <Footer/>
+        </Suspense>
   );
 };
 
