@@ -581,7 +581,7 @@ const HeroSectionCreateTour: React.FC<Props> = ({ onIslandSelect }) => {
                     
                     {/* Havelock */}
                     <div 
-                      className="absolute top-[56%] sm:top-[57%] md:top-[55%] right-[10%] sm:right-[10%] md:right-[5%] flex flex-col items-center cursor-pointer group"
+                      className="absolute top-[56%] sm:top-[57%] md:top-[55%] right-[10%] sm:right-[10%] md:right-[20%] flex flex-col items-center cursor-pointer group"
                       onClick={() => handleIslandSelect(2)}
                     >
                       <div className="w-[100px] h-6 sm:w-[120px] md:w-[90px] md:h-4 rounded-[5px] bg-[#06b6d4] opacity-0 group-hover:opacity-0 transition-opacity"></div>

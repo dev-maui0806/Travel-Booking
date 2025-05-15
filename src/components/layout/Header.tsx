@@ -119,7 +119,7 @@ const Header: React.FC = () => {
               <Link href="/blogs" className="text-lg py-2 w-full bg-[#222629] rounded-[5px] pl-2" onClick={toggleMenu}>Blog</Link>
               <Link href="/gallery" className="text-lg py-2 w-full bg-[#222629] rounded-[5px] pl-2" onClick={toggleMenu}>Gallery</Link>
               <Link href="/aboutUs" className="text-lg py-2 w-full bg-[#222629] rounded-[5px] pl-2" onClick={toggleMenu}>About us</Link>
-              <Link href="/contacts" className="text-lg py-2 w-full bg-[#222629] rounded-[5px] pl-2" onClick={toggleMenu}>Contacts</Link>
+              <Link href="/contactUs" className="text-lg py-2 w-full bg-[#222629] rounded-[5px] pl-2" onClick={toggleMenu}>ContactUs</Link>
               {/* <div className="mt-4">
                 <Link href="/searchFlights" className="text-lg py-2 flex items-center">
                   <span className='text-white'>Search for flights</span>
@@ -258,7 +258,7 @@ const Header: React.FC = () => {
               <Link href="/blogs" className="text-sm " onClick={toggleMenu}>Blog</Link>
               <Link href="/gallery" className="text-sm " onClick={toggleMenu} >Gallery</Link>
               <Link href="/aboutUs" className="text-sm " onClick={toggleMenu}>About us</Link>
-              <Link href="/contacts" className="text-sm " onClick={toggleMenu}>Contacts</Link>
+              <Link href="/contactUs" className="text-sm " onClick={toggleMenu}>ContactUs</Link>
             </div>
             <button
               onClick={toggleMenu}
@@ -291,7 +291,7 @@ const Header: React.FC = () => {
           <Link href="/blogs" className="text-white text-base hover:text-primary">Blog</Link>
           <Link href="/gallery" className="text-white text-base hover:text-primary">Gallery</Link>
           <Link href="/aboutUs" className="text-white text-base hover:text-primary">About us</Link>
-          <Link href="/contacts" className="text-white text-base hover:text-primary">Contacts</Link>
+          <Link href="/contactUs" className="text-white text-base hover:text-primary">ContactUs</Link>
         </div>
 
         <div className="flex items-center space-x-6">

@@ -6,7 +6,6 @@ import HeroSection from "@/components/home/HeroSection";
 import HeroSectionCreateTour from "@/components/create_tour/heroSectionCreateTour";
 import CreateTourAll from "@/components/create_tour/CreateTourAll";
 import PopularToursSection from "@/components/home/PopularToursSection";
-import TravelBlogSection from "@/components/home/TravelBlogSection";
 import ReviewsSection from "@/components/home/ReviewsSection";
 import CreateJourneySection from "@/components/home/CreateJourneySection";
 import { Suspense } from "react";

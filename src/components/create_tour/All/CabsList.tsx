@@ -4,9 +4,13 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { FaStar, FaChevronLeft, FaChevronRight, FaArrowRight } from 'react-icons/fa';
 import { IoLocationOutline } from 'react-icons/io5';
+import EssentialsTabsBar, { Tab } from './EssentialsTabsBar';
 
 interface CabsListProps {
   onBackToSearch: () => void;
+  tabs: Tab[];
+  activeTabId: string;
+  onTabChange: (tabId: string) => void;
 }
 
 // Sample cabs data
@@ -64,12 +68,18 @@ const cabsData = [
   },
 ];
 
-const CabsList: React.FC<CabsListProps> = ({ onBackToSearch }) => {
+const CabsList: React.FC<CabsListProps> = ({
+  onBackToSearch,
+  tabs,
+  activeTabId,
+  onTabChange,
+}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [priceRange, setPriceRange] = useState(200);
 
   return (
     <div className="container mx-auto bg-[#222629] min-h-screen text-white">
+      <EssentialsTabsBar tabs={tabs} activeTabId={activeTabId} onTabChange={onTabChange} />
       {/* Filter Options */}
       <div className="px-4 mb-6">
         <div className="flex items-center gap-4">

@@ -9,15 +9,19 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
 import HotelParkList from './HotelParkList';
 import CabsList from './CabsList';
+import ScooterRentalList from "@/components/create_tour/All/ScooterRentalList";
+import WaterTransportRentalList from "@/components/create_tour/All/WaterTransportRentalList";
+import AdventuresEntertainmentList from "@/components/create_tour/All/AdventuresEntertainmentList";
+import EssentialsTabsBar, { Tab } from './EssentialsTabsBar';
 
 interface EssentialsBookingFormProps {
   onSearch: () => void;
   selectedIsland: string;
 }
 
-const EssentialsBookingForm: React.FC<EssentialsBookingFormProps> = ({ onSearch, selectedIsland }) => {
+const EssentialsBookingForm: React.FC<EssentialsBookingFormProps> = ({ onSearch }) => {
   // Get selected island from Redux store
-  const selectedIslandFromRedux = useSelector((state: RootState) => state.island.selectedIsland);
+  const selectedIsland = useSelector((state: RootState) => state.island.selectedIsland);
   
   // Date selection state
   const [checkInDate, setCheckInDate] = useState<Date>(new Date());
@@ -51,6 +55,7 @@ const EssentialsBookingForm: React.FC<EssentialsBookingFormProps> = ({ onSearch,
     { id: 'Scooters', name: 'Scooters', icon: '🛵', image: '/images/services/scooters.png' },
     { id: 'Ferries', name: 'Ferries', icon: '⛴️', image: '/images/services/ferries.png' },
     { id: 'Water Transport', name: 'Water Transport', icon: '🚤', image: '/images/services/water-transport.png' },
+    { id: 'Adventures and entertainment', name: 'Adventures and entertainment', icon: '🎮', image: '/images/services/adventures.png' },
   ];
 
   // Initialize display dates
@@ -314,12 +319,24 @@ const EssentialsBookingForm: React.FC<EssentialsBookingFormProps> = ({ onSearch,
   }, []);
 
   const renderContent = () => {
+    const sharedProps = { 
+      tabs: essentialTabs, 
+      activeTabId, 
+      onTabChange: handleTabChange 
+    };
     switch (activeTabId) {
       case 'Hotels':
-        return <HotelParkList onBackToSearch={() => setShowContent(false)} />;
+        return <HotelParkList {...sharedProps} onBackToSearch={() => setShowContent(false)} />;
       case 'Cabs':
-        return <CabsList onBackToSearch={() => setShowContent(false)} />;
-      // Add other cases for different tabs
+        return <CabsList {...sharedProps} onBackToSearch={() => setShowContent(false)} />;
+      case 'Scooters':
+        return <ScooterRentalList {...sharedProps} onBackToSearch={() => setShowContent(false)} />;
+      case 'Ferries':
+        return <WaterTransportRentalList {...sharedProps} onBackToSearch={() => setShowContent(false)} />;
+      case 'Water Transport':
+        return <WaterTransportRentalList {...sharedProps} onBackToSearch={() => setShowContent(false)} />;
+      case 'Adventures and entertainment':
+        return <AdventuresEntertainmentList {...sharedProps} onBackToSearch={() => setShowContent(false)} />;
       default:
         return null;
     }
@@ -528,27 +545,7 @@ const EssentialsBookingForm: React.FC<EssentialsBookingFormProps> = ({ onSearch,
           </div>
 
           {/* Navigation Tabs */}
-          <div className="relative mb-4 md:mb-8">
-            <div className="overflow-x-auto">
-              <div className="flex items-center space-x-2 bg-[#222629] rounded-full p-1 w-fit min-w-full md:min-w-0">
-                {essentialTabs.map((tab) => (
-                  <button
-                    key={tab.id}
-                    onClick={() => handleTabChange(tab.id)}
-                    className={`px-3 md:px-6 py-1.5 md:py-2 rounded-full whitespace-nowrap transition-colors text-sm md:text-base ${
-                      activeTabId === tab.id
-                        ? 'bg-white text-black'
-                        : 'text-gray-400 hover:text-gray-300'
-                    }`}
-                  >
-                    <span className="flex items-center gap-2">
-                      <span>{tab.name}</span>
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
+          <EssentialsTabsBar tabs={essentialTabs} activeTabId={activeTabId} onTabChange={handleTabChange} />
         </div>
       </div>
 
