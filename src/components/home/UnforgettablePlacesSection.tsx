@@ -65,10 +65,10 @@ const UnforgettablePlacesSection: React.FC = () => {
     router.push(`/createTour/`);
   }
   return (
-    <section className="bg-[#1a1d1f] text-white py-12 md:py-16">
+    <section className="bg-[#1a1d1f] text-white py-[100px]">
       <div className="container mx-auto px-4">
         {/* Title Section */}
-        <div className="">
+        <div className="w-full flex justify-start items-start py-4">
           <h2 className="text-3xl leading-[1.2] md:text-4xl font-extralight">
             Unforgettable places of{' '}
             <span className="block md:inline md:text-4xl text-3xl">the islands</span>
@@ -103,12 +103,12 @@ const UnforgettablePlacesSection: React.FC = () => {
         {activePlace && (
           <div className="relative lg:h-[700px] md:h-[600px] h-[600px] bg-gradient-to-t from-black via-black/60 to-transparent rounded-[10px]">
             {/* Main Image */}
-            <div className="relative w-full md:rounded-2xl overflow-hidden h-[300px]">
+            <div className="relative w-full h-full md:rounded-2xl overflow-hidden h-[300px]">
               <Image
                 src={activePlace.image}
                 alt={activePlace.name}
                 fill
-                className="lg:object-cover"
+                className="lg:object-cover w-fill"
                 priority
               />
             </div>

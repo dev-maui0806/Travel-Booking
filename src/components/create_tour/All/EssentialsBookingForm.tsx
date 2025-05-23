@@ -11,8 +11,8 @@ import HotelParkList from './HotelParkList';
 import CabsList from './CabsList';
 import ScooterRentalList from "@/components/create_tour/All/ScooterRentalList";
 import WaterTransportRentalList from "@/components/create_tour/All/WaterTransportRentalList";
-import AdventuresEntertainmentList from "@/components/create_tour/All/AdventuresEntertainmentList";
 import EssentialsTabsBar, { Tab } from './EssentialsTabsBar';
+import FerryTicketCard from './FerryTicketslists';
 
 interface EssentialsBookingFormProps {
   onSearch: () => void;
@@ -55,7 +55,6 @@ const EssentialsBookingForm: React.FC<EssentialsBookingFormProps> = ({ onSearch 
     { id: 'Scooters', name: 'Scooters', icon: '🛵', image: '/images/services/scooters.png' },
     { id: 'Ferries', name: 'Ferries', icon: '⛴️', image: '/images/services/ferries.png' },
     { id: 'Water Transport', name: 'Water Transport', icon: '🚤', image: '/images/services/water-transport.png' },
-    { id: 'Adventures and entertainment', name: 'Adventures and entertainment', icon: '🎮', image: '/images/services/adventures.png' },
   ];
 
   // Initialize display dates
@@ -332,11 +331,9 @@ const EssentialsBookingForm: React.FC<EssentialsBookingFormProps> = ({ onSearch 
       case 'Scooters':
         return <ScooterRentalList {...sharedProps} onBackToSearch={() => setShowContent(false)} />;
       case 'Ferries':
-        return <WaterTransportRentalList {...sharedProps} onBackToSearch={() => setShowContent(false)} />;
+        return <FerryTicketCard {...sharedProps} onBackToSearch={() => setShowContent(false)} />;
       case 'Water Transport':
         return <WaterTransportRentalList {...sharedProps} onBackToSearch={() => setShowContent(false)} />;
-      case 'Adventures and entertainment':
-        return <AdventuresEntertainmentList {...sharedProps} onBackToSearch={() => setShowContent(false)} />;
       default:
         return null;
     }

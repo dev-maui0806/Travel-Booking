@@ -8,12 +8,13 @@ import ReviewsSection from "@/components/home/ReviewsSection"
 import CreateJourneySection from "@/components/home/CreateJourneySection"
 import HeroSection from "@/components/home/HeroSection"
 import "../../app/globals.css";
-
+import BlogSection from "@/components/blog/BlogSection";
 const BlogsIndex:React.FC = () => {
     return(
         <Suspense fallback={<div>Loading...</div>}>
             <Header/>
             <HeroSection/>
+            <BlogSection/>
             <ReviewsSection/>
             <CreateJourneySection/>
             <Footer/>
