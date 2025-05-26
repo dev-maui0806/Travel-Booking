@@ -148,7 +148,8 @@ const CreateJourneySection = () => {
                       hover:bg-gray-100 transition-colors duration-300 flex w-full justify-center md:justify-end"
                   >
                     <span className="text-[16px] text-[#222629]">
-                    Create Your Tour Now</span>
+                      Create Your Tour Now
+                    </span>
                     <span className="hidden md:block ml-2 bg-[#1C1F22] rounded-full p-1 -rotate-45">
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
                         <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>

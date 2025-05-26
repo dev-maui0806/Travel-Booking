@@ -1,14 +1,11 @@
+'use client'
+
 import Image from 'next/image';
-import Link from 'next/link'; // Assuming services link somewhere
+import { useRouter } from 'next/navigation';
+import { ServiceSlide } from '@/types/services';
 
 interface ServiceCardProps {
-  service: {
-    id: string | number;
-    title: string;
-    description: string;
-    image: string; // Path to image
-    link: string; // Destination link
-  };
+  service: ServiceSlide;
 }
 
 // Placeholder Icon (adjust as needed)
@@ -19,38 +16,35 @@ const ArrowRightIcon = () => (
 );
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
-  const { title, description, image, link } = service;
+  const { id, title, description, image, className } = service;
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/services/${id}`);
+  };
 
   return (
-    <Link href={link} className="block group relative aspect-video md:aspect-[16/10] w-full rounded-lg overflow-hidden shadow-lg">
+    <div 
+      onClick={handleClick}
+      className={`block group relative w-full h-full rounded-lg overflow-hidden cursor-pointer ${className || ''}`}
+    >
       <Image
         src={image}
         alt={title}
-        layout="fill"
-        objectFit="cover"
-        className="transition-transform duration-300 ease-in-out group-hover:scale-105"
+        fill
+        className="object-cover transition-transform duration-300 group-hover:scale-105"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
+      
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
 
       {/* Content */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 text-white flex flex-col justify-end h-full">
-        <div className="mt-auto">
-          <h3 className="text-lg md:text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-            {title}
-          </h3>
-          <p className="text-xs md:text-sm text-gray-300 mb-4 line-clamp-3">
-            {description}
-          </p>
-          <div className="flex justify-end">
-             {/* Icon Button - adjust styling as needed */}
-            <div className="bg-primary rounded-full p-2 group-hover:bg-secondary transition-colors">
-              <ArrowRightIcon />
-            </div>
-          </div>
-        </div>
+      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+        <h3 className="text-xl font-semibold mb-2">{title}</h3>
+        <p className="text-sm text-gray-300 line-clamp-2">{description}</p>
       </div>
-    </Link>
+    </div>
   );
 };
 
