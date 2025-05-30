@@ -18,8 +18,8 @@ import Footer from "@/components/layout/Footer";
 
 const HomeIndex: React.FC = () => {
   return (
-      <Suspense fallback={<div>Loading...</div>}>
-        <Header/>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Header />
       <HeroSection />
       <CreateDreamTripSection />
       <UnforgettablePlacesSection />
@@ -28,7 +28,7 @@ const HomeIndex: React.FC = () => {
       <TravelBlogSection />
       <ReviewsSection />
       <CreateJourneySection />
-      <Footer/>
+      <Footer />
     </Suspense>
   );
 };

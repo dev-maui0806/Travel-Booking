@@ -1,3 +1,5 @@
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import CreateDreamTripSection from "@/components/home/CreateDreamTripSection";
 import UnforgettablePlacesSection from "@/components/home/UnforgettablePlacesSection";
@@ -11,6 +13,7 @@ import { Suspense } from "react";
 export default function HomePage() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
+      <Header />
       <HeroSection />
       <CreateDreamTripSection />
       <UnforgettablePlacesSection />
@@ -19,6 +22,7 @@ export default function HomePage() {
       <TravelBlogSection />
       <ReviewsSection />
       <CreateJourneySection />
+      <Footer />
     </Suspense>
   );
 }
