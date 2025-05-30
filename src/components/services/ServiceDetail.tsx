@@ -25,7 +25,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceData }) => {
 
     return (
         <div className="p-6 bg-[#1C1C1E] text-white">
-            <div className="grid grid-cols-2 gap-8 mb-8">
+            <div className="grid grid-cols-2 mr-4 ml-4 gap-8 mb-8">
                 {/* Text Content */}
                 <div className="space-y-6">
                     <p className="text-gray-300 leading-relaxed">
@@ -60,7 +60,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceData }) => {
             </div>
 
             {/* Navigation */}
-            <div className="flex items-center justify-end gap-6">
+            <div className="flex items-center justify-end gap-6 mr-4">
                 <div className="text-gray-400">
                     {String(currentImageIndex + 1).padStart(2, '0')}/{String(serviceData.child.length).padStart(2, '0')}
                 </div>

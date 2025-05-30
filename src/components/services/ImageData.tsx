@@ -6,8 +6,6 @@ const slides: ServiceSlide[] = [
         title: 'Game Fishing',
         description: 'The Andaman Islands are very famous in the international community for their fishing. Fishing in the Andaman Islands is very popular and such fishing trips are conducted in both Port Blair and Havelock Island',
         image: '/images/services/game-fishing.png',
-        width: 750,
-        height: 400,
         className: 'col-span-2',
         child: [
             {
@@ -50,8 +48,6 @@ const slides: ServiceSlide[] = [
         title: 'Scuba Diving',
         description: 'The Andaman Islands are very famous in the international community for their fishing. Fishing in the Andaman Islands is very popular and such fishing trips are conducted in both Port Blair and Havelock Island',
         image:'/images/services/scuba-diving.png',
-        width: 400,
-        height: 400,
         child: [
             {
                 src: '/images/services/scuba-diving/1.png',
@@ -92,8 +88,6 @@ const slides: ServiceSlide[] = [
         title: 'Sea Walk',
         description: 'The Andaman Islands are very famous in the international community for their fishing. Fishing in the Andaman Islands is very popular and such fishing trips are conducted in both Port Blair and Havelock Island',
         image:'/images/services/sea-walk.png',
-        width: 400,
-        height: 400,
         child: [
             {
                 src: '/images/services/sea-walk/1.png',
@@ -134,8 +128,6 @@ const slides: ServiceSlide[] = [
         title: 'KayaKing',
         description: 'The Andaman Islands are very famous in the international community for their fishing. Fishing in the Andaman Islands is very popular and such fishing trips are conducted in both Port Blair and Havelock Island',
         image:'/images/services/kayaking.png',
-        width: 400,
-        height: 300,
         child: [
             {
                 src: '/images/services/kayaking/1.png',
@@ -176,8 +168,6 @@ const slides: ServiceSlide[] = [
         title: 'Snorkeling',
         description: 'The Andaman Islands are very famous in the international community for their fishing. Fishing in the Andaman Islands is very popular and such fishing trips are conducted in both Port Blair and Havelock Island',
         image:'/images/services/snorkeling.png',
-        width: 400,
-        height: 300,
         child: [
             {
                 src: '/images/services/snorkeling/1.png',
@@ -218,8 +208,6 @@ const slides: ServiceSlide[] = [
         title: 'Speed Boat',
         description: 'The Andaman Islands are very famous in the international community for their fishing. Fishing in the Andaman Islands is very popular and such fishing trips are conducted in both Port Blair and Havelock Island',
         image:'/images/services/speed-boat.png',
-        width: 800,
-        height: 300,
         className: 'col-span-2',
         child: [
             {

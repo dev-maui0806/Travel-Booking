@@ -10,8 +10,6 @@ export interface ServiceSlide {
     title: string;
     description: string;
     image: string;
-    width: number;
-    height: number;
     className?: string;
     child: ChildImage[];
 } 

@@ -26,7 +26,7 @@ const ServiceDetailPage = () => {
         <Suspense fallback={<div>Loading...</div>}>
         <Header/>
         <HeroSection title = {serviceData.title}/>
-        <div className="min-h-screen bg-[#1C1C1E] mt-8">
+        <div className="max-h-screen bg-[#1C1C1E] mt-12">
             <ServiceDetail serviceData={serviceData} />
         </div>
         <div className="p-6 bg-[#1C1C1E] text-white max-h-screen">
