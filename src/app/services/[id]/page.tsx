@@ -17,7 +17,7 @@ const ServiceDetailPage = () => {
     if (!serviceData) {
         return (
             <div className="p-6 bg-[#1C1C1E] text-white min-h-screen">
-                <h1>Service not found</h1>
+                <h1>Service not found!</h1>
             </div>
         );
     }
